@@ -17,7 +17,8 @@ import { FooterComponent } from './footer/footer.component';
 import { StationaryProductsComponent } from './stationary-products/stationary-products.component';
 import { AccesoriesProductsComponent } from './accesories-products/accesories-products.component';
 import { CollectionsProductsComponent } from './collections-products/collections-products.component';
-
+import { ProductpreviewComponent } from './productpreview/productpreview.component';
+import { CartComponent } from './cart/cart.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { fakeBackendProvider } from './_helpers';
@@ -43,7 +44,8 @@ import { AlertComponent } from './_components';
     StationaryProductsComponent,
     AccesoriesProductsComponent,
     CollectionsProductsComponent,
-
+    ProductpreviewComponent,
+    CartComponent,
     AlertComponent,
   
   
