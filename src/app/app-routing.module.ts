@@ -5,6 +5,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './_helpers';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
+import { ProductsComponent } from './products/products.component';
+import { ProductpreviewComponent } from './productpreview/productpreview.component';
 
 
 
@@ -24,11 +26,18 @@ const routes: Routes = [
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' },
-
+  
+    {path : 'ProductKollywood' , component : ProductsComponent},
+    {path : 'ProductHollywood' , component : ProductsComponent},
+    {path : 'ProductChennai' , component : ProductsComponent},
+    {path : 'ProductFriendship' , component : ProductsComponent},
+    {path : 'ProductCouple', component : ProductsComponent},
+   {path : 'ProductPreview' , component : ProductpreviewComponent}
+      
+    ];
   
 
 
-];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
