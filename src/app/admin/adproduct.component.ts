@@ -15,13 +15,7 @@ export class AdproductComponent implements OnInit {
         private adminService: AdminService,
         private alertService: AlertService
     ) {
-        
-        
-
-
-
-
-
+       
     }
     ngOnInit() {
             

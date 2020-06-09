@@ -8,7 +8,7 @@ import { AdcombosComponent } from './adcombos.component';
 
 const routes: Routes = [
     {
-        path: '', component: AdlayoutComponent,
+        path: 'admin', component: AdlayoutComponent,
         children: [
             { path: 'adproduct', component: AdproductComponent },
             { path: 'adcombos', component: AdcombosComponent}
