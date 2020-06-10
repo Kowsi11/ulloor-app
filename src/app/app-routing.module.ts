@@ -18,6 +18,12 @@ const routes: Routes = [
 
   { path: 'header', component:HeaderComponent },
   { path: 'home', component:HomeComponent },
+  {path : 'ProductKollywood' , component : ProductsComponent},
+      {path : 'ProductHollywood' , component : ProductsComponent},
+      {path : 'ProductChennai' , component : ProductsComponent},
+      {path : 'ProductFriendship' , component : ProductsComponent},
+      {path : 'ProductCouple', component : ProductsComponent},
+     {path : 'ProductPreview' , component : ProductpreviewComponent},
   
 
   {path: '', component: HomeComponent},
@@ -27,15 +33,11 @@ const routes: Routes = [
     // otherwise redirect to home
     { path: '**', redirectTo: '' },
   
-    {path : 'ProductKollywood' , component : ProductsComponent},
-    {path : 'ProductHollywood' , component : ProductsComponent},
-    {path : 'ProductChennai' , component : ProductsComponent},
-    {path : 'ProductFriendship' , component : ProductsComponent},
-    {path : 'ProductCouple', component : ProductsComponent},
-   {path : 'ProductPreview' , component : ProductpreviewComponent}
+      
       
     ];
   
+
 
 
 
