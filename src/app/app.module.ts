@@ -27,6 +27,7 @@ import { fakeBackendProvider } from './_helpers';
 
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { AlertComponent } from './_components';
+import { FilterPipe } from './filter.pipe';
 
 
 
@@ -47,6 +48,7 @@ import { AlertComponent } from './_components';
     ProductpreviewComponent,
     CartComponent,
     AlertComponent,
+    FilterPipe,
   
   
   ],

@@ -1,0 +1,47 @@
+.sp-feature-box-3{
+	width:100%;
+	float:left;
+}
+.sp-feature-box-3 .img-box{
+	position:relative;
+	width:100%;
+	float:left;
+	overflow:hidden;
+}
+.sp-feature-box-3 .img-box .badge{
+	position: absolute;
+	width:34px;
+	height:34px;
+	float:left;
+	color:#fff;
+	left:30px;
+	top:30px;
+	font-size:10px;
+	font-weight:normal;
+	line-height:30px;
+	border-radius:100%;
+	text-transform:uppercase;
+	background-color:#f51e46;
+}
+.sp-feature-box-3 .img-box a.view-btn{
+	position:absolute;
+	width:100%;
+	left:0px;
+	bottom:-60px;
+	color:#fff;
+	text-align:center;
+	padding:15px 0;
+	background-color:rgba(245, 30, 70, 0.9);
+	transition: all 0.3s ease-out 0s;
+}
+.sp-feature-box-3 .btn.btn-border.light{
+	border:2px solid #f5f5f5;
+}
+.sp-feature-box-3:hover .img-box .view-btn, .sp-feature-box-3.active .img-box .view-btn{
+	bottom:5px;
+}
+.sp-feature-box-3:hover .btn.btn-border.light, .sp-feature-box-3.active .btn.btn-border.light{
+	color:#727272;
+	border:2px solid #101010;
+	background-color:#101010;
+}
