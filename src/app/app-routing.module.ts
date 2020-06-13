@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductpreviewComponent } from './productpreview/productpreview.component';
+import { CartComponent } from './cart/cart.component';
 
 
 
@@ -23,8 +24,12 @@ const routes: Routes = [
       {path : 'ProductChennai' , component : ProductsComponent},
       {path : 'ProductFriendship' , component : ProductsComponent},
       {path : 'ProductCouple', component : ProductsComponent},
+      {path : 'ProductAccessories' , component : ProductsComponent},
+      {path : 'StationaryProducts' , component : ProductsComponent},
      {path : 'ProductPreview' , component : ProductpreviewComponent},
-  
+
+     {path : 'Cart' , component : CartComponent},
+
 
   {path: '', component: HomeComponent},
     { path: 'users', loadChildren: usersModule, canActivate: [AuthGuard] },
