@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -7,8 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) {
+    this.route.params.subscribe(parms => this.category=parms.category);
+    console.log(this.category);
+   }
+  private category:any;
+  
+  
 
+  counts: any[]=[1,2,3,4]
   ngOnInit(){
   }
 
