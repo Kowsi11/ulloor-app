@@ -42,7 +42,7 @@ export class AccountService {
     }
 
     register(user: User) {
-        return this.http.post(`http://localhost:8080/ulloormerchandise/user`, user);
+        return this.http.post(`http://localhost:4000/ulloormerchandise/user`, user);
     }
 
     getAll() {
