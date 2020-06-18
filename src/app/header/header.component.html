@@ -17,19 +17,26 @@
                           <a href="#" class="close-btn mar-1">x</a> </div>
                       </div>
                     </li>
-                    <li class= {{mycart}}> <a href="javascript:void(0)" (click) = "mycartfun()" title=""> <i aria-hidden="true" class="fa fa-shopping-cart"></i> <span class="number mar2"> 4 </span> </a>
+                    <li class= {{mycart}}> <a href="javascript:void(0)" (click) = "mycartfun()" title=""> <i aria-hidden="true" class="fa fa-shopping-cart"></i> <span class="number mar2"> {{carts.length}} </span> </a>
                       <div class="cart-box">
                         <div class="container">
                           <div class="row">
-                            <div class="col-xs-8"> 2 item(s) </div>
-                            <div class="col-xs-4 text-right"> <span>$99</span> </div>
+                            <div class="col-xs-8"> {{carts.length}} item(s) </div>
+                            <div class="col-xs-4 text-right" > <span>$99</span> </div>
                           </div>
-                          <ul class = "list-group">
-                            <li> <img src="assets/images/cart-img1.jpg" alt=""> Jean & Teashirt <span>$30</span> <a href="#" title="" class="close-btn">x</a> </li>
-                            <li> <img src="assets/images/cart-img2.jpg" alt=""> Jean & Teashirt <span>$30</span> <a href="#" title="" class="close-btn">x</a> </li>
+                          <ng-template [ngIf]="carts.length>0"[ngIfElse]="noItem">
+                          <ul class = "list-group" *ngFor="let product of carts; let  indexOfCart=index">
+                            <li > <img src="assets/images/cart-img1.jpg" alt=""> Jean & Teashirt <span>$30</span> 
+                             <a href="javascript:void(0)" (click) = "removeFromCart(product)" title="" class="close-btn">x</a> </li>
                           </ul>
+                        </ng-template>
+                          <ng-template #noItem>
+                          <ul class = "list-group" >
+                            <li > Dont want add products happy shopping </li>
+                          </ul>
+                        </ng-template>
                           <div class="row">
-                            <div class="col-xs-6"> <a href="/Cart" title="View Cart" class="btn btn-block btn-warning">View Cart</a> </div>
+                            <div class="col-xs-6"> <a href="/Cart" title="View Cart" class="btn btn-block btn-warning ">View Cart</a> </div>
                             <div class="col-xs-6"> <a href="#" title="Check out" class="btn btn-block btn-primary">Check out</a> </div>
                           </div>
                         </div>
@@ -104,6 +111,7 @@
                         </li>
 
                         
+<<<<<<< HEAD
                         <li *ngIf="true" class="right"> <a routerLink="#" >{{loggedin}}</a> <span class="arrow"></span>
                           <ul>
                             
@@ -114,6 +122,8 @@
   
                           </ul>
                           </li>
+=======
+>>>>>>> 91dfdf02bcaca776d28a8da753fe7af42c678618
                         
                       
 
@@ -152,4 +162,21 @@
 
 <router-outlet></router-outlet>
 <!-- end section -->
-  
+  <script>
+    	$(document).ready(function() {
+			$('.minus').click(function () {
+				var $input = $(this).parent().find('input');
+				var count = parseInt($input.val()) - 1;
+				count = count < 1 ? 1 : count;
+				$input.val(count);
+				$input.change();
+				return false;
+			});
+			$('.plus').click(function () {
+				var $input = $(this).parent().find('input');
+				$input.val(parseInt($input.val()) + 1);
+				$input.change();
+				return false;
+			});
+		});
+  </script>

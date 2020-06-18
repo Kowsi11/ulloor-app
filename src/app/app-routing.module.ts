@@ -19,7 +19,7 @@ const routes: Routes = [
 
   { path: 'header', component:HeaderComponent },
   { path: 'home', component:HomeComponent },
-  {path : 'ProductKollywood' , component : ProductsComponent},
+  {path : 'product/:category' , component : ProductsComponent},
       {path : 'ProductHollywood' , component : ProductsComponent},
       {path : 'ProductChennai' , component : ProductsComponent},
       {path : 'ProductFriendship' , component : ProductsComponent},

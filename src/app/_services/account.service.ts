@@ -42,9 +42,9 @@ export class AccountService {
     }
 
     register(user: User) {
-        return this.http.post(`http://localhost:4000/ulloormerchandise/user`, user);
+        return this.http.post(`${environment.apiUrl}/user`, user);
     }
-
+ 
     getAll() {
         return this.http.get<User[]>(`${environment.apiUrl}/users`);
     }

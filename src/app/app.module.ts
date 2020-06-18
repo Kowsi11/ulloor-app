@@ -28,7 +28,10 @@ import { fakeBackendProvider } from './_helpers';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { AlertComponent } from './_components';
 import { FilterPipe } from './filter.pipe';
+import { CategoriesComponent } from './categories/categories.component';
 
+
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 
 @NgModule({
@@ -49,11 +52,14 @@ import { FilterPipe } from './filter.pipe';
     CartComponent,
     AlertComponent,
     FilterPipe,
+    CategoriesComponent
   
   
   ],
   imports: [
     BrowserModule,
+    
+    CarouselModule,
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,

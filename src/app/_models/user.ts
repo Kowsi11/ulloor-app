@@ -11,7 +11,7 @@ export class User {
 	email: string;
 	phoneNumber: number;
 	verified: boolean;
-    address: address;
+    address: address[];
     
 
 }

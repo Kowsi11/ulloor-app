@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '@app/_models';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { CartService } from '@app/_services/cart.service';
+import { Product } from '@app/_models/product';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -12,27 +14,63 @@ export class HeaderComponent implements OnInit {
   mysearch : String = "search-parent " ;
   numone  : Number = 0 ;
   numtwo :  Number = 0 ;
+  cartSize:number = 0;
+  cartProducts:Product[];
+  carts: number[]= [1,2,3,4];
   private userSubject:BehaviorSubject<User>
  loggedin:any;
  notlogged:any;
+<<<<<<< HEAD
  Logout:any;
   constructor( private router: Router,) { 
+=======
+  constructor( private router: Router,private cartService:CartService ) { 
+>>>>>>> 91dfdf02bcaca776d28a8da753fe7af42c678618
 
   }
+
+  
 
   public get userValue(): User {
    return this.userSubject.value;
 }
   
   ngOnInit() {
-   
-    this.userSubject =new BehaviorSubject<User>(JSON.parse (localStorage.getItem('user')));
+   this.userLoggedInfo()
+}
+
+  getCartDetails(){
+    this.cartProducts=this.cartService.cartValue;
+    if(this.cartProducts!=null){
+      this.cartSize=this.cartProducts.length
+    }
+  }
+  removeFromCart(product:any){
+    console.log("entered the logic")
+    console.log(product)
+    var idx = this.carts.indexOf(product);
+    if (idx != -1) {
+     
+        this.carts.splice(idx, 1); // The second parameter is the number of elements to remove.
+      }
       
-    if(this.userSubject!=null)
+  
+    console.log(this.carts.length)
+  }
+
+
+  
+  userLoggedInfo()
+  {
+    this.userSubject =new BehaviorSubject<User>(JSON.parse (localStorage.getItem('user')));
+      console.log(this.userSubject)
+    if(this.userSubject.value!=null)
      {
       this.loggedin=true;
+      this.notlogged=false;
 
      }
+<<<<<<< HEAD
    else{
    this.loggedin=false;
  }
@@ -59,6 +97,14 @@ if(this.Logout)
      
 }
 
+=======
+    else
+    {
+      this.notlogged=true;
+      this.loggedin=false;
+    }
+  }
+>>>>>>> 91dfdf02bcaca776d28a8da753fe7af42c678618
 
   mycartfun()
   {
