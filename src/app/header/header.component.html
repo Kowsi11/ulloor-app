@@ -97,14 +97,14 @@
                            
                           <li *ngIf="loggedin"> <a href="#">My Profile</a> </li>
                           <li *ngIf="loggedin"> <a href="#">My orders</a> </li>
-                          <li *ngIf="loggedin"> <a href="#">Log Out</a> </li>
+                          <li *ngIf="loggedin"> <a href="/home">Logout</a> </li>
                          
 
                         </ul>
                         </li>
 
                         
-                        <li *ngIf="true" class="right"> <a routerLink="#" >{{notlogged}}</a> <span class="arrow"></span>
+                        <li *ngIf="true" class="right"> <a routerLink="#" >{{loggedin}}</a> <span class="arrow"></span>
                           <ul>
                             
                             <li> <a href="#">My Profile</a> </li>

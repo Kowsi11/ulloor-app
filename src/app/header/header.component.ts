@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
   private userSubject:BehaviorSubject<User>
  loggedin:any;
  notlogged:any;
+ Logout:any;
   constructor( private router: Router,) { 
 
   }
@@ -33,9 +34,28 @@ export class HeaderComponent implements OnInit {
 
      }
    else{
-   this.notlogged=false;
+   this.loggedin=false;
  }
- 
+ if(this.userSubject==null)
+ {
+  this.notlogged=true;
+
+ }
+else{
+this.notlogged=false;
+}
+
+
+
+
+if(this.Logout)
+{
+  
+  localStorage.removeItem('user');
+  this.userSubject.next(null);
+  this.router.navigate(['/home']);
+}
+
      
 }
 
@@ -64,13 +84,7 @@ export class HeaderComponent implements OnInit {
   }
 
 
-  logout() {
-    // remove user from local storage and set current user to null
-    localStorage.removeItem('user');
-    this.userSubject.next(null);
-    this.router.navigate(['/home']);
-}
-
+  
 
 
 }
