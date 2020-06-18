@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-
+import { User } from '@app/_models';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { CartService } from '@app/_services/cart.service';
+import { Product } from '@app/_models/product';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -10,12 +14,64 @@ export class HeaderComponent implements OnInit {
   mysearch : String = "search-parent " ;
   numone  : Number = 0 ;
   numtwo :  Number = 0 ;
-  
-  constructor() { 
+  cartSize:number = 0;
+  cartProducts:Product[];
+  carts: number[]= [1,2,3,4];
+  private userSubject:BehaviorSubject<User>
+ loggedin:any;
+ notlogged:any;
+  constructor( private router: Router,private cartService:CartService ) { 
 
   }
 
-  ngOnInit() {}
+  
+
+  public get userValue(): User {
+   return this.userSubject.value;
+}
+  
+  ngOnInit() {
+   this.userLoggedInfo()
+}
+
+  getCartDetails(){
+    this.cartProducts=this.cartService.cartValue;
+    if(this.cartProducts!=null){
+      this.cartSize=this.cartProducts.length
+    }
+  }
+  removeFromCart(product:any){
+    console.log("entered the logic")
+    console.log(product)
+    var idx = this.carts.indexOf(product);
+    if (idx != -1) {
+     
+        this.carts.splice(idx, 1); // The second parameter is the number of elements to remove.
+      }
+      
+  
+    console.log(this.carts.length)
+  }
+
+
+  
+  userLoggedInfo()
+  {
+    this.userSubject =new BehaviorSubject<User>(JSON.parse (localStorage.getItem('user')));
+      console.log(this.userSubject)
+    if(this.userSubject.value!=null)
+     {
+      this.loggedin=true;
+      this.notlogged=false;
+
+     }
+    else
+    {
+      this.notlogged=true;
+      this.loggedin=false;
+    }
+  }
+
   mycartfun()
   {
     if (this.numone === 0 ){
@@ -40,7 +96,12 @@ export class HeaderComponent implements OnInit {
   }
 
 
-
+  logout() {
+    // remove user from local storage and set current user to null
+    localStorage.removeItem('user');
+    this.userSubject.next(null);
+    this.router.navigate(['/home']);
+}
 
 
 

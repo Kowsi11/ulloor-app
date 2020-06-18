@@ -1,4 +1,44 @@
 
+<style>
+.btn.border.border-xdark {
+    color: #000;
+    border-color: #000;
+}
+
+.btn.border {
+    border: 1px solid;
+}
+.btn.btn-medium {
+    font-size: 16px;
+    padding: 15px 35px;
+}
+.btn.xround-7 {
+    border-radius: 70px;
+}
+
+.btn.btn-medium {
+    padding: 10px 30px;
+}
+
+btn.btn-cyan {
+    background-color: #01bf9d;
+    color: #fff;
+}
+.uppercase {
+    text-transform: uppercase;
+}
+
+</style>
+
+
+
+
+
+
+
+
+
+
 <div class="card">
     <h4 class="card-header">Login</h4>
     <div class="card-body">
@@ -18,7 +58,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <button [disabled]="loading" class="btn btn-primary">
+                <button [disabled]="loading" class="btn btn-medium btn-cyan btn-anim-3 uppercase xround-7">
                     <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                     Login
                 </button>
@@ -27,5 +67,10 @@
         </form>
     </div>
 </div>
+
 <!-- nav -->
+
+
+
+
 

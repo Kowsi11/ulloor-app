@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080/ulloormerchandise'
+  apiUrl: 'http://localhost:4000',
+  userUrl: 'http://localhost:7071/api/ullormerchandise',
+  categoryUrl: 'http://localhost:7070/api/ullormerchandise'
 };
 
 /*
