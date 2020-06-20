@@ -24,6 +24,8 @@ export class HomeComponent{
     this.getCategories();
    }
 
+  
+
   getCategories(){
     console.log("entered")
     this.categoryService.getAllCategories().subscribe(response => {

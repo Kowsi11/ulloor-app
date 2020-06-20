@@ -10,6 +10,7 @@ import { ProductpreviewComponent } from './productpreview/productpreview.compone
 import { CartComponent } from './cart/cart.component';
 import { AdminComponent } from './admin/admin.component';
 
+import { HomeBannersComponent } from './home-banners/home-banners.component';
 
 
 const accountModule = () => import('./account/account.module').then(x => x.AccountModule);
@@ -20,6 +21,7 @@ const routes: Routes = [
 
   { path: 'header', component:HeaderComponent },
   { path: 'home', component:HomeComponent },
+  {path: 'home-banners',component:HomeBannersComponent},
   {path : 'product/:category' , component : ProductsComponent},
       {path : 'ProductHollywood' , component : ProductsComponent},
       {path : 'ProductChennai' , component : ProductsComponent},

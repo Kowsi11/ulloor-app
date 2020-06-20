@@ -32,7 +32,7 @@ import { CategoriesComponent } from './categories/categories.component';
 
 
 import { CarouselModule } from 'ngx-owl-carousel-o';
-import { AdminComponent } from './admin/admin.component';
+import { HomeBannersComponent } from './home-banners/home-banners.component';
 
 
 @NgModule({
@@ -54,7 +54,7 @@ import { AdminComponent } from './admin/admin.component';
     AlertComponent,
     FilterPipe,
     CategoriesComponent,
-    AdminComponent
+    HomeBannersComponent
   
   
   ],
