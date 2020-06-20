@@ -9,6 +9,7 @@ import { ProductsComponent } from './products/products.component';
 import { ProductpreviewComponent } from './productpreview/productpreview.component';
 import { CartComponent } from './cart/cart.component';
 
+import { HomeBannersComponent } from './home-banners/home-banners.component';
 
 
 const accountModule = () => import('./account/account.module').then(x => x.AccountModule);
@@ -19,6 +20,7 @@ const routes: Routes = [
 
   { path: 'header', component:HeaderComponent },
   { path: 'home', component:HomeComponent },
+  {path: 'home-banners',component:HomeBannersComponent},
   {path : 'product/:category' , component : ProductsComponent},
       {path : 'ProductHollywood' , component : ProductsComponent},
       {path : 'ProductChennai' , component : ProductsComponent},

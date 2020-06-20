@@ -20,12 +20,7 @@ export class HeaderComponent implements OnInit {
   private userSubject:BehaviorSubject<User>
  loggedin:any;
  notlogged:any;
-<<<<<<< HEAD
- Logout:any;
-  constructor( private router: Router,) { 
-=======
   constructor( private router: Router,private cartService:CartService ) { 
->>>>>>> 91dfdf02bcaca776d28a8da753fe7af42c678618
 
   }
 
@@ -70,41 +65,12 @@ export class HeaderComponent implements OnInit {
       this.notlogged=false;
 
      }
-<<<<<<< HEAD
-   else{
-   this.loggedin=false;
- }
- if(this.userSubject==null)
- {
-  this.notlogged=true;
-
- }
-else{
-this.notlogged=false;
-}
-
-
-
-
-if(this.Logout)
-{
-  
-  localStorage.removeItem('user');
-  this.userSubject.next(null);
-  this.router.navigate(['/home']);
-}
-
-     
-}
-
-=======
     else
     {
       this.notlogged=true;
       this.loggedin=false;
     }
   }
->>>>>>> 91dfdf02bcaca776d28a8da753fe7af42c678618
 
   mycartfun()
   {

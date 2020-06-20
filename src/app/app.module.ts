@@ -32,6 +32,7 @@ import { CategoriesComponent } from './categories/categories.component';
 
 
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { HomeBannersComponent } from './home-banners/home-banners.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     CartComponent,
     AlertComponent,
     FilterPipe,
-    CategoriesComponent
+    CategoriesComponent,
+    HomeBannersComponent
   
   
   ],

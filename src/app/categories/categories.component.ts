@@ -11,7 +11,7 @@ export class CategoriesComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  sliderSrc:string[]=['assets/images/cart-img2.jpg','assets/images/cart-img1.jpg','assets/images/cart-img2.jpg','assets/images/cart-img2.jpg','assets/images/cart-img1.jpg']
+  sliderSrc:string[]=['assets/images/sp-4.jpg','assets/images/sp-7.jpg','assets/images/sp-5.jpg','assets/images/sp-4.jpg','assets/images/sp-6.jpg']
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: false,

@@ -1,16 +1,42 @@
-<p>categories works!</p>
 
-<div>Some tags before</div>
+<section class="sec-padding">
+  <div class="container">
+    <div class="row">
+
+<div class="col-xs-12 nopadding">
+  <div class="sec-title-container text-center">
+  
+    <h4 class="uppercase font-weight-7 less-mar-1">Category</h4>
+    <div class="sp-title-line-1"></div>
+  </div>
+</div>
+<div class="clearfix"></div>
+
+<div></div>
+
+
+
+  
     <owl-carousel-o [options]="customOptions">
       
     <ng-container *ngFor="let slide of sliderSrc">
       <ng-template carouselSlide id="id">
-        
-        <img [src]="slide">
-        
+      
+        <img [src]="slide" style="max-width: 2500px; max-height: 150px;">
+      
       </ng-template>
     </ng-container>
  
   </owl-carousel-o>
 
-  <div>Some tags after</div>  
+  <div></div>  
+
+
+
+
+<!--Image Box-->
+
+
+  </div>
+  </div>
+  </section>
