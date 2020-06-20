@@ -11,6 +11,7 @@ import { CartComponent } from './cart/cart.component';
 import { AdminComponent } from './admin/admin.component';
 
 import { HomeBannersComponent } from './home-banners/home-banners.component';
+import { StationaryProductsComponent } from './stationary-products/stationary-products.component';
 
 
 const accountModule = () => import('./account/account.module').then(x => x.AccountModule);
@@ -28,7 +29,7 @@ const routes: Routes = [
       {path : 'ProductFriendship' , component : ProductsComponent},
       {path : 'ProductCouple', component : ProductsComponent},
       {path : 'ProductAccessories' , component : ProductsComponent},
-      {path : 'StationaryProducts' , component : ProductsComponent},
+      {path : 'StationaryProducts' , component : StationaryProductsComponent},
       {path : 'ProductPreview' , component : ProductpreviewComponent},
      
       {path : 'admin' , component : AdminComponent},
