@@ -1,16 +1,57 @@
+<style>
+
+.btn.border.border-xdark {
+    color: #000;
+    border-color: #000;
+}
+
+.btn.border {
+    border: 1px solid;
+}
+.btn.btn-medium {
+    font-size: 16px;
+    padding: 15px 35px;
+}
+.btn.xround-7 {
+    border-radius: 70px;
+}
+
+.btn.btn-medium {
+    padding: 10px 30px;
+}
+
+.btn.btn-cyan {
+    background-color: #01bf9d;
+    color: #fff;
+}
+.uppercase {
+    text-transform: uppercase;
+}
+
+.form-group label em {
+    color: #f50606;
+    font-size: 12px;
+    font-style: normal;
+}
+
+
+
+</style>
+<div class="col-md-6">
+
 <div class="card">
-    <h4 class="card-header">Register</h4>
+    <h2 class="card-header">New Customer?</h2>
     <div class="card-body">
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <div class="form-group">
-                <label for="firstName">First Name</label>
+                <label for="firstName">First Name <em>*</em></label>
                 <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
                 <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
                     <div *ngIf="f.firstName.errors.required">First Name is required</div>
                 </div>
             </div>
             <div class="form-group">
-                <label for="lastName">Last Name</label>
+                <label for="lastName">Last Name </label>
                 <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
                 <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
                     <div *ngIf="f.lastName.errors.required">Last Name is required</div>
@@ -24,7 +65,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="email">Email-ID</label>
+                <label for="email">Email-ID <em>*</em></label>
                 <input type="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
                 <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                     <div *ngIf="f.email.errors.required">Email-ID is required</div>
@@ -38,7 +79,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="password">Password</label>
+                <label for="password">Password <em>*</em></label>
                 <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
                 <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                     <div *ngIf="f.password.errors.required">Password is required</div>
@@ -46,7 +87,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <button [disabled]="loading" class="btn btn-primary">
+                <button [disabled]="loading" class="btn btn-medium btn-cyan btn-anim-3 uppercase xround-7">
                     <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                     Register
                 </button>
@@ -56,3 +97,4 @@
     </div>
 </div>
 
+</div>

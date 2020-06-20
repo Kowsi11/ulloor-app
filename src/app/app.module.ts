@@ -33,7 +33,8 @@ import { CategoriesComponent } from './categories/categories.component';
 
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { HomeBannersComponent } from './home-banners/home-banners.component';
-
+import { TestimonialsComponent } from './testimonials/testimonials.component';
+import { JwPaginationModule } from 'jw-angular-pagination';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { HomeBannersComponent } from './home-banners/home-banners.component';
     AlertComponent,
     FilterPipe,
     CategoriesComponent,
-    HomeBannersComponent
+    HomeBannersComponent,
+    TestimonialsComponent
   
   
   ],
@@ -65,7 +67,7 @@ import { HomeBannersComponent } from './home-banners/home-banners.component';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-  
+    JwPaginationModule,
     HttpClientModule,
     BrowserAnimationsModule,
     NgbModule
