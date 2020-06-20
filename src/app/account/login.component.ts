@@ -10,7 +10,8 @@ export class LoginComponent implements OnInit {
     form: FormGroup;
     loading = false;
     submitted = false;
-    returnUrl: string;
+    returnUrlUser: string;
+    returnUrlAdimin: string;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -27,7 +28,10 @@ export class LoginComponent implements OnInit {
         });
 
         // get return url from route parameters or default to '/'
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+        this.returnUrlUser = this.route.snapshot.queryParams['returnUrl'] || '/';
+        
+        this.returnUrlAdimin = this.route.snapshot.queryParams['returnUrl'] || '/admin';
+
     }
 
     // convenience getter for easy access to form fields
@@ -45,16 +49,23 @@ export class LoginComponent implements OnInit {
         }
 
         this.loading = true;
-        this.accountService.login(this.f.username.value, this.f.password.value)
+        if(this.f.username.value=='admin'){
+
+            localStorage.setItem("admin","admin");
+            this.router.navigate([this.returnUrlAdimin]);
+        }else{
+            this.accountService.login(this.f.username.value, this.f.password.value)
             .pipe(first())
             .subscribe(
                 data => {
                     
-                    this.router.navigate([this.returnUrl]);
+                    this.router.navigate([this.returnUrlUser]);
                 },
                 error => {
                     this.alertService.error(error);
                     this.loading = false;
                 });
+        }
+       
     }
 }

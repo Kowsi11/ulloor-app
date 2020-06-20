@@ -8,6 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductpreviewComponent } from './productpreview/productpreview.component';
 import { CartComponent } from './cart/cart.component';
+import { AdminComponent } from './admin/admin.component';
 
 
 
@@ -26,7 +27,9 @@ const routes: Routes = [
       {path : 'ProductCouple', component : ProductsComponent},
       {path : 'ProductAccessories' , component : ProductsComponent},
       {path : 'StationaryProducts' , component : ProductsComponent},
-     {path : 'ProductPreview' , component : ProductpreviewComponent},
+      {path : 'ProductPreview' , component : ProductpreviewComponent},
+     
+      {path : 'admin' , component : AdminComponent},
 
      {path : 'Cart' , component : CartComponent},
 

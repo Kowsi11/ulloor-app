@@ -5,9 +5,9 @@
       
     <ng-container *ngFor="let slide of sliderSrc">
       <ng-template carouselSlide id="id">
-        
+        <div style="max-width: 100px; max-height: 100px;">
         <img [src]="slide">
-        
+      </div>
       </ng-template>
     </ng-container>
  
