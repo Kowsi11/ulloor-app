@@ -10,7 +10,7 @@ import { ProductpreviewComponent } from './productpreview/productpreview.compone
 import { CartComponent } from './cart/cart.component';
 
 import { HomeBannersComponent } from './home-banners/home-banners.component';
-
+import { CheckoutComponent } from './checkout/checkout.component'
 
 const accountModule = () => import('./account/account.module').then(x => x.AccountModule);
 const usersModule = () => import('./users/users.module').then(x => x.UsersModule);
@@ -31,10 +31,10 @@ const routes: Routes = [
      {path : 'ProductPreview' , component : ProductpreviewComponent},
 
      {path : 'Cart' , component : CartComponent},
-
+      {path : 'checkout',component:CheckoutComponent},
 
   {path: '', component: HomeComponent},
-    { path: 'users', loadChildren: usersModule, canActivate: [AuthGuard] },
+    { path: 'users', loadChildren: usersModule },
     { path: 'account', loadChildren: accountModule },
 
     // otherwise redirect to home

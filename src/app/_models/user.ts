@@ -7,7 +7,8 @@ export class User {
     firstName: string;
     lastName: string;
     token: string;
-	gender: string;
+    gender: string;
+    dob:string;
 	email: string;
 	phoneNumber: number;
 	verified: boolean;
