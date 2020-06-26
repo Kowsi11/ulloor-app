@@ -32,7 +32,7 @@ const routes: Routes = [
       {path : 'ProductAccessories' , component : ProductsComponent},
       {path : 'StationaryProducts' , component : StationaryProductsComponent},
       {path : 'product/:category/Product/view/:productId' , component : ProductpreviewComponent},
-      {path : 'Product/view/:productId' , component : ProductpreviewComponent},
+      {path : 'product/view/:productId' , component : ProductpreviewComponent},
       
       {path : 'combo/:category' , component : CombosComponent},
      
