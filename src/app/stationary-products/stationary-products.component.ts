@@ -12,6 +12,7 @@ export class StationaryProductsComponent implements OnInit {
 
   constructor() { }
 
+  
   ngOnInit() {
       // an example array of 150 items to be paged
       this.items = Array(150).fill(0).map((x, i) => ({ id: (i + 1), name: `Item ${i + 1}`}));

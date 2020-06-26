@@ -12,6 +12,7 @@ import { AdminComponent } from './admin/admin.component';
 
 import { HomeBannersComponent } from './home-banners/home-banners.component';
 import { StationaryProductsComponent } from './stationary-products/stationary-products.component';
+import { CombosComponent } from './combos/combos.component';
 
 
 const accountModule = () => import('./account/account.module').then(x => x.AccountModule);
@@ -30,7 +31,10 @@ const routes: Routes = [
       {path : 'ProductCouple', component : ProductsComponent},
       {path : 'ProductAccessories' , component : ProductsComponent},
       {path : 'StationaryProducts' , component : StationaryProductsComponent},
-      {path : 'ProductPreview' , component : ProductpreviewComponent},
+      {path : 'product/:category/Product/view/:productId' , component : ProductpreviewComponent},
+      {path : 'Product/view/:productId' , component : ProductpreviewComponent},
+      
+      {path : 'combo/:category' , component : CombosComponent},
      
       {path : 'admin' , component : AdminComponent},
 
@@ -38,7 +42,7 @@ const routes: Routes = [
 
 
   {path: '', component: HomeComponent},
-    { path: 'users', loadChildren: usersModule, canActivate: [AuthGuard] },
+    { path: 'users', loadChildren: usersModule},
     { path: 'account', loadChildren: accountModule },
 
     // otherwise redirect to home
