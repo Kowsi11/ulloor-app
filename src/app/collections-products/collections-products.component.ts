@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppSubCategoryId } from '@app/_models/AppSubCategoryId';
 
 @Component({
   selector: 'app-collections-products',
@@ -7,6 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CollectionsProductsComponent implements OnInit {
 
+  
+  Hollywood= AppSubCategoryId.Hollywood;
+  Kollywood=AppSubCategoryId.Kollywood;
+  ChennaiMania= AppSubCategoryId.ChennaiMania;
+  Couple=AppSubCategoryId.Couple;
+  Friendship= AppSubCategoryId.Friendship;
+  
   constructor() { }
 
   ngOnInit(): void {

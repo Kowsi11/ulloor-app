@@ -8,8 +8,8 @@ export class User {
     lastName: string;
     token: string;
     gender: string;
-    dob:string;
-	email: string;
+    dob: string;
+    email: string;
 	phoneNumber: number;
 	verified: boolean;
     address: address[];

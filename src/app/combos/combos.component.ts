@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from '@app/_models/product';
+import { ActivatedRoute } from '@angular/router';
+import { ProductService } from '@app/_services/product.service';
+import { AlertService } from '@app/_services';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-combos',
@@ -7,9 +12,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CombosComponent implements OnInit {
 
-  constructor() { }
+  products: Product[]=[]
+  constructor(private route: ActivatedRoute,private productService: ProductService,
+    private alertService: AlertService) {
+    this.route.params.subscribe(parms => this.category=parms.category);
+    
+    console.log(this.category);
+   }
+  private category:any;
 
-  ngOnInit(): void {
+  counts: any[]=[1,2,3,4]
+  ngOnInit(){
+    this.getProducts()
   }
+
+  getProducts(){
+    this.productService.getProductsByCategoryId(this.category).pipe(first()).subscribe(
+      response =>{
+        if(response.status=="SUCCESS"){
+            this.products=response.data
+        }}
+      ,error =>{
+          this.alertService.error(error)
+        }
+    );
+  }
+
 
 }

@@ -9,6 +9,7 @@ export class Product{
 	name:string;
 	description:string;
 	createdDate:string;
+	images:string[];
 	price:DoubleRange;
 	discount:number;
 	available:boolean;

@@ -8,9 +8,12 @@ import { HeaderComponent } from './header/header.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductpreviewComponent } from './productpreview/productpreview.component';
 import { CartComponent } from './cart/cart.component';
+import { AdminComponent } from './admin/admin.component';
 
 import { HomeBannersComponent } from './home-banners/home-banners.component';
 import { CheckoutComponent } from './checkout/checkout.component'
+import { StationaryProductsComponent } from './stationary-products/stationary-products.component';
+import { CombosComponent } from './combos/combos.component';
 
 const accountModule = () => import('./account/account.module').then(x => x.AccountModule);
 const usersModule = () => import('./users/users.module').then(x => x.UsersModule);
@@ -27,8 +30,13 @@ const routes: Routes = [
       {path : 'ProductFriendship' , component : ProductsComponent},
       {path : 'ProductCouple', component : ProductsComponent},
       {path : 'ProductAccessories' , component : ProductsComponent},
-      {path : 'StationaryProducts' , component : ProductsComponent},
-     {path : 'ProductPreview' , component : ProductpreviewComponent},
+      {path : 'StationaryProducts' , component : StationaryProductsComponent},
+      {path : 'product/:category/Product/view/:productId' , component : ProductpreviewComponent},
+      {path : 'Product/view/:productId' , component : ProductpreviewComponent},
+      
+      {path : 'combo/:category' , component : CombosComponent},
+     
+      {path : 'admin' , component : AdminComponent},
 
      {path : 'Cart' , component : CartComponent},
       {path : 'checkout',component:CheckoutComponent},

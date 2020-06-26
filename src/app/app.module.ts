@@ -34,7 +34,7 @@ import { CategoriesComponent } from './categories/categories.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { HomeBannersComponent } from './home-banners/home-banners.component';
 import { TestimonialsComponent } from './testimonials/testimonials.component';
-import { JwPaginationModule } from 'jw-angular-pagination';
+
 
 @NgModule({
   declarations: [
@@ -68,10 +68,11 @@ import { JwPaginationModule } from 'jw-angular-pagination';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    JwPaginationModule,
     HttpClientModule,
     BrowserAnimationsModule,
     NgbModule
+
+
   ],
   providers: [
 
@@ -84,9 +85,6 @@ import { JwPaginationModule } from 'jw-angular-pagination';
   ],
   bootstrap: [AppComponent]
 })
-
-
-
 
 
 export class AppModule { }
