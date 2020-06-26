@@ -110,9 +110,9 @@
                     <div *ngIf="f.password.errors.required">Password is required</div>
                 </div>
             </div>
-            <small>
-                <a href="#">Forgot your password?</a>
-            </small>
+            <a data-toggle="modal" data-target="#modal-switch">Forgot your password?</a>
+                
+            
             <br>
             <br>
             <div class="form-group">
@@ -127,6 +127,47 @@
 </div>
 </div>
 <!-- nav -->
+
+
+<!--Modal Popup for forgot password-->
+<div id="modal-switch" tabindex="-1" role="dialog" aria-labelledby="modal-switch-label" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" data-dismiss="modal" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <div id="modal-switch-label" class="modal-title"><h4>Forgot your password?</h4></div>
+        </div>
+        <div class="modal-body">
+        <img src="assets/images/33.html" alt="" class="img-responsive"/>
+         
+            <div class="card">
+                <h2 class="card-header"></h2>
+                <div class="card-body">
+                    
+                       <div>
+                            <label for="email">Email <em>*</em></label>
+                            <input type="text"> 
+                           
+                        </div>
+
+                        <div class="form">
+                            <button class="btn btn-cyan btn-anim-3 uppercase xround-7" style="align-items: center;">
+                            
+                                Submit
+                            </button>
+                        </div>
+                     
+                     
+            
+            </div>
+            </div>     
+        
+        
+    
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 </div>

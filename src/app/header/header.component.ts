@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   numtwo :  Number = 0 ;
   cartSize:number = 0;
   cartProducts:Product[];
-  carts: number[]= [1,2,3,4];
+  carts: number[]= [1,2,3,4,5,6,7,8,9,10];
   private userSubject:BehaviorSubject<User>
  loggedin:any;
  notlogged:any;

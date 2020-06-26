@@ -8,3 +8,4 @@ export class address{
 	pincode: number;
 	Type: string;
 }
+

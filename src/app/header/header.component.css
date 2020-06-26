@@ -1,3 +1,30 @@
 hr.new1 {
   border-top: 1px solid rgb(10, 10, 10);
 }
+
+.list {
+  list-style: none;
+  height: 350px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+ 
+}
+.header-section ul li.cart-parent .cart-box ul {
+  display: block;
+  position: relative;
+  left: 0px;
+  margin: 0px;
+  width:100%;
+  border-top: 1px solid #ededed;
+  margin-top: 0px;
+  max-height: none !important;
+  opacity: 1 !important;
+ 
+}
+
+.header-section ul li.cart-parent .cart-box ul li {
+  position: relative;
+  padding: 20px 20px 20px 100px;
+  min-height: 80px;
+  font-size: 1.21429em;
+}

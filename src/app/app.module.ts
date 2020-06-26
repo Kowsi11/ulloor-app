@@ -23,8 +23,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { fakeBackendProvider } from './_helpers';
 
-
-
+import { CheckoutComponent } from './checkout/checkout.component'
+ 
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { AlertComponent } from './_components';
 import { FilterPipe } from './filter.pipe';
@@ -56,7 +56,8 @@ import { TestimonialsComponent } from './testimonials/testimonials.component';
     FilterPipe,
     CategoriesComponent,
     HomeBannersComponent,
-    TestimonialsComponent
+    TestimonialsComponent,
+    CheckoutComponent
   
   
   ],
