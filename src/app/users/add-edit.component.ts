@@ -7,6 +7,16 @@ import { AccountService, AlertService } from '@app/_services';
 
 @Component({ templateUrl: 'add-edit.component.html' })
 export class AddEditComponent implements OnInit {
+
+    country = [
+        {name: 'Arizona', abbrev: 'AZ'},
+        {name: 'California', abbrev: 'CA'},
+        {name: 'Colorado', abbrev: 'CO'},
+        {name: 'New York', abbrev: 'NY'},
+        {name: 'Pennsylvania', abbrev: 'PA'},
+      ];
+
+
     form: FormGroup;
     id: string;
     isAddMode: boolean;
@@ -20,6 +30,9 @@ export class AddEditComponent implements OnInit {
         private accountService: AccountService,
         private alertService: AlertService
     ) {}
+    
+
+
 
     ngOnInit() {
         this.id = this.route.snapshot.params['id'];
@@ -45,6 +58,7 @@ export class AddEditComponent implements OnInit {
                     this.f.firstName.setValue(x.firstName);
                     this.f.lastName.setValue(x.lastName);
                     this.f.username.setValue(x.userName);
+                 
                 });
         }
     }
@@ -98,4 +112,8 @@ export class AddEditComponent implements OnInit {
                     this.loading = false;
                 });
     }
+
+
+    
+       
 }
