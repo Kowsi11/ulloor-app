@@ -45,7 +45,7 @@
 <link href="assets/js/accordion/css/smk-accordion.css" rel="stylesheet">
 <link rel="stylesheet" href="assets/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css">
 
-
+<link rel="stylesheet" href="assets/css/shortcodes.css" type="text/css">
 <link rel="stylesheet" href="assets/js/product-preview/stylesheet.css">
 <link rel="stylesheet" href="assets/js/product-preview/fancybox/jquery.fancybox.css">
 
@@ -316,6 +316,30 @@ The following part can be removed on Server for On Demand Loading) -->
 
 
 
+<!---Plus and add button-->
+<script>
+
+
+	$(document).ready(function() {
+				$('.minus').click(function () {
+					var $input = $(this).parent().find('input');
+					var count = parseInt($input.val()) - 1;
+					count = count < 1 ? 1 : count;
+					$input.val(count);
+					$input.change();
+					return false;
+				});
+				$('.plus').click(function () {
+					var $input = $(this).parent().find('input');
+					$input.val(parseInt($input.val()) + 1);
+					$input.change();
+					return false;
+				});
+			});
+	
+	</script>
+	  
+	  
 
 
 

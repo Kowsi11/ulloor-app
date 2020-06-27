@@ -10,7 +10,7 @@ import { Product } from '@app/_models/product';
   styleUrls: ['./productpreview.component.css']
 })
 export class ProductpreviewComponent implements OnInit {
-
+  
 	product: Product;
   constructor(private route: ActivatedRoute,private productService: ProductService,
     private alertService: AlertService) {
@@ -21,6 +21,7 @@ export class ProductpreviewComponent implements OnInit {
   ngOnInit(){
   this.getProduct()
   }
+
 getProduct(){
     this.productService.getProductById(this.productId).pipe(first()).subscribe(
       response =>{
