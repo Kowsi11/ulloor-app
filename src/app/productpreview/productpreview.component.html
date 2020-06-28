@@ -67,16 +67,16 @@
 <form class="form">
   <label class="uppercase">Size: </label>
   <div class="switch-field">
-      <input type="radio" id="1" name="switch-two" value="yes" />
+      <input type="radio" id="1"  value="S"name="switch-two" (change)="onSizeChange($event.target.value)"/>
       <label for="1">S</label>&nbsp; 
-      <input type="radio" id="2" name="switch-two" value="maybe" />
+      <input type="radio" id="2" name="switch-two" value="M" (change)="onSizeChange($event.target.value)"/>
       <label for="2">M</label>&nbsp; 
-      <input type="radio" id="3" name="switch-two" value="no" />
+      <input type="radio" id="3" name="switch-two" value="L" (change)="onSizeChange($event.target.value)"/>
       <label for="3">L</label>&nbsp;
-      <input type="radio" id="4" name="switch-two" value="no" />
+      <input type="radio" id="4" name="switch-two" value="XL" (change)="onSizeChange($event.target.value)"/>
       <label for="4">XL</label>&nbsp;
-      <input type="radio" id="5" name="switch-two" value="no" />
-      <label for="5">XL</label>
+      <input type="radio" id="5" name="switch-two" value="XLL" (change)="onSizeChange($event.target.value)"/>
+      <label for="5">XXL</label>
   </div>
 
   
@@ -91,11 +91,20 @@
    <br>
    <div class="btn btn-border btn-tiny xround-7">
     <span class="minus"><i class="fa fa-minus" aria-hidden="true"></i></span>
-    <input type="text" class="product" value="1"/>
+    <input type="text" class="product" value="1"  (change)="onQuantityChange($event.target.value)"/>
     <span class="plus"><i class="fa fa-plus" aria-hidden="true"></i></span>
   </div>
 
-   &nbsp; <a class="btn btn-cyan btn-medium xround-7 uppercase" href="#">Add to Cart</a>
+   &nbsp; 
+   <ng-template [ngIf]="size!=null"[ngIfElse]="sizeNotSelected">
+                          
+    <a class="btn btn-cyan btn-medium xround-7 uppercase" href="#">Add to Cart</a>
+   
+  </ng-template>
+    <ng-template #sizeNotSelected>
+      <a class="btn btn-cyan btn-medium xround-7 uppercase" href="">Select Size</a>
+  </ng-template>
+   
    
    
    
@@ -133,11 +142,31 @@
                   <div class="badge">Hot</div>
                   <img src="assets/images/sp-4.jpg" alt="" class="img-responsive"/> </div>
                 <div class="clearfix"></div>
-                <br/>
-                <h5 class="less-mar-1">Designer top</h5>
-                <p>Lorem ipsum dolor sit amet</p>
                 <h5 class="text-primary">$ 25.00–$ 29.00</h5>
-                <br/>
+                <form class="form">
+                  <label class="uppercase">Size: </label>
+                  <div class="switch-field">
+                      <input type="radio" id="a1"  value="S"name="switch-two" (change)="onSizeChange($event.target.value)"/>
+                      <label for="a1">S</label>&nbsp; 
+                      <input type="radio" id="a2" name="switch-two" value="M" (change)="onSizeChange($event.target.value)"/>
+                      <label for="a2">M</label>&nbsp; 
+                      <input type="radio" id="a3" name="switch-two" value="L" (change)="onSizeChange($event.target.value)"/>
+                      <label for="a3">L</label>&nbsp;
+                      <input type="radio" id="a4" name="switch-two" value="XL" (change)="onSizeChange($event.target.value)"/>
+                      <label for="a4">XL</label>&nbsp;
+                      <input type="radio" id="a5" name="switch-two" value="XLL" (change)="onSizeChange($event.target.value)"/>
+                      <label for="a5">XXL</label>
+                  </div>
+                </form>
+                
+                <label class="uppercase">Quantity :</label>
+                <br>
+                <div class="btn btn-border btn-tiny xround-7">
+                  &nbsp;<span class="minus"><i class="fa fa-minus" aria-hidden="true"></i></span>
+                 <input type="text" class="product" value="1"  (change)="onQuantityChange($event.target.value)"/>
+                 <span class="plus"><i class="fa fa-plus" aria-hidden="true"></i></span>&nbsp;
+               </div>  
+             
                 <a class="btn btn-border light btn-small" href="#">Add to cart</a> </div>
             </div>
             <!--end item-->
@@ -151,7 +180,7 @@
                 <p>Lorem ipsum dolor sit amet</p>
                 <h5 class="text-primary">$ 25.00–$ 29.00</h5>
                 <br/>
-                <a class="btn btn-border light btn-small" href="#">Add to cart</a> </div>
+                <button class="btn btn-border light btn-small" (click)="addToCart(1)">Add to cart</button> </div>
             </div>
             <!--end item-->
             

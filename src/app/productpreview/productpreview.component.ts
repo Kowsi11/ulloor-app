@@ -4,6 +4,7 @@ import { ProductService } from '@app/_services/product.service';
 import { first } from 'rxjs/operators';
 import { AlertService } from '@app/_services';
 import { Product } from '@app/_models/product';
+import { CartService } from '@app/_services/cart.service';
 @Component({
   selector: 'app-productpreview',
   templateUrl: './productpreview.component.html',
@@ -13,13 +14,26 @@ export class ProductpreviewComponent implements OnInit {
   
 	product: Product;
   constructor(private route: ActivatedRoute,private productService: ProductService,
-    private alertService: AlertService) {
+    private alertService: AlertService,private cartService:CartService) {
 		this.route.params.subscribe(parms => this.productId=parms.productId);
 	}
+
+  size:any=null;
+  quantity:number=1;
 
   private productId:any;
   ngOnInit(){
   this.getProduct()
+  }
+  onSizeChange(value){
+ this.size=value;
+  }
+  onQuantityChange(value){
+    this.quantity=value;
+  }
+  addToCart(val:Number){
+    console.log("entered")
+    this.cartService.addProductToCart(val)
   }
 
 getProduct(){

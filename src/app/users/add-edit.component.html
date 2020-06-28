@@ -24,23 +24,29 @@
     </div>
     <div class="form-row">
         <div class="form-group col">
-            <label for="address">Address-1</label>
-            <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.address.errors }" />
-            <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
-                <div *ngIf="f.address.errors.required">Address is required</div>
+            <label for="address">Door No / Flat No</label>
+            <input type="text" formControlName="doorNo" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.doorNo.errors }" />
+            <div *ngIf="submitted && f.doorNo.errors" class="invalid-feedback">
+                <div *ngIf="f.doorNo.errors.required">Door No / Flat No is required</div>
             </div>
         </div>
         <div class="form-group col">
-            <label for="address">Address-2</label>
-            <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.address.errors }" />
-            <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
-                <div *ngIf="f.address.errors.required">Address is required</div>
+            <label for="address">Street</label>
+            <input type="text" formControlName="street" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.street.errors }" />
+            <div *ngIf="submitted && f.street.errors" class="invalid-feedback">
+                <div *ngIf="f.street.errors.required">Street is required</div>
             </div>
         </div>
     </div>
 
     <div class="form-row">
-
+        <div class="form-group col">
+            <label for="city">LandMark</label>
+            <input type="text" formControlName="landmark" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.landmark.errors }" />
+            <div *ngIf="submitted && f.landmark.errors" class="invalid-feedback">
+                <div *ngIf="f.landmark.errors.required">landmark is required</div>
+            </div>
+        </div>
         <div class="form-group col">
             <label for="city">City</label>
             <input type="text" formControlName="city" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.city.errors }" />
@@ -93,6 +99,14 @@
             <input type="text" formControlName="mobno" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.mobno.errors }" />
             <div *ngIf="submitted && f.mobno.errors" class="invalid-feedback">
             <div *ngIf="f.mobno.errors.required">Phone Number is required</div>
+            </div>
+     </div>
+     <div class="form-group col">
+
+        <label for="mobno"> Type :  </label>
+            <input type="text" formControlName="type" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.type.errors }" />
+            <div *ngIf="submitted && f.type.errors" class="invalid-feedback">
+            <div *ngIf="f.type.errors.required">Type Number is required</div>
             </div>
      </div>
 </div>

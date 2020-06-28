@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   numtwo :  Number = 0 ;
   cartSize:number = 0;
   cartProducts:Product[];
-  carts: number[]= [1,2,3,4,5,6,7,8,9,10];
+  carts: Number[]= []
   private userSubject:BehaviorSubject<User>
  loggedin:any;
  notlogged:any;
@@ -32,10 +32,11 @@ export class HeaderComponent implements OnInit {
   
   ngOnInit() {
    this.userLoggedInfo()
+   this.getCartDetails()
 }
 
   getCartDetails(){
-    this.cartProducts=this.cartService.cartValue;
+    this.carts=this.cartService.cartSampleValue;
     if(this.cartProducts!=null){
       this.cartSize=this.cartProducts.length
     }
@@ -43,12 +44,8 @@ export class HeaderComponent implements OnInit {
   removeFromCart(product:any){
     console.log("entered the logic")
     console.log(product)
-    var idx = this.carts.indexOf(product);
-    if (idx != -1) {
-     
-        this.carts.splice(idx, 1); // The second parameter is the number of elements to remove.
-      }
-      
+    this.carts=this.cartService.removeProduct(product)
+
   
     console.log(this.carts.length)
   }
@@ -74,6 +71,7 @@ export class HeaderComponent implements OnInit {
 
   mycartfun()
   {
+    this.getCartDetails();
     if (this.numone === 0 ){
       this.mycart += 'active' ;
       this.numone = 1 ;

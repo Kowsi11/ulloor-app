@@ -20,7 +20,15 @@ export class ProductsComponent implements OnInit {
     console.log(this.category);
    }
   private category:any;
-
+  size:any=null;
+  quantity:number=1;
+  onSizeChange(value){
+    this.size=value;
+     }
+     onQuantityChange(value){
+       this.quantity=value;
+     }
+   
   counts: any[]=[1,2,3,4]
   ngOnInit(){
     this.getProducts()

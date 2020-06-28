@@ -11,7 +11,7 @@
 }
  .product{
     border: 0px solid;
-	text-align: center;
+    text-align: center;
     /* margin: 10px 10px 0 0 !important;
     height: 45px;
     border-radius: 20px;
@@ -92,7 +92,7 @@
     font-weight: normal;
     line-height: 1.625;
     margin: 8px auto;
-    padding: 16px;
+    padding: 8px;
 }
 
 .btn-border
