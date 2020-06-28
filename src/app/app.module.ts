@@ -29,11 +29,13 @@ import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { AlertComponent } from './_components';
 import { FilterPipe } from './filter.pipe';
 import { CategoriesComponent } from './categories/categories.component';
-
-
-import { CarouselModule } from 'ngx-owl-carousel-o';
 import { HomeBannersComponent } from './home-banners/home-banners.component';
 import { TestimonialsComponent } from './testimonials/testimonials.component';
+
+import { CarouselModule } from 'ngx-owl-carousel-o';
+
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 
 @NgModule({
@@ -70,7 +72,9 @@ import { TestimonialsComponent } from './testimonials/testimonials.component';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NgbModule
+    NgbModule,
+    NgxPaginationModule
+    
 
 
   ],
