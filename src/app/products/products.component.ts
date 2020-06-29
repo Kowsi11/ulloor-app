@@ -2,8 +2,9 @@ import { Component, Input, Output, EventEmitter, OnInit, OnChanges, SimpleChange
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '@app/_services/product.service';
 import { first } from 'rxjs/operators';
-import { AlertService } from '@app/_services';
 import { Product } from '@app/_models/product';
+import { Properties, sizePrice } from '@app/_models/Properties';
+import { AlertService } from '@app/_services/alert.service';
 
 
 
@@ -63,16 +64,41 @@ this.config = {
     this.config.currentPage = event;
   }
 
+  sizeCalculation(properties:Properties[]):sizePrice[]{
+
+    let sizePriceList:sizePrice[]=[]
+
+    properties.forEach(element => {
+      if(element.available==true){
+        element.attributes.forEach(element2 =>{
+        
+          if(element2.name=="SIZE"|| element2.name=="size"){
+            let sizePriceObject= new sizePrice()
+            sizePriceObject.size= element2.value
+            sizePriceObject.price= element.price
+    
+            
+            sizePriceList.push(sizePriceObject)
+          } 
+   
+        });
+      }
+      
+    });
+    return sizePriceList
+  }
+
 
   private category:any;
-  size:any=null;
+  size:string=null;
   quantity:number=1;
-  onSizeChange(value){
+  onSizeChange(value):string{
     this.size=value;
-     }
-     onQuantityChange(value){
-       this.quantity=value;
-     }
+    return this.size;
+  }
+  onQuantityChange(value){
+    this.quantity=value;
+  }
    
   counts: any[]=[1,2,3,4]
   ngOnInit(){

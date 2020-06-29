@@ -8,7 +8,7 @@ export class AppSubCategoryId{
     public static   ChennaiMania= '5eed24b5cef3343b206e11a5';
     public static    Couple= '5eed24b6cef3343b206e11a8';
     public static    Friendship='5eed24b6cef3343b206e11a7';
-    public static    Hollywood= '5eed24b6cef3343b206e11a6';
+    public static    Hollywood= '5ef8b69764c54f4497e86558';
     public static    Kollywood='5eed24b6cef3343b206e11a9';
 public static    A3Posters='5eed24d6cef3343b206e11c1';
 public static   Notepad='5eed24d6cef3343b206e11c0';

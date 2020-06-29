@@ -1,9 +1,14 @@
-import { Attribute } from '@angular/core';
+import { Attributes } from './Attribute';
 
 export class Properties{
-    attributes:Attribute[];
+    attributes:Attributes[];
 	available:boolean;
 	price: DoubleRange;
 	count:number;
 	
+}
+
+export class sizePrice{
+	size:string;
+	price:DoubleRange;
 }

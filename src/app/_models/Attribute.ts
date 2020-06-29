@@ -1,4 +1,4 @@
-export class Attribute{
+export class Attributes{
     name:string;
 	value:string;
 }

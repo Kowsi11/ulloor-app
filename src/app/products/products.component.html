@@ -6,7 +6,7 @@
       <ng-template [ngIf]="products.length>0"[ngIfElse]="noProduct">
       
       <div class="col-md-12">
-      <div *ngFor="let product of products">
+      <div  *ngFor="let product of products | paginate: config" >
       <div class="col-md-4 col-sm-6 col-xs-12">
         <div class="sp-feature-box-3 margin-bottom">
           <div class="img-box"> <a routerLink="product/view/{{product.id}}" class="view-btn uppercase">View</a>
@@ -21,14 +21,24 @@
           <br/>
           <h4 class="less-mar-1">{{product.name}}</h4>
           <p>{{product.description}}</p>
-          <h5 class="text-primary">$ {{product.price}}</h5>
+          
           <br/>
           <form class="form">
             <label class="uppercase">Size: </label>
             <div class="switch-field">
-                <input type="radio" id="1"  value="S"name="switch-two" (change)="onSizeChange($event.target.value)"/>
+              <ng-template ngFor let-property [ngForOf]="sizeCalculation(product.properties)" let-i="index">
+                <input type="radio" id="{{product.name}}{{i}}"  value="{{property.size}}" name="switch-two" />
+                <label for="{{product.name}}{{i}}" (click)="product.description=onSizeChange($event.target.value)">{{property.size}}</label>&nbsp; 
+               </ng-template>
+              <h5 class="text-primary">$ {{product.price}}</h5>
+            </div>
+          </form> 
+          <form class="form">
+            <label class="uppercase">Size: </label>
+            <div class="switch-field">
+                <input type="radio" id="1"  value="S"name="switch-two" (change)="product.description=onSizeChange($event.target.value)"/>
                 <label for="1">S</label>&nbsp; 
-                <input type="radio" id="2" name="switch-two" value="M" (change)="onSizeChange($event.target.value)"/>
+                <input type="radio" id="2" name="switch-two" value="M" (change)="product.description=onSizeChange($event.target.value)"/>
                 <label for="2">M</label>&nbsp; 
                 <input type="radio" id="3" name="switch-two" value="L" (change)="onSizeChange($event.target.value)"/>
                 <label for="3">L</label>&nbsp;
@@ -38,11 +48,11 @@
                 <label for="5">XXL</label>
             </div>
           
-              
+            
           
            
           </form>
-          
+          {{product.description}}
           <label class="uppercase">Quantity :</label>
           <br>
           <div class="btn btn-border btn-tiny xround-7">
@@ -74,7 +84,7 @@
   </section>
   
 
-  <div style="text-align:center">
+  <!--<div style="text-align:center">
     <h4>
       Basic Pagination
     </h4>
@@ -92,7 +102,7 @@
           <td>{{item.value}}</td>
         </tr>
       </tbody>
-    </table>
+    </table>--> 
     
 
     <pagination-controls 
@@ -108,7 +118,6 @@
                          (pageChange)="onPageChange($event)"></pagination-controls>
 
   
-  </div>
   
 
 
