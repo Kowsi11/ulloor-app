@@ -27,95 +27,52 @@ export class AddEditComponent implements OnInit {
 
     constructor(
         private formBuilder: FormBuilder,
-        private userService: AccountService,
         private route: ActivatedRoute,
         private router: Router,
         private accountService: AccountService,
         private alertService: AlertService
-    ) {}
-    
-
-
+    ) {
+        this.user=accountService.userValue;
+    }
 
     ngOnInit() {
         this.id = this.route.snapshot.params['id'];
     
         
-        const passwordValidators = [Validators.minLength(6)];
+        /*const passwordValidators = [Validators.minLength(6)];
         if (this.isAddMode) {
             passwordValidators.push(Validators.required);
-        }
+        }*/
 
         this.form = this.formBuilder.group({
             firstName: ['', Validators.required],
             lastName: ['', Validators.required],
-            username: ['', Validators.required],
-            password: ['', passwordValidators]
+            doorNum: ['', Validators.required],
+            street: ['', Validators.required],
+            landMark: ['', Validators.required],
+            city: ['', Validators.required],
+            state: ['', Validators.required],
+            country: ['', Validators.required],
+            pincode: ['', Validators.required],
+            phoneNumber: ['', Validators.required],
+            type: ['', Validators.required]
+			
         });
-
-        if (!this.isAddMode) {
-            this.accountService.getById(this.id)
-                .pipe(first())
-                .subscribe(x => {
-                    this.f.firstName.setValue(x.firstName);
-                    this.f.lastName.setValue(x.lastName);
-                    this.f.username.setValue(x.userName);
-                 
-                });
-        }
     }
-
-    // convenience getter for easy access to form fields
-    get f() { return this.form.controls; }
+	get f() { return this.form.controls; }
 
     onSubmit() {
-        this.submitted = true;
-
-        // reset alerts on submit
-        this.alertService.clear();
-
-        // stop here if form is invalid
-        if (this.form.invalid) {
-            return;
-        }
-
-        this.loading = true;
-        if (this.isAddMode) {
-            this.createUser();
-        } else {
-            this.updateUser();
-        }
-    }
-
-    private createUser() {
-        this.accountService.register(this.form.value)
+        this.accountService.updateAddress(this.user.id, this.form.value)
             .pipe(first())
             .subscribe(
                 data => {
-                    this.alertService.success('User added successfully', { keepAfterRouteChange: true });
-                    this.router.navigate(['.', { relativeTo: this.route }]);
-                },
-                error => {
-                    this.alertService.error(error);
-                    this.loading = false;
-                });
-    }
-
-    private updateUser() {
-        this.accountService.update(this.id, this.form.value)
-            .pipe(first())
-            .subscribe(
-                data => {
+                    localStorage.setItem('user', JSON.stringify(data.data));
                     this.alertService.success('Update successful', { keepAfterRouteChange: true });
-                    this.router.navigate(['..', { relativeTo: this.route }]);
+                    //this.router.navigate(['..', { relativeTo: this.route }]);
                 },
                 error => {
                     this.alertService.error(error);
                     this.loading = false;
                 });
-    }
-
-
-    
-       
+    }      
 }

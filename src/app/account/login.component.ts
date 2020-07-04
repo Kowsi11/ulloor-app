@@ -58,7 +58,8 @@ export class LoginComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
-                    
+                    localStorage.setItem('user', JSON.stringify(data.data));
+					console.log(data.data);
                     this.router.navigate([this.returnUrlUser]);
                 },
                 error => {
