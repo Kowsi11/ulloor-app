@@ -1,1 +1,359 @@
-<p>admin works!</p>
+
+  
+ <section class="sec-padding">
+    <div class="container">
+
+    <div class="col-md-12 text-center"><h4 class="uppercase">Upload Products Here</h4></div>
+    <div class="clearfix"></div>
+    <br/> <br/>
+
+    <!-- <form [formGroup]="form" (ngSubmit)="submitForm()"> -->
+  <form>
+    <div class="form-body bg-light">
+    
+    
+      <!--Category Dropdown--> 
+<div class="row center">       
+  <div class="col-md-6">
+    <label class="lable-text" for="phone">Select Category</label>
+    <div class="select-box-2" Required> 
+          <select>
+            <option value=''>Categories</option>
+            <option value='1'>Stationaries</option>
+            <option value='2'>Accessories</option>
+            <option value='3'>Collections</option>
+          </select>
+    </div>
+   </div>
+</div>
+  <!-- end row -->
+<br>
+
+  <!--Sub category-->
+
+  <div class="row center">       
+    <div class="col-md-6">
+      <label class="lable-text" for="phone">Select Subcategory</label>
+      <div class="select-box-2">
+            <select>
+              <option>Categories</option>
+              <option>Option</option>
+              <option>Option</option>
+            </select>
+      </div>
+     </div>
+</div>
+<br>
+<!--Product Name-->
+<div class="row center">   
+  <div class="col-md-6">
+    <label class="lable-text" for="name">Product Name</label>
+    <input id="name" class="input-1" type="text" placeholder="Enter Product Name" formControlName="name">
+    <br/>
+  </div>
+</div>
+<!--Product description-->
+<div class="row">
+
+<div class="col-md-6">
+  <label class="lable-text" for="message">Product Description Short</label>
+  <textarea id="name" class="textaria-1" placeholder="Enter your message" name="message"></textarea>
+  </div>
+
+  <div class="col-md-6">
+    <label class="lable-text" for="message">Product Description Long</label>
+    <textarea id="comment" class="textaria-1" placeholder="Enter your message" name="message"></textarea>
+    </div>
+</div>
+
+<!--Price and Discount-->
+<div class="row">
+  <div class="col-md-6">
+    <label class="lable-text" for="name">Product Price</label>
+       <input id="Price" class="input-1" type="number" placeholder="Enter product Price" name="Price">
+        <br/>
+  </div>
+
+
+    <div class="col-md-6">
+      <label class="lable-text" for="name">Product Discount</label>
+         <input id="Price" class="input-1" type="number" placeholder="Enter product discount" name="Discount">
+          <br/>
+    </div>
+</div>
+
+
+<!--Product Brand-->
+
+<div class="row">
+<div class="col-md-6">
+      <label class="label-text" for="phone">Select Brand</label>
+       <div class="select-box-2">
+           <select>
+            <option>Select Brand..</option>
+            <option id="">Trends</option>
+            <option id="">Agio</option>
+            <option id="">W</option>
+            <option id="">Z</option>
+           </select>
+        </div>
+     <!--Select classs end-->
+ </div>
+</div>
+<br>
+<!--Tags-->
+<div class="row">
+<div class="col-md-6">
+<label class="lable-text" for="name">Product Tags</label>
+   <input id="Tag" class="input-1" type="text" placeholder="Enter product Tags" name="Tags">
+    <br/>
+</div>
+
+</div>
+<!--Quantity-->
+
+<div class="row">
+<div class="col-md-6">
+   <label class="lable-text" for="color">Product Quantity</label>
+   <input id="Quantity" class="input-1" type="number" placeholder="Enter product Quantity" name="quantity">
+    <br/>
+</div>
+</div>
+<br>
+<!--color-->
+<div class="row">
+<div class="col-md-3">
+   <label class="lable-text" for="color">Select Product color</label>
+   <input id="color" class="input-1" type="color" placeholder="Enter product color" name="color">
+    <br/>
+</div>
+<br/>
+<!--Size-->
+<div class="col-md-5">
+<label class="lable-text" for="color">Select Product Size</label>
+<br> 
+
+  <label class="control control--checkbox">S
+    <input type="checkbox"/>
+     <div class="control__indicator dark"></div>
+   </label>
+  
+   <label class="control control--checkbox">M
+    <input type="checkbox"/>
+     <div class="control__indicator dark"></div>
+   </label>
+
+  <label class="control control--checkbox">L
+    <input type="checkbox"/>
+     <div class="control__indicator dark"></div>
+   </label>
+
+   <label class="control control--checkbox">XL
+    <input type="checkbox"/>
+     <div class="control__indicator dark"></div>
+   </label>
+
+   <label class="control control--checkbox">XXL
+    <input type="checkbox"/>
+     <div class="control__indicator dark"></div>
+   </label>
+
+   <label class="control control--checkbox">XXXL
+    <input type="checkbox"/>
+     <div class="control__indicator dark"></div>
+   </label>
+  
+  
+
+</div>    
+</div>
+
+
+
+<!--Multi select file-->
+    
+<div class="row">    
+<div class="col-md-12">
+ <div class="form-group">
+    
+     <input id="file-2" type="file" multiple class="file" data-upload-url="#" data-overwrite-initial="false" data-min-file-count="3" (change)="uploadFile($event)">
+ </div>
+            
+</div>
+</div>
+  <!--end item-->
+
+    
+<div class="row">
+<br/> 
+<div class="col-md-12 text-center">
+      <button class="btn btn-dark btn-medium uppercase" type="submit">
+       <i class="fa fa-paper-plane"></i>
+        Submit
+        </button>
+
+  </div>
+    </div>
+
+<!--Form for Stationary-->
+<div class="row">
+  <div class="col-md-3">
+     <label class="lable-text" for="color">Select Product color</label>
+     <input id="color" class="input-1" type="color" placeholder="Enter product color" name="color">
+      <br/>
+  </div>
+  <br/>
+  <!--Size-->
+  <div class="col-md-5">
+  
+  </div>    
+  </div>
+  <!--Sticker size-->
+  <div class="row">
+  <div class="col-md-6">
+    <label class="lable-text" for="phone">Select Sticker Dimensions</label>
+    <div class="select-box-2" Required> 
+          <select>
+            <option value=''>Sticker Dimensions</option>
+            <option value='1'>5*5</option>
+            <option value='2'>8*8</option>
+            <option value='3'>2*2</option>
+          </select>
+    </div>
+  </div>   
+  
+  <div class="col-md-6">
+    <label class="lable-text" for="name">Product Price</label>
+       <input id="Price" class="input-1" type="number" placeholder="Enter product Price" name="Price">
+        <br/>
+  </div>
+
+</div>
+  <!--Multi select file-->
+  <div class="row">
+    <div class="col-md-6">
+      <label class="lable-text" for="phone">Select Sticker Dimensions</label>
+      <div class="select-box-2" Required> 
+            <select>
+              <option value=''>Sticker Dimensions</option>
+              <option value='1'>5*5</option>
+              <option value='2'>8*8</option>
+              <option value='3'>2*2</option>
+            </select>
+      </div>
+    </div>   
+    
+    
+  </div>
+  <div class="row">    
+  <div class="col-md-12">
+   <div class="form-group">
+      
+       <input id="file-2" type="file" multiple class="file" data-upload-url="#" data-overwrite-initial="false" data-min-file-count="3" (change)="uploadFile($event)">
+   </div>
+              
+  </div>
+  </div>
+    <!--end item-->
+  
+      
+  <div class="row">
+  <br/> 
+  <div class="col-md-12 text-center">
+        <button class="btn btn-dark btn-medium uppercase" type="submit">
+         <i class="fa fa-paper-plane"></i>
+          Submit
+          </button>
+  
+    </div>
+      </div>
+
+
+  
+
+<!--Accessories Form-->
+<div class="row">
+  <div class="col-md-3">
+     <label class="lable-text" for="color">Select Product color</label>
+     <input id="color" class="input-1" type="color" placeholder="Enter product color" name="color">
+      <br/>
+  </div>
+  <br/>
+  <!--Size-->
+  <div class="col-md-5">
+  
+  </div>    
+  </div>
+  <!--Sticker size-->
+  <div class="row">
+  <div class="col-md-6">
+    <label class="lable-text" for="phone">Select Frame size</label>
+    <div class="select-box-2" Required> 
+          <select>
+            <option value=''>Frame sizes</option>
+            <option value='1'>A3</option>
+            <option value='2'>A4</option>
+            <option value='3'>A5</option>
+          </select>
+    </div>
+  </div>   
+  
+  <div class="col-md-6">
+    <label class="lable-text" for="name">Product Price</label>
+       <input id="Price" class="input-1" type="number" placeholder="Enter product Price" name="Price">
+        <br/>
+  </div>
+
+</div>
+<div class="row center">   
+  <div class="col-md-6">
+    <label class="lable-text" for="name">Mobile Name</label>
+    <input id="mobile" class="input-1" type="text" placeholder="Enter Mobile Name" formControlName="name">
+    <br/>
+  </div>
+</div>
+
+
+
+
+  <!--Multi select file-->
+      
+  <div class="row">    
+  <div class="col-md-12">
+   <div class="form-group">
+      
+       <input id="file-2" type="file" multiple class="file" data-upload-url="#" data-overwrite-initial="false" data-min-file-count="3" (change)="uploadFile($event)">
+   </div>
+              
+  </div>
+  </div>
+    <!--end item-->
+  
+      
+  <div class="row">
+  <br/> 
+  <div class="col-md-12 text-center">
+        <button class="btn btn-dark btn-medium uppercase" type="submit">
+         <i class="fa fa-paper-plane"></i>
+          Submit
+          </button>
+  
+    </div>
+ </div>
+
+</div>
+
+</form>
+    <!-- end row -->
+    </div>
+    <!--end form body-->
+  
+</section>
+  <div class="clearfix"></div>
+     
+         
+
+
+
+
+
