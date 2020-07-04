@@ -83,12 +83,11 @@
                           
 
                           
-
-                          <li class="right"> <a href="#">ComBos</a> <span class="arrow"></span>
-                            <ul class="dm-align-2">
                             
-                            </ul>
-                          </li>
+                          
+                          <li class="right"> <a href="#">ComBos</a> <span class="arrow"></span>
+                            
+                          </li>  
                           <li class="right"> <a href="#">About Us</a> <span class="arrow"></span>
                             <!-- <ul>
                              <li> <a href="shop-full-width.html">Full Width</a> </li>
@@ -99,16 +98,18 @@
                                    
                             </ul>-->
                           </li> 
+
                          <li class="right"> <a><span class="glyphicon glyphicon-user"></span></a> <span class="arrow"></span>
                         <ul>
+						<ng-template [ngIf]="notlogged"[ngIfElse]="loggedin">
                           <li *ngIf="notlogged">New Customer?<a routerLink="account/register">Sign Up</a> </li>
                           <li *ngIf="notlogged"> <a routerLink="account/login">login</a> </li>
-                          
-                           
-                          <li *ngIf="loggedin"> <a href="#">My Profile</a> </li>
-                          <li *ngIf="loggedin"> <a href="#">My orders</a> </li>
-                          <li *ngIf="loggedin"> <a href="/home">Logout</a> </li>
-                         
+                        </ng-template>
+                        <ng-template #loggedin>
+                          <li> <a routerLink="users/useraddress">My Profile</a> </li>
+                          <li> <a href="#">My orders</a> </li>
+                          <li> <a (click)="logout()">Logout</a> </li> 
+                        </ng-template> 
 
                         </ul>
                         </li>

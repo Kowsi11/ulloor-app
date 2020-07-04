@@ -6,6 +6,9 @@ import { map } from 'rxjs/operators';
 
 import { environment } from '@environments/environment';
 import { User } from '@app/_models';
+import { UpdateUser } from '@app/_models/UpdateUser';
+import { address } from '@app/_models/address';
+import { ResponseDto } from '@app/_models/ResponseDto';
 
 @Injectable({ providedIn: 'root' })
 export class AccountService {
@@ -25,24 +28,18 @@ export class AccountService {
     }
 
     login(username, password) {
-        return this.http.post<User>(`${environment.apiUrl}/users/authenticate`, { username, password })
-            .pipe(map(user => {
-                // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('user', JSON.stringify(user));
-                this.userSubject.next(user);
-                return user;
-            }));
+        return this.http.get<ResponseDto>(`${environment.userUrl}/user/login?userId=`+username+`&password=`+password);
     }
 
     logout() {
-        // remove user from local storage and set current user to null
+        // remove user from local storage and set current user to null  
         localStorage.removeItem('user');
         this.userSubject.next(null);
         this.router.navigate(['/account/login']);
     }
 
     register(user: User) {
-        return this.http.post(`${environment.apiUrl}/user`, user);
+        return this.http.post(`${environment.userUrl}/user`, user);
     }
  
     getAll() {
@@ -53,20 +50,10 @@ export class AccountService {
         return this.http.get<User>(`${environment.apiUrl}/users/${id}`);
     }
 
-    update(id, params) {
-        return this.http.put(`${environment.apiUrl}/users/${id}`, params)
-            .pipe(map(x => {
-                // update stored user if the logged in user updated their own record
-                if (id == this.userValue.id) {
-                    // update local storage
-                    const user = { ...this.userValue, ...params };
-                    localStorage.setItem('user', JSON.stringify(user));
-
-                    // publish updated user to subscribers
-                    this.userSubject.next(user);
-                }
-                return x;
-            }));
+    updateAddress(id:string, address:address) {
+        let updateUser = new UpdateUser();
+        updateUser.address = address;
+        return this.http.put<ResponseDto>(`${environment.userUrl}/users/${id}`,updateUser);
     }
 
     delete(id: string) {

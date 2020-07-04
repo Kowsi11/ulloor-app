@@ -3,6 +3,8 @@ import { User } from '@app/_models';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { CartService } from '@app/_services/cart.service';
+import { AccountService } from '@app/_services/account.service';
+
 import { Product } from '@app/_models/product';
 @Component({
   selector: 'app-header',
@@ -17,10 +19,11 @@ export class HeaderComponent implements OnInit {
   cartSize:number = 0;
   cartProducts:Product[];
   carts: Number[]= []
+  user:User;
   private userSubject:BehaviorSubject<User>
  loggedin:any;
  notlogged:any;
-  constructor( private router: Router,private cartService:CartService ) { 
+  constructor( private router: Router,private cartService:CartService, private accountService:AccountService ) { 
 
   }
 
@@ -33,6 +36,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
    this.userLoggedInfo()
    this.getCartDetails()
+}
+ngDoCheck(){
+this.userLoggedInfo()
 }
 
   getCartDetails(){
@@ -58,15 +64,17 @@ export class HeaderComponent implements OnInit {
       console.log(this.userSubject)
     if(this.userSubject.value!=null)
      {
-      this.loggedin=true;
       this.notlogged=false;
-
+	  this.user=this.userSubject.value;
      }
     else
     {
       this.notlogged=true;
-      this.loggedin=false;
     }
+  }
+  
+  logout(){
+	this.accountService.logout()
   }
 
   mycartfun()
