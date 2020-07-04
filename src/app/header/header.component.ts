@@ -60,7 +60,7 @@ this.userLoggedInfo()
   
   userLoggedInfo()
   {
-    this.userSubject =new BehaviorSubject<User>(JSON.parse (localStorage.getItem('user')));
+    this.userSubject =new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
       console.log(this.userSubject)
     if(this.userSubject.value!=null)
      {
