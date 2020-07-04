@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppSubCategoryId } from '@app/_models/AppSubCategoryId';
+import { AppSubCategoryId } from '@app/_models/product/AppSubCategoryId';
 
 @Component({
   selector: 'app-collections-products',
@@ -19,5 +19,5 @@ export class CollectionsProductsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+ 
 }

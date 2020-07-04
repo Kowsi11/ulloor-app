@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AppSubCategoryId } from '@app/_models/AppSubCategoryId';
-import { SubCategory } from '@app/_models/SubCategory';
+import { AppSubCategoryId } from '@app/_models/product/AppSubCategoryId';
+import { SubCategory } from '@app/_models/product/SubCategory';
 @Component({
   selector: 'app-accesories-products',
   templateUrl: './accesories-products.component.html',

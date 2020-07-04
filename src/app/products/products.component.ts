@@ -2,8 +2,8 @@ import { Component, Input, Output, EventEmitter, OnInit, OnChanges, SimpleChange
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '@app/_services/product.service';
 import { first } from 'rxjs/operators';
-import { Product } from '@app/_models/product';
-import { Properties, sizePrice } from '@app/_models/Properties';
+import { Product } from '@app/_models/product/product';
+import { Properties, sizePrice } from '@app/_models/product/Properties';
 import { AlertService } from '@app/_services/alert.service';
 
 
