@@ -5,8 +5,9 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:4000',
-  userUrl: 'https://6ccb34b7119c.ap.ngrok.io/api/ullormerchandise',
-  categoryUrl: 'http://localhost:7070/api/ullormerchandise'
+  // userUrl: 'https://6ccb34b7119c.ap.ngrok.io/api/ullormerchandise',
+  categoryUrl: 'http://localhost:7070/api/ullormerchandise',
+  userUrl: 'http://loj'
 };
 
 /*
