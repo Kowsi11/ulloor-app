@@ -179,3 +179,10 @@
     display: inline-block;
     font-weight: bold;
 }
+
+.btn.btn-border:hover.light {
+    color: #fff;
+    background-color: #01bf9d;
+    border-color: #949191;
+    
+}
