@@ -110,7 +110,7 @@
                     <div *ngIf="f.password.errors.required">Password is required</div>
                 </div>
             </div>
-            <a data-toggle="modal" data-target="#modal-switch">Forgot your password?</a>
+            <a  data-toggle="modal" data-target="#modal-switch">Forgot your password?</a>
                 
             
             <br>
@@ -128,7 +128,6 @@
 </div>
 <!-- nav -->
 
-
 <!--Modal Popup for forgot password-->
 <div id="modal-switch" tabindex="-1" role="dialog" aria-labelledby="modal-switch-label" class="modal fade">
     <div class="modal-dialog">
@@ -143,11 +142,12 @@
             <div class="card">
                 <h2 class="card-header"></h2>
                 <div class="card-body">
-                    
+                    <div class="clearfix"></div>
                        <div>
-                            <label for="email">Email <em>*</em></label>
-                            <input type="text"> 
-                           
+                        <label class="label">E-mail <em>*</em>
+                
+                            <input type="email" name="email" id="email">
+                        </label>
                         </div>
 
                         <div class="form">
@@ -168,6 +168,7 @@
       </div>
     </div>
   </div>
+
 
 
 </div>
