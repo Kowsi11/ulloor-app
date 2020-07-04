@@ -3,7 +3,7 @@ import { User } from '@app/_models';
 import { AccountService, AlertService } from '@app/_services';
 import { CategoryService } from '@app/_services/category.service';
 import { dashCaseToCamelCase } from '@angular/compiler/src/util';
-import { Category } from '@app/_models/Category';
+import { Category } from '@app/_models/product/Category';
 
 
 @Component({

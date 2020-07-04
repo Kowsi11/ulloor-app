@@ -6,15 +6,17 @@ import { map } from 'rxjs/operators';
 
 import { environment } from '@environments/environment';
 import { User } from '@app/_models';
-import { UpdateUser } from '@app/_models/UpdateUser';
-import { address } from '@app/_models/address';
+import { UpdateUser } from '@app/_models/user/UpdateUser';
+
 import { ResponseDto } from '@app/_models/ResponseDto';
+import { address } from '@app/_models/user/address';
 
 @Injectable({ providedIn: 'root' })
 export class AccountService {
     private userSubject: BehaviorSubject<User>;
     public user: Observable<User>;
 
+    
     constructor(
         private router: Router,
         private http: HttpClient

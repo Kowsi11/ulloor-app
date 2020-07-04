@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
 
 import { environment } from '@environments/environment';
 import { User } from '@app/_models';
-import { Product } from '@app/_models/product';
+import { Product } from '@app/_models/product/product';
 
 @Injectable({ providedIn: 'root' })
 export class CartService {

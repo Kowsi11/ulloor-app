@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '@app/_services/product.service';
 import { first } from 'rxjs/operators';
 import { AlertService } from '@app/_services';
-import { Product } from '@app/_models/product';
+import { Product } from '@app/_models/product/product';
 import { CartService } from '@app/_services/cart.service';
 @Component({
   selector: 'app-productpreview',

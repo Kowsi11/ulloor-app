@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
 
 import { environment } from '@environments/environment';
 import { User } from '@app/_models';
-import { Category } from '@app/_models/Category';
+import { Category } from '@app/_models/product/Category';
 import { ResponseDto } from '@app/_models/ResponseDto';
 
 @Injectable({ providedIn: 'root' })

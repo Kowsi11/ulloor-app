@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { CartService } from '@app/_services/cart.service';
 import { AccountService } from '@app/_services/account.service';
 
-import { Product } from '@app/_models/product';
+import { Product } from '@app/_models/product/product';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
