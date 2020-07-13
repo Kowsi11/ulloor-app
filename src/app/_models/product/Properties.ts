@@ -1,10 +1,11 @@
 import { Attributes } from './Attribute';
 
 export class Properties{
+	size:string;
     attributes:Attributes[];
 	available:boolean;
 	price: DoubleRange;
-	count:number;
+	quantity:number;
 	
 }
 

@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
   user:User;
   private userSubject:BehaviorSubject<User>
  loggedin:any;
- notlogged:any;
+ notlogged:boolean=false;
   constructor( private router: Router,private cartService:CartService, private accountService:AccountService ) { 
 
   }

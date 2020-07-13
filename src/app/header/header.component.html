@@ -101,17 +101,18 @@
 
                          <li class="right"> <a><span class="glyphicon glyphicon-user"></span></a> <span class="arrow"></span>
                         <ul>
-						<ng-template [ngIf]="notlogged"[ngIfElse]="loggedin">
-                          <li *ngIf="notlogged">New Customer?<a routerLink="account/register">Sign Up</a> </li>
-                          <li *ngIf="notlogged"> <a routerLink="account/login">login</a> </li>
+                          
+						            <ng-template [ngIf]="notlogged"[ngIfElse]="userloggedin">
+                          <li>New Customer?<a routerLink="account/register">Sign Up</a> </li>
+                          <li> <a routerLink="account/login">login</a> </li>
                         </ng-template>
-                        <ng-template #loggedin>
+                        <ng-template #userloggedin>
                           <li> <a routerLink="users/useraddress">My Profile</a> </li>
                           <li> <a href="#">My orders</a> </li>
                           <li> <a (click)="logout()">Logout</a> </li> 
                         </ng-template> 
 
-                        </ul>
+                        </ul> 
                         </li>
 
                         

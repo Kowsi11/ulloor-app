@@ -16,10 +16,11 @@ export class Product{
 }
 
 class Properties{
-    attributes:Attributes;
+    size:string;
+    attributes:Attributes[];
 	available:boolean;
 	price: DoubleRange;
-	count:number;
+	quantity:number;
 	
 }
 class Attributes{
