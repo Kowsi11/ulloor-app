@@ -35,6 +35,7 @@ import { TestimonialsComponent } from './testimonials/testimonials.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ProducteditComponent } from './admin/productedit/productedit.component';
 
 
 
@@ -59,7 +60,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CategoriesComponent,
     HomeBannersComponent,
     TestimonialsComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    ProducteditComponent
   
   
   ],

@@ -88,12 +88,12 @@ this.config = {
     return sizePriceList
   }
 
-plus(){
-console.log("plus")
-}
-minus(){
-console.log("minus")
-}
+// plus(){
+// console.log("plus")
+// }
+// minus(){
+// console.log("minus")
+// }
   private category:any;
   size:string=null;
   quantity:number=1;

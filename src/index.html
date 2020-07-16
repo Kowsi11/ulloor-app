@@ -44,7 +44,7 @@
 <link rel="stylesheet" href="assets/js/ytplayer/ytplayer.css" />
 <link href="assets/js/accordion/css/smk-accordion.css" rel="stylesheet">
 <link rel="stylesheet" href="assets/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css">
-
+<link rel="stylesheet" type="text/css" href="assets/js/accordion/js/demo.css">
 <link rel="stylesheet" href="assets/css/shortcodes.css" type="text/css">
 <link rel="stylesheet" href="assets/js/product-preview/stylesheet.css">
 <link rel="stylesheet" href="assets/js/product-preview/fancybox/jquery.fancybox.css">
@@ -408,6 +408,28 @@ The following part can be removed on Server for On Demand Loading) -->
 
 </script>
 
+<!--admin product edit plus component-->
+<script type="text/javascript" src="assets/js/accordion/js/accordion.js"></script>
+<script>
+  
+  $(document).ready(function () {
+    //toggle the component with class accordion_body
+    $(".accordion_head").click(function () {
+        if ($('.accordion_body').is(':visible')) {
+            $(".accordion_body").slideUp(300);
+            $(".plusminus").text('+');
+        }
+        if ($(this).next(".accordion_body").is(':visible')) {
+            $(this).next(".accordion_body").slideUp(300);
+            $(this).children(".plusminus").text('+');
+        } else {
+            $(this).next(".accordion_body").slideDown(300);
+            $(this).children(".plusminus").text('-');
+        }
+    });
+});
+  </script>
+ 
 
 </body>
 
