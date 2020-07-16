@@ -6,6 +6,8 @@ import { CartService } from '@app/_services/cart.service';
 import { AccountService } from '@app/_services/account.service';
 
 import { Product } from '@app/_models/product/product';
+import { CartProduct } from '@app/_models/newProduct/CartProduct';
+import { Cart } from '@app/_models/order/Cart';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -18,7 +20,7 @@ export class HeaderComponent implements OnInit {
   numtwo :  Number = 0 ;
   cartSize:number = 0;
   cartProducts:Product[];
-  carts: Number[]= []
+  carts: Cart
   user:User;
   private userSubject:BehaviorSubject<User>
  loggedin:any;
@@ -29,9 +31,6 @@ export class HeaderComponent implements OnInit {
 
   
 
-  public get userValue(): User {
-   return this.userSubject.value;
-}
   
   ngOnInit() {
    this.userLoggedInfo()
@@ -39,21 +38,24 @@ export class HeaderComponent implements OnInit {
 }
 ngDoCheck(){
 this.userLoggedInfo()
+this.getCartDetails()
 }
 
   getCartDetails(){
-    this.carts=this.cartService.cartSampleValue;
-    if(this.cartProducts!=null){
-      this.cartSize=this.cartProducts.length
+    
+    this.carts=this.cartService.cartValue;
+    console.log("header cart")
+    console.log(this.carts)
+    if(this.carts!=null && this.carts!=undefined){
+      this.cartSize=this.carts.products.length
+    }else{
+      this.carts = new Cart()
+      this.carts.products = []
+      this.carts.totalAmount = 0
     }
   }
   removeFromCart(product:any){
-    console.log("entered the logic")
-    console.log(product)
-    this.carts=this.cartService.removeProduct(product)
-
-  
-    console.log(this.carts.length)
+    this.cartService.deleteProductCart(product)
   }
 
 

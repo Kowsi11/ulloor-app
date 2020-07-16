@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -24,7 +24,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { fakeBackendProvider } from './_helpers';
 
 import { CheckoutComponent } from './checkout/checkout.component'
- 
+
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { AlertComponent } from './_components';
 import { FilterPipe } from './filter.pipe';
@@ -35,6 +35,7 @@ import { TestimonialsComponent } from './testimonials/testimonials.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 
 import { NgxPaginationModule } from 'ngx-pagination';
+import { AdminComponent } from './admin/admin.component';
 
 
 
@@ -59,13 +60,14 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CategoriesComponent,
     HomeBannersComponent,
     TestimonialsComponent,
-    CheckoutComponent
-  
-  
+    CheckoutComponent,
+    AdminComponent
+
+
   ],
   imports: [
     BrowserModule,
-    
+
     CarouselModule,
     FormsModule,
     ReactiveFormsModule,
@@ -74,7 +76,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     BrowserAnimationsModule,
     NgbModule,
     NgxPaginationModule
-    
+
 
 
   ],

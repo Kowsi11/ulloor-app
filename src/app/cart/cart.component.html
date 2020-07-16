@@ -1,59 +1,52 @@
-
 <section class="sec-padding">
   <div class="container">
-    
-    <div class="row">
-      
-      <div class="domain-pricing-table">
-        <table class="table-style-2">
-          <thead>
-            <tr>
-              <th>Image</th>
-              <th>Product Name</th>
-              <th>Quantity</th>
-              <th>Pricing Unit</th>
-              <th>Total</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-            <img src="assets/images/cart-img1.jpg" alt="" class="img-responsive"/> 
-                              
-              
-              <td>$4.99</td>
-              <td>$6.99</td>
-              <td>Free</td>
-              <td>$5.99</td>
-              <td><a class="btn2 btn-gyellow btn-round pull-right" href="#">Remove</a></td>
-            </tr>
-            <tr>
-              <img src="assets/images/cart-img1.jpg" alt="" class="img-responsive"/> 
-              <td>$4.99</td>
-              <td>$6.99</td>
-              <td>Free</td>
-              <td>$5.99</td>
-              <td><a class="btn2 btn-gyellow btn-round pull-right" href="#">Remove</a></td>
-            </tr>
-            <tr>
-              <img src="assets/images/cart-img1.jpg" alt="" class="img-responsive"/> 
-              <td>$4.99</td>
-              <td>$6.99</td>
-              <td>Free</td>
-              <td>$5.99</td>
-               <td><a class="btn2 btn-gyellow btn-round pull-right" href="#">Remove</a></td>
-            </tr>
-           
-          </tbody>
-        </table>
+
+    <ng-template [ngIf]="cartAvailable" [ngIfElse]="cartIsEmpty">
+      <div class="row">
+
+        <div class="domain-pricing-table">
+          <table class="table-style-2">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Product Name</th>
+                <th>Pricing</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of carts.products; let  indexOfCart=index">
+                <img src="assets/images/cart-img1.jpg" alt="" class="img-responsive" />
+
+
+                <td>{{product.name}} </td>
+                <td>{{product.price}}</td>
+                <td>
+                  <div class="col-xs-3">
+                    <input type="text" class="product" [value]="product.quantity" />
+                  </div> <a href="javascript:void(0)">update</a> &nbsp;<a href="javascript:void(0)">delete</a>
+                </td>
+                <td>$ {{product.price}}*{{product.quantity}}</td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <a class="btn btn-gyellow btn-round pull-right" routerLink = '/Checkout'>CheckOut</a>
 
-    </div>
+      <div class="row">
+        <ng-template [ngIf]="loggedIn" [ngIfElse]="notLoggedIn">
+          <a class="btn btn-gyellow btn-round pull-right" routerLink='/Checkout'>CheckOut</a>
+        </ng-template>
+        <ng-template #notLoggedIn>
+          <a class="btn btn-gyellow btn-round pull-right" routerLink='/Checkout'>Login </a>
+        </ng-template>
+
+      </div>
+    </ng-template>
+    <ng-template #cartIsEmpty>
+      <i>Please add products to cart</i>
+    </ng-template>
   </div>
-
-
-  
-

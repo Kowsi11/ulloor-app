@@ -9,34 +9,41 @@
       <div  *ngFor="let product of products | paginate: config" >
       <div class="col-md-4 col-sm-6 col-xs-12">
         <div class="sp-feature-box-3 margin-bottom">
-          <div class="img-box"> <a routerLink="product/view/{{product.id}}" class="view-btn uppercase">View</a>
+          <div class="img-box"> <a routerLink="product/view/{{product.handle}}" class="view-btn uppercase">View</a>
             <div class="badge">Hot</div>
 			<!-- <div class="carousel-inner">
 			 <div class="item" *ngFor="let image of product.images">-->
-            <img src='{{product.images[0]}}' alt="" width="350" height="450" /> 
+            <img src='{{product.featuredImage}}' alt="" width="350" height="450" /> 
 			<!--</div>
 			</div>-->
 		</div>  
           <div class="clearfix"></div>
           <br/>
-          <h4 class="less-mar-1">{{product.name}}</h4>
+          <h4 class="less-mar-1">{{product.title}}</h4>
           <p>{{product.description}}</p>
           
           <form class="form">
             <label class="uppercase">Size: </label>
             <div class="switch-field">
-              <div  *ngFor="let property of sizeCalculation(product.properties)" >
-                <input type="radio" id="{{product.name}}{{property.size}}"  value="{{property.size}}" name="switch-two" (click)= "product.description=onSizeChange($event.target.value)"/>
-                <label for="{{product.name}}{{property.size}}" >{{property.size}}</label>&nbsp; 
+              <div  *ngFor="let order of product.sizePriceIdList"  > 
+                <input  type="radio"  name="switch-two" [value]="order.id" [id]="order.id" (change)="product.selectedVarient = onSizeChange($event.target.value,product.priceVaries)" />
+               <label for="{{order.id}}"> {{order.size}}</label>&nbsp; 
                </div>
-              <h5 class="text-primary">$ {{product.price}}</h5>
-            </div>
-          </form>
-        
-          {{product.description}}<br>
-          <a class="btn btn-border light btn-small" href="">Add to cart</a> </div>
-        
-         
+               
+             
+            </div> 
+          </form>  
+          <label class="uppercase">Prize : </label>
+                <h5 class="text-primary">$ {{product.price}}</h5>
+          <ng-template [ngIf]="product.selectedVarient==null"[ngIfElse]="selected"> 
+            <button  class="btn btn-medium btn-cyan btn-anim-3 uppercase xround-7">
+              Select Size
+          </button>
+        </ng-template>
+        <ng-template #selected>
+          <a class="btn btn-border light btn-small" href="javascript:void(0)" (click)="addToCart(product.handle,product.selectedVarient,1)">Add to cart</a> 
+        </ng-template>
+         </div>
       </div>
       </div>
       </div>
