@@ -72,9 +72,8 @@ export class ProductpreviewComponent implements OnInit {
   onQuantityChange(value){
     this.quantity=value;
   }
-  addToCart(val:Number){
-    console.log("entered")
-    this.cartService.addProductToCart(val)
+  addToCart(title:string,varientId:string,quantity:Number){
+    this.cartService.addProductToCart(title,varientId,quantity)
   }
 
 getProduct(){

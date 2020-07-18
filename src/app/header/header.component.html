@@ -17,18 +17,18 @@
                           <a href="#" class="close-btn mar-1">x</a> </div>
                       </div>
                     </li>
-                    <li class= {{mycart}}> <a href="javascript:void(0)" (click) = "mycartfun()" title=""> <i aria-hidden="true" class="fa fa-shopping-cart"></i> <span class="number mar2"> {{carts.length}} </span> </a>
+                    <li class= {{mycart}}> <a href="javascript:void(0)" (click) = "mycartfun()" title=""> <i aria-hidden="true" class="fa fa-shopping-cart"></i> <span class="number mar2"> {{carts.products.length}} </span> </a>
                       <div class="cart-box">
                         <div class="container">
                           <div class="row">
-                            <div class="col-xs-8"> {{carts.length}} item(s) </div>
-                            <div class="col-xs-4 text-right" > <span>$99</span> </div>
+                            <div class="col-xs-8"> {{cartSize}} item(s) </div>
+                            <div class="col-xs-4 text-right" > <span>$ {{carts.totalAmount}}</span> </div>
                           </div>
-                          <ng-template [ngIf]="carts.length>0"[ngIfElse]="noItem">
+                          <ng-template [ngIf]="cartSize>0"[ngIfElse]="noItem">
                           
                           <ul class =list >
-                            <div class="list-group" *ngFor="let product of carts; let  indexOfCart=index">
-                            <li > <img src="assets/images/cart-img1.jpg" alt=""> Jean & Teashirt <span>$30</span> 
+                            <div class="list-group" *ngFor="let product of carts.products; let  indexOfCart=index">
+                            <li > <img [src] ="product.featuredImage" alt=""> {{product.name}} <span>$ {{product.price}}</span> 
                              <a href="javascript:void(0)" (click) = "removeFromCart(product)" title="" class="close-btn">x</a> </li>
                             </div>
                           </ul>
@@ -101,17 +101,18 @@
 
                          <li class="right"> <a><span class="glyphicon glyphicon-user"></span></a> <span class="arrow"></span>
                         <ul>
-						<ng-template [ngIf]="notlogged"[ngIfElse]="loggedin">
-                          <li *ngIf="notlogged">New Customer?<a routerLink="account/register">Sign Up</a> </li>
-                          <li *ngIf="notlogged"> <a routerLink="account/login">login</a> </li>
+                          
+						            <ng-template [ngIf]="notlogged"[ngIfElse]="userloggedin">
+                          <li>New Customer?<a routerLink="account/register">Sign Up</a> </li>
+                          <li> <a routerLink="account/login">login</a> </li>
                         </ng-template>
-                        <ng-template #loggedin>
+                        <ng-template #userloggedin>
                           <li> <a routerLink="users/useraddress">My Profile</a> </li>
                           <li> <a href="#">My orders</a> </li>
                           <li> <a (click)="logout()">Logout</a> </li> 
                         </ng-template> 
 
-                        </ul>
+                        </ul> 
                         </li>
 
 
