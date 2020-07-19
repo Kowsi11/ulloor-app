@@ -240,13 +240,13 @@
         out: function (id) {
             var html = '', data = previewCache.data[id], caption, len = previewCache.count(id, true);
             if (len === 0) {
-                return {content: '', caption: ''};
+                return { content: '', caption: '' };
             }
             for (var i = 0; i < len; i++) {
                 html += previewCache.get(id, i);
             }
             caption = data.msg(previewCache.count(id));
-            return {content: '<div class="file-initial-thumbs">' + html + '</div>', caption: caption};
+            return { content: '<div class="file-initial-thumbs">' + html + '</div>', caption: caption };
         },
         footer: function (id, i, isDisabled, size) {
             var data = previewCache.data[id];
@@ -443,26 +443,26 @@
     };
     defaultPreviewTypes = ['image', 'html', 'text', 'video', 'audio', 'flash', 'pdf', 'object'];
     defaultPreviewSettings = {
-        image: {width: "auto", height: "160px"},
-        html: {width: "213px", height: "160px"},
-        text: {width: "213px", height: "160px"},
-        video: {width: "213px", height: "160px"},
-        audio: {width: "213px", height: "80px"},
-        flash: {width: "213px", height: "160px"},
-        object: {width: "160px", height: "160px"},
-        pdf: {width: "160px", height: "160px"},
-        other: {width: "160px", height: "160px"}
+        image: { width: "auto", height: "160px" },
+        html: { width: "213px", height: "160px" },
+        text: { width: "213px", height: "160px" },
+        video: { width: "213px", height: "160px" },
+        audio: { width: "213px", height: "80px" },
+        flash: { width: "213px", height: "160px" },
+        object: { width: "160px", height: "160px" },
+        pdf: { width: "160px", height: "160px" },
+        other: { width: "160px", height: "160px" }
     };
     defaultPreviewZoomSettings = {
-        image: {width: "100%", height: "100%"},
-        html: {width: "100%", height: "100%", 'min-height': "480px"},
-        text: {width: "100%", height: "100%", 'min-height': "480px"},
-        video: {width: "auto", height: "100%", 'max-width': "100%"},
-        audio: {width: "100%", height: "30px"},
-        flash: {width: "auto", height: "480px"},
-        object: {width: "auto", height: "100%", 'min-height': "480px"},
-        pdf: {width: "100%", height: "100%", 'min-height': "480px"},
-        other: {width: "auto", height: "100%", 'min-height': "480px"}
+        image: { width: "100%", height: "100%" },
+        html: { width: "100%", height: "100%", 'min-height': "480px" },
+        text: { width: "100%", height: "100%", 'min-height': "480px" },
+        video: { width: "auto", height: "100%", 'max-width': "100%" },
+        audio: { width: "100%", height: "30px" },
+        flash: { width: "auto", height: "480px" },
+        object: { width: "auto", height: "100%", 'min-height': "480px" },
+        pdf: { width: "100%", height: "100%", 'min-height': "480px" },
+        other: { width: "auto", height: "100%", 'min-height': "480px" }
     };
     defaultFileTypeSettings = {
         image: function (vType, vName) {
@@ -767,7 +767,7 @@
         },
         _showUploadError: function (msg, params, event) {
             var self = this, $error = self.$errorContainer, ev = event || 'fileuploaderror', e = params && params.id ?
-            '<li data-file-id="' + params.id + '">' + msg + '</li>' : '<li>' + msg + '</li>';
+                '<li data-file-id="' + params.id + '">' + msg + '</li>' : '<li>' + msg + '</li>';
             if ($error.find('ul').length === 0) {
                 self._addError('<ul>' + e + '</ul>');
             } else {
@@ -957,7 +957,7 @@
             handler($zone, 'click', function (e) {
                 var $target = $(e.target);
                 if (!$target.parents('.file-preview-thumbnails').length || $target.parents(
-                        '.file-default-preview').length) {
+                    '.file-default-preview').length) {
                     self.$element.trigger('click');
                     $zone.blur();
                 }
@@ -1330,7 +1330,7 @@
                 self._setZoomContent($targFrame, true);
             }
             self._initZoomButtons();
-            self._raise('filezoom' + dir, {'previewId': previewId, modal: self.$modal});
+            self._raise('filezoom' + dir, { 'previewId': previewId, modal: self.$modal });
         },
         _initZoomButton: function () {
             var self = this;
@@ -1364,12 +1364,12 @@
                 if (typeof extraData === "function") {
                     extraData = extraData();
                 }
-                params = {id: $el.attr('id'), key: vKey, extra: extraData};
+                params = { id: $el.attr('id'), key: vKey, extra: extraData };
                 settings = $.extend(true, {}, {
                     url: vUrl,
                     type: 'POST',
                     dataType: 'json',
-                    data: $.extend(true, {}, {key: vKey}, extraData),
+                    data: $.extend(true, {}, { key: vKey }, extraData),
                     beforeSend: function (jqXHR) {
                         self.ajaxAborted = false;
                         self._raise('filepredelete', [vKey, jqXHR, extraData]);
@@ -1461,7 +1461,7 @@
         },
         _resetUpload: function () {
             var self = this;
-            self.uploadCache = {content: [], config: [], tags: [], append: true};
+            self.uploadCache = { content: [], config: [], tags: [], append: true };
             self.uploadCount = 0;
             self.uploadStatus = {};
             self.uploadLog = [];
@@ -1605,7 +1605,7 @@
                     return self._initXhr(xhrobj, previewId, self.getFileStack().length);
                 },
                 url: self.uploadUrl,
-                type: 'POST',
+                type: 'GET',
                 dataType: 'json',
                 data: self.formdata,
                 cache: false,
@@ -1709,7 +1709,7 @@
             var self = this, total = self.getFileStack().length, formdata = new FormData(), outData,
                 previewId = self.previewInitId + "-" + i, $thumb, chkComplete, $btnUpload, $btnDelete,
                 hasPostData = self.filestack.length > 0 || !$.isEmptyObject(self.uploadExtraData),
-                fnBefore, fnSuccess, fnComplete, fnError, updateUploadLog, params = {id: previewId, index: i};
+                fnBefore, fnSuccess, fnComplete, fnError, updateUploadLog, params = { id: previewId, index: i };
             self.formdata = formdata;
             if (self.showPreview) {
                 $thumb = $('#' + previewId + ':not(.file-preview-initial)');
@@ -2133,8 +2133,8 @@
                 maxPreviewSize = self.maxFilePreviewSize && parseFloat(self.maxFilePreviewSize),
                 canPreview = $preview.length && (!maxPreviewSize || isNaN(maxPreviewSize)),
                 throwError = function (msg, file, previewId, index) {
-                    var p1 = $.extend(true, {}, self._getOutData({}, {}, files), {id: previewId, index: index}),
-                        p2 = {id: previewId, index: index, file: file, files: files};
+                    var p1 = $.extend(true, {}, self._getOutData({}, {}, files), { id: previewId, index: index }),
+                        p2 = { id: previewId, index: index, file: file, files: files };
                     self._previewDefault(file, previewId, true);
                     if (self.isUploadable) {
                         self.addToStack(undefined);
@@ -2371,7 +2371,7 @@
         _validateMinCount: function () {
             var self = this, len = self.isUploadable ? self.getFileStack().length : self.$element.get(0).files.length;
             if (self.validateInitialCount && self.minFileCount > 0 && self._getFileCount(
-                    len - 1) < self.minFileCount) {
+                len - 1) < self.minFileCount) {
                 self._noFilesError({});
                 return false;
             }
@@ -2435,7 +2435,7 @@
                     $img.css('width', '100%');
                     $thumb.css('width', '97%');
                 }
-                params = {ind: i, id: previewId};
+                params = { ind: i, id: previewId };
                 self._checkDimensions(i, 'Small', $img, $thumb, fname, 'Width', params);
                 self._checkDimensions(i, 'Small', $img, $thumb, fname, 'Height', params);
                 if (!self.resizeImage) {
@@ -2443,7 +2443,7 @@
                     self._checkDimensions(i, 'Large', $img, $thumb, fname, 'Height', params);
                 }
                 self._raise('fileimageloaded', [previewId]);
-                self.loadedImages.push({ind: i, img: $img, thumb: $thumb, pid: previewId, typ: ftype});
+                self.loadedImages.push({ ind: i, img: $img, thumb: $thumb, pid: previewId, typ: ftype });
                 self._validateAllImages();
                 objUrl.revokeObjectURL($img.attr('src'));
             });
@@ -2464,7 +2464,7 @@
                 $thumb = config.thumb;
                 pid = config.pid;
                 ind = config.ind;
-                params = {id: pid, 'index': ind};
+                params = { id: pid, 'index': ind };
                 if (!self._getResizedImage($img[0], config.typ, pid, ind)) {
                     errFunc(self.msgImageResizeError, params, 'fileimageresizeerror');
                     self._setPreviewError($thumb, ind);
@@ -2554,7 +2554,7 @@
         },
         _createContainer: function () {
             var self = this, $container = $(document.createElement("div"))
-                .attr({"class": 'file-input file-input-new'})
+                .attr({ "class": 'file-input file-input-new' })
                 .html(self._renderMain());
             self.$element.before($container);
             self._initBrowse($container);
@@ -2632,7 +2632,7 @@
         },
         _renderThumbProgress: function () {
             return '<div class="file-thumb-progress hide">' + this.progressTemplate.replace(/\{percent}/g,
-                    '0') + '</div>';
+                '0') + '</div>';
         },
         _renderFileFooter: function (caption, size, width, isError) {
             var self = this, config = self.fileActionSettings, rem = config.showRemove, drg = config.showDrag,
@@ -2720,8 +2720,8 @@
                 files = isDragDrop ? e.originalEvent.dataTransfer.files : $el.get(0).files, ctr = self.filestack.length,
                 isSingleUpload = isEmpty($el.attr('multiple')), flagSingle = (isSingleUpload && ctr > 0), folders = 0,
                 throwError = function (mesg, file, previewId, index) {
-                    var p1 = $.extend(true, {}, self._getOutData({}, {}, files), {id: previewId, index: index}),
-                        p2 = {id: previewId, index: index, file: file, files: files};
+                    var p1 = $.extend(true, {}, self._getOutData({}, {}, files), { id: previewId, index: index }),
+                        p2 = { id: previewId, index: index, file: file, files: files };
                     return self.isUploadable ? self._showUploadError(mesg, p1) : self._showError(mesg, p2);
                 };
             self.reader = null;
@@ -2744,7 +2744,7 @@
             } else {
                 if (e.target.files === undefined) {
                     tfiles = e.target && e.target.value ? [
-                        {name: e.target.value.replace(/^.+\\/, '')}
+                        { name: e.target.value.replace(/^.+\\/, '') }
                     ] : [];
                 } else {
                     tfiles = e.target.files;
@@ -3012,7 +3012,7 @@
                 outData = self._getOutData();
                 self._raise('filebatchpreupload', [outData]);
                 self.fileBatchCompleted = false;
-                self.uploadCache = {content: [], config: [], tags: [], append: true};
+                self.uploadCache = { content: [], config: [], tags: [], append: true };
                 self.uploadAsyncCount = self.getFileStack().length;
                 for (i = 0; i < len; i++) {
                     self.uploadCache.content[i] = null;

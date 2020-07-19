@@ -1,8 +1,34 @@
 
-<i>No of products found {{products.length}}</i>
+ <section>
+  <div class="pagenation-holder">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <i class="breadcrumbs-1">No of products found {{products.length}} </i>
+        </div>
+        <div class="col-md-6">
+          <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">products</a></li>
+            <li class="current"><a href="#">Breadcrumbs</a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
 <section class="section-side-image clearfix">
     <section class="sec-padding">
       <div class="container">
+      <h4 class="uppercase">product tittle</h4>
       <ng-template [ngIf]="products.length>0"[ngIfElse]="noProduct">
       
       <div class="col-md-12">

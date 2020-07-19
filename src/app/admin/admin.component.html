@@ -15,11 +15,10 @@
         <div class="col-md-6">
           <label class="lable-text" for="phone">Select Category</label>
           <div class="select-box-2" Required>
-            <select>
-              <option value=''>Categories</option>
-              <option value='1'>Stationaries</option>
-              <option value='2'>Accessories</option>
-              <option value='3'>Collections</option>
+            <select (click)="getCategory($event.target.value)">
+              <option value='Stationaries'>Stationaries</option>
+              <option value='Accessories'>Accessories</option>
+              <option value='Collections'>Collections</option>
             </select>
           </div>
         </div>
@@ -32,10 +31,11 @@
         <div class="col-md-6">
           <label class="lable-text" for="phone">Select Subcategory</label>
           <div class="select-box-2">
-            <select formControlName="subCategoryName" class="form-control">
-              <option>Categories</option>
-              <option>Option</option>
-              <option>Option</option>
+            <select formControlName="subCategoryName" (click)="getSubCategory($event.target.value)"
+              class="form-control">
+              <option value='Hollywood'>Hollywood</option>
+              <option value="Kollywood">Kollywood</option>
+              <option value="love">Love</option>
             </select>
           </div>
         </div>
@@ -45,8 +45,8 @@
       <div class="row center">
         <div class="col-md-6">
           <label class="lable-text" for="name">Product Name</label>
-          <input id="name" formControlName="productTitle" class="form-control" type="text"
-            placeholder="Enter Product Name" formControlName="name">
+          <input id="name" formControlName="productTitle" [(ngModel)]="title" class="form-control" type="text"
+            placeholder="Enter Product Name">
           <br />
         </div>
       </div>
@@ -81,13 +81,15 @@
       <div class="row">
         <div class="col-md-6">
           <label class="lable-text" for="name">Product Price</label>
-          <input id="Price" class="input-1" type="number" placeholder="Enter product Price" name="Price">
+          <input id="Price" class="input-1" formControlName="price" type="number" placeholder="Enter product Price"
+            name="Price">
           <br />
         </div>
 
         <div class="col-md-6">
           <label class="lable-text" for="name">Product Discount</label>
-          <input id="Price" class="input-1" type="number" placeholder="Enter product discount" name="Discount">
+          <input id="Price" class="input-1" type="number" formControlName="compareAtPriceMin"
+            placeholder="Enter product discount" name="Discount">
           <br />
         </div>
       </div>
@@ -100,7 +102,8 @@
       <div class="row">
         <div class="col-md-6">
           <label class="lable-text" for="name">Product Tags</label>
-          <input id="Tag" class="input-1" type="text" placeholder="Enter product Tags" name="Tags">
+          <input id="Tag" class="input-1" type="text" formControlName="tags" placeholder="Enter product Tags"
+            name="Tags">
           <br />
         </div>
 
@@ -119,7 +122,8 @@
       <div class="row">
         <div class="col-md-3">
           <label class="lable-text" for="color">Select Product color</label>
-          <input id="color" class="input-1" type="color" placeholder="Enter product color" name="color">
+          <input id="color" class="input-1" type="color" formControlName="color" placeholder="Enter product color"
+            name="color">
           <br />
         </div>
       </div>
@@ -131,29 +135,35 @@
         <div class="col-md-5">
 
           <br>
-          &nbsp;<label class="lable-text">Size - S</label> <label class="switch">
-            <input type="checkbox" formControlName="priceVaries" (click)="priceVariesCheck($event.target.checked)"
+          &nbsp;<label class="lable-text">Size - S</label>
+          <input type="hidden" formControlName="size1_name" value="S">
+          <label class="switch">
+            <input type="checkbox" formControlName="size1_available" (click)="priceVariesCheck($event.target.checked)"
               class="form-control" [checked]="true ">
             <span class="slider round"></span>
           </label><br>
           <div class="col-md-6">
+
             <label class="lable-text" for="color">Inventory Quantity</label>
-            <input id="Quantity" class="input-1" type="number" placeholder="Enter product Quantity" name="quantity">
+            <input id="Quantity" class="input-1" formControlName="size1_quantity" type="number"
+              placeholder="Enter product Quantity" name="quantity">
 
           </div>
           <div class="col-md-6">
             <label class="lable-text" for="color">Product Weight</label>
-            <input id="Quantity" class="input-1" type="number" placeholder="Enter product Weight" name="quantity">
+            <input id="Quantity" class="input-1" type="number" formControlName="size1_weight"
+              placeholder="Enter product Weight" name="quantity">
           </div>
 
           <div class="col-md-6">
-            <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVaries">
-              <label class="lable-text" for="color">Price</label>
-              <input id="Quantity" class="input-1" type="number" placeholder="Enter product Price" name="quantity">
-            </ng-template>
+            <!-- <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVaries"> -->
+            <label class="lable-text" for="color">Price</label>
+            <input id="Quantity" class="input-1" formControlName="size1_price" type="number"
+              formControlName="size1_price" placeholder="Enter product Price" name="quantity">
+            <!-- </ng-template>
             <ng-template #noVaries>
               <label class="lable-text" for="color">Price dous not varies</label>
-            </ng-template>
+            </ng-template> -->
           </div>
 
           <hr>
@@ -191,30 +201,33 @@
 
         </div>
       </div>
-    </div>
 
-    {{test}}
 
-    <!--Multi select file-->
 
-    <div class="row">
-      <div class="col-md-12">
-        <div class="form-group">
 
-          <input id="file-2" type="file" multiple class="file" data-upload-url="#" data-overwrite-initial="false"
-            data-min-file-count="3" (change)="uploadFile($event)">
-        </div>
 
+      <div class="form-group">
+        <label for="file">File</label>
+        <input formControlName="file" id="file" type="file" class="form-control" multiple=""
+          (change)="onFileChange($event)">
+        <!-- <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger"> -->
+        <!-- <div *ngIf="f.file.errors.required">File is required.</div> -->
       </div>
     </div>
-    <!--end item-->
-
-
+    <div class="col-md-12">
+      <div class="text-box padding-4 white">
+    <div *ngFor='let url of images' >
+      <img [src]="url" height="150" width="200px">&nbsp;
+      <button (click)="removeImage(url)">delete</button>
+    </div>
+    <button (click)="uploadImageToServer()">Upload image</button>
+</div>
+</div>
     <div class="row">
       <br />
       <div class="col-md-12 text-center">
         <button class="btn btn-dark btn-medium uppercase" type="submit">
-          <i class="fa fa-paper-plane"></i>
+           <i class="fa fa-paper-plane"></i>
           Submit
         </button>
 

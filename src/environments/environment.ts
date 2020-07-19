@@ -7,7 +7,8 @@ export const environment = {
   apiUrl: 'http://localhost:4000',
   userUrl: 'http://localhost:7071/api/ullormerchandise',
   categoryUrl: 'http://localhost:7070/api/ullormerchandise',
-  orderUrl: 'http://localhost:7072/api/ullormerchandise'
+  orderUrl: 'http://localhost:7072/api/ullormerchandise',
+  imageUrl: 'http://localhost:8080/image/upload'
 };
 
 /*

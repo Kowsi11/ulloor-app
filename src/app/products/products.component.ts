@@ -520,6 +520,7 @@ export class ProductsComponent implements OnInit {
                 }
             ],
             "content": "Famous T-shirt"
+            
         }];
 
         this.products = this.productService.convertProductResponse(this.productsResponse, this.productService)

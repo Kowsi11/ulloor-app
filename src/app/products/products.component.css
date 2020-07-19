@@ -41,7 +41,7 @@
 	bottom:5px;
 }
 .sp-feature-box-3:hover .btn.btn-border.light, .sp-feature-box-3.active .btn.btn-border.light{
-	color:#727272;
+	color:#020b0f;
 	border:2px solid #101010;
 	background-color:#101010;
 }
@@ -186,3 +186,4 @@
     border-color: #949191;
     
 }
+
