@@ -23,6 +23,9 @@ export class AdminComponent implements OnInit {
   title: string
 
   category: string;
+  collectionCheck: Boolean = false;
+  accessoriesCheck: Boolean = false;
+  stationariesCheck: Boolean = false;
   constructor(public formBuilder: FormBuilder, private http: HttpClient, private productService: ProductService) {
 
     this.form = this.formBuilder.group({
@@ -78,6 +81,19 @@ export class AdminComponent implements OnInit {
   }
   getCategory(value) {
     this.category = value
+    if (this.category === 'collections') {
+      this.collectionCheck = true
+      this.stationariesCheck = false
+      this.accessoriesCheck = false
+    } else if (this.category === 'stationaries') {
+      this.collectionCheck = false
+      this.stationariesCheck = true
+      this.accessoriesCheck = false
+    } else if (this.category === 'accessories') {
+      this.collectionCheck = false
+      this.stationariesCheck = false
+      this.accessoriesCheck = true
+    }
   }
   getSubCategory(value) {
     this.subCategory = value
