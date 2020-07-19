@@ -16,9 +16,9 @@
           <label class="lable-text" for="phone">Select Category</label>
           <div class="select-box-2" Required>
             <select (click)="getCategory($event.target.value)">
-              <option value='Stationaries'>Stationaries</option>
-              <option value='Accessories'>Accessories</option>
-              <option value='Collections'>Collections</option>
+              <option value='stationaries'>Stationaries</option>
+              <option value='accessories'>Accessories</option>
+              <option value='collections'>Collections</option>
             </select>
           </div>
         </div>
@@ -33,8 +33,8 @@
           <div class="select-box-2">
             <select formControlName="subCategoryName" (click)="getSubCategory($event.target.value)"
               class="form-control">
-              <option value='Hollywood'>Hollywood</option>
-              <option value="Kollywood">Kollywood</option>
+              <option value='hollywood'>Hollywood</option>
+              <option value="kollywood">Kollywood</option>
               <option value="love">Love</option>
             </select>
           </div>
@@ -129,90 +129,365 @@
       </div>
       <hr>
       <!--Size-->
-      <div class="row">
-        &nbsp;&nbsp;&nbsp;<label class="lable-text" for="color" style="text-align: center;">Select Varient
-          Size</label>
-        <div class="col-md-5">
+      <ng-template [ngIf]="collectionCheck">
+        <div class="row">
+          &nbsp;&nbsp;&nbsp;<label class="lable-text" for="color" style="text-align: center;">Select Varient
+            Size</label>
 
-          <br>
-          &nbsp;<label class="lable-text">Size - S</label>
-          <input type="hidden" formControlName="size1_name" value="S">
-          <label class="switch">
-            <input type="checkbox" formControlName="size1_available" (click)="priceVariesCheck($event.target.checked)"
-              class="form-control" [checked]="true ">
-            <span class="slider round"></span>
-          </label><br>
-          <div class="col-md-6">
+          <div class="col-md-5">
+            <div class="custom-control custom-switch">
+              <input type="checkbox" class="custom-control-input" id="switch1" name="example">
+              <label class="custom-control-label" for="switch1">Toggle me</label>
+            </div>
+            <br>
+            &nbsp;<label class="lable-text">Size - S</label>
+            <input type="hidden" formControlName="size1_name" value="S">
+            <label class="switch">
+              <input type="checkbox" formControlName="size1_available" (click)="priceVariesCheck($event.target.checked)"
+                class="form-control" [checked]="true ">
+              <span class="slider round"></span>
+            </label><br>
+            <div class="col-md-6">
 
-            <label class="lable-text" for="color">Inventory Quantity</label>
-            <input id="Quantity" class="input-1" formControlName="size1_quantity" type="number"
-              placeholder="Enter product Quantity" name="quantity">
+              <label class="lable-text" for="color">Inventory Quantity</label>
+              <input id="Quantity" class="input-1" formControlName="size1_quantity" type="number"
+                placeholder="Enter product Quantity" name="quantity">
 
-          </div>
-          <div class="col-md-6">
-            <label class="lable-text" for="color">Product Weight</label>
-            <input id="Quantity" class="input-1" type="number" formControlName="size1_weight"
-              placeholder="Enter product Weight" name="quantity">
-          </div>
+            </div>
+            <div class="col-md-6">
+              <label class="lable-text" for="color">Product Weight</label>
+              <input id="Quantity" class="input-1" type="number" formControlName="size1_weight"
+                placeholder="Enter product Weight" name="quantity">
+            </div>
 
-          <div class="col-md-6">
-            <!-- <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVaries"> -->
-            <label class="lable-text" for="color">Price</label>
-            <input id="Quantity" class="input-1" formControlName="size1_price" type="number"
-              formControlName="size1_price" placeholder="Enter product Price" name="quantity">
-            <!-- </ng-template>
+            <div class="col-md-6">
+              <!-- <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVaries"> -->
+              <label class="lable-text" for="color">Price</label>
+              <input id="Quantity" class="input-1" formControlName="size1_price" type="number"
+                formControlName="size1_price" placeholder="Enter product Price" name="quantity">
+              <!-- </ng-template>
             <ng-template #noVaries>
               <label class="lable-text" for="color">Price dous not varies</label>
             </ng-template> -->
+            </div>
+
+            <hr>
+            <br>
+
+
           </div>
-
-          <hr>
-          <br>
-
-
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-5">
+        <div class="row">
+          <div class="col-md-5">
 
-          <br>
-          &nbsp;<label class="lable-text">Size - M</label><br>
-          <div class="col-md-6">
-            <label class="lable-text" for="color">Inventory Quantity</label>
-            <input id="Quantity" class="input-1" type="number" placeholder="Enter product Quantity" name="quantity">
+            <br>
+            &nbsp;<label class="lable-text">Size - M</label><br>
+            <div class="col-md-6">
+              <label class="lable-text" for="color">Inventory Quantity</label>
+              <input id="Quantity" class="input-1" type="number" placeholder="Enter product Quantity" name="quantity">
+
+            </div>
+            <div class="col-md-6">
+              <label class="lable-text" for="color">Product Weight</label>
+              <input id="Quantity" class="input-1" type="number" placeholder="Enter product Weight" name="quantity">
+            </div>
+
+            <div class="col-md-6">
+              <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVaries">
+                <label class="lable-text" for="color">Price</label>
+                <input id="Quantity" class="input-1" type="number" placeholder="Enter product Price" name="quantity">
+              </ng-template>
+              <ng-template #noVaries>
+                <label class="lable-text" for="color">Price dous not varies</label>
+              </ng-template>
+            </div>
+            <br>
+
 
           </div>
-          <div class="col-md-6">
-            <label class="lable-text" for="color">Product Weight</label>
-            <input id="Quantity" class="input-1" type="number" placeholder="Enter product Weight" name="quantity">
-          </div>
+        </div>
 
-          <div class="col-md-6">
-            <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVaries">
+        <div class="row">
+          <div class="col-md-5">
+
+            <br>
+            &nbsp;<label class="lable-text">Size - L</label><br>
+            <div class="col-md-6">
+              <label class="lable-text" for="color">Inventory Quantity</label>
+              <input id="Quantity" class="input-1" type="number" placeholder="Enter product Quantity" name="quantity">
+
+            </div>
+            <div class="col-md-6">
+              <label class="lable-text" for="color">Product Weight</label>
+              <input id="Quantity" class="input-1" type="number" placeholder="Enter product Weight" name="quantity">
+            </div>
+
+            <div class="col-md-6">
+              <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVaries">
+                <label class="lable-text" for="color">Price</label>
+                <input id="Quantity" class="input-1" type="number" placeholder="Enter product Price" name="quantity">
+              </ng-template>
+              <ng-template #noVaries>
+                <label class="lable-text" for="color">Price dous not varies</label>
+              </ng-template>
+            </div>
+            <br>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+
+            <br>
+            &nbsp;<label class="lable-text">Size - XL</label><br>
+            <div class="col-md-6">
+              <label class="lable-text" for="color">Inventory Quantity</label>
+              <input id="Quantity" class="input-1" type="number" placeholder="Enter product Quantity" name="quantity">
+
+            </div>
+            <div class="col-md-6">
+              <label class="lable-text" for="color">Product Weight</label>
+              <input id="Quantity" class="input-1" type="number" placeholder="Enter product Weight" name="quantity">
+            </div>
+
+            <div class="col-md-6">
+              <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVaries">
+                <label class="lable-text" for="color">Price</label>
+                <input id="Quantity" class="input-1" type="number" placeholder="Enter product Price" name="quantity">
+              </ng-template>
+              <ng-template #noVaries>
+                <label class="lable-text" for="color">Price dous not varies</label>
+              </ng-template>
+            </div>
+            <br>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+
+            <br>
+            &nbsp;<label class="lable-text">Size - XXL</label><br>
+            <div class="col-md-6">
+              <label class="lable-text" for="color">Inventory Quantity</label>
+              <input id="Quantity" class="input-1" type="number" placeholder="Enter product Quantity" name="quantity">
+
+            </div>
+            <div class="col-md-6">
+              <label class="lable-text" for="color">Product Weight</label>
+              <input id="Quantity" class="input-1" type="number" placeholder="Enter product Weight" name="quantity">
+            </div>
+
+            <div class="col-md-6">
+              <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVaries">
+                <label class="lable-text" for="color">Price</label>
+                <input id="Quantity" class="input-1" type="number" placeholder="Enter product Price" name="quantity">
+              </ng-template>
+              <ng-template #noVaries>
+                <label class="lable-text" for="color">Price dous not varies</label>
+              </ng-template>
+            </div>
+            <br>
+          </div>
+        </div>
+      </ng-template>
+
+
+
+
+      <!--Size-->
+      <ng-template [ngIf]="stationariesCheck">
+        <div class="row">
+          &nbsp;&nbsp;&nbsp;<label class="lable-text" for="color" style="text-align: center;">Select Varient
+            Size</label>
+
+          <div class="col-md-5">
+            <div class="custom-control custom-switch">
+              <input type="checkbox" class="custom-control-input" id="switch1" name="example">
+              <label class="custom-control-label" for="switch1">Toggle me</label>
+            </div>
+            <br>
+            &nbsp;<label class="lable-text">Size - A2</label>
+            <input type="hidden" formControlName="size1_name" value="S">
+            <label class="switch">
+              <input type="checkbox" formControlName="size1_available" (click)="priceVariesCheck($event.target.checked)"
+                class="form-control" [checked]="true ">
+              <span class="slider round"></span>
+            </label><br>
+            <div class="col-md-6">
+
+              <label class="lable-text" for="color">Inventory Quantity</label>
+              <input id="Quantity" class="input-1" formControlName="size1_quantity" type="number"
+                placeholder="Enter product Quantity" name="quantity">
+
+            </div>
+            <div class="col-md-6">
+              <label class="lable-text" for="color">Product Weight</label>
+              <input id="Quantity" class="input-1" type="number" formControlName="size1_weight"
+                placeholder="Enter product Weight" name="quantity">
+            </div>
+
+            <div class="col-md-6">
+              <!-- <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVaries"> -->
               <label class="lable-text" for="color">Price</label>
-              <input id="Quantity" class="input-1" type="number" placeholder="Enter product Price" name="quantity">
-            </ng-template>
-            <ng-template #noVaries>
-              <label class="lable-text" for="color">Price dous not varies</label>
-            </ng-template>
+              <input id="Quantity" class="input-1" formControlName="size1_price" type="number"
+                formControlName="size1_price" placeholder="Enter product Price" name="quantity">
+              <!-- </ng-template>
+                <ng-template #noVaries>
+                  <label class="lable-text" for="color">Price dous not varies</label>
+                </ng-template> -->
+            </div>
+
+            <hr>
+            <br>
+
+
           </div>
-          <br>
+          <div class="col-md-5">
+            <div class="custom-control custom-switch">
+              <input type="checkbox" class="custom-control-input" id="switch1" name="example">
+              <label class="custom-control-label" for="switch1">Toggle me</label>
+            </div>
+            <br>
+            &nbsp;<label class="lable-text">Size - A3</label>
+            <input type="hidden" formControlName="size1_name" value="S">
+            <label class="switch">
+              <input type="checkbox" formControlName="a3_available" (click)="priceVariesCheck($event.target.checked)"
+                class="form-control" [checked]="true ">
+              <span class="slider round"></span>
+            </label><br>
+            <div class="col-md-6">
+
+              <label class="lable-text" for="color">Inventory Quantity</label>
+              <input id="Quantity" class="input-1" formControlName="a3_quantity" type="number"
+                placeholder="Enter product Quantity" name="quantity">
+
+            </div>
+            <div class="col-md-6">
+              <label class="lable-text" for="color">Product Weight</label>
+              <input id="Quantity" class="input-1" type="number" formControlName="a3_weight"
+                placeholder="Enter product Weight" name="quantity">
+            </div>
+
+            <div class="col-md-6">
+              <!-- <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVaries"> -->
+              <label class="lable-text" for="color">Price</label>
+              <input id="Quantity" class="input-1" formControlName="a3_price" type="number"
+                placeholder="Enter product Price" name="quantity">
+              <!-- </ng-template>
+                      <ng-template #noVaries>
+                        <label class="lable-text" for="color">Price dous not varies</label>
+                      </ng-template> -->
+            </div>
+
+            <hr>
+            <br>
 
 
+          </div>
+
+          <div class="col-md-5">
+            <div class="custom-control custom-switch">
+              <input type="checkbox" class="custom-control-input" id="switch1" name="example">
+              <label class="custom-control-label" for="switch1">Toggle me</label>
+            </div>
+            <br>
+            &nbsp;<label class="lable-text">Size - A5</label>
+            <input type="hidden" formControlName="size1_name" value="S">
+            <label class="switch">
+              <input type="checkbox" formControlName="a5_available" (click)="priceVariesCheck($event.target.checked)"
+                class="form-control" [checked]="true ">
+              <span class="slider round"></span>
+            </label><br>
+            <div class="col-md-6">
+
+              <label class="lable-text" for="color">Inventory Quantity</label>
+              <input id="Quantity" class="input-1" formControlName="a5_quantity" type="number"
+                placeholder="Enter product Quantity" name="quantity">
+
+            </div>
+            <div class="col-md-6">
+              <label class="lable-text" for="color">Product Weight</label>
+              <input id="Quantity" class="input-1" type="number" formControlName="a5_weight"
+                placeholder="Enter product Weight" name="quantity">
+            </div>
+
+            <div class="col-md-6">
+              <!-- <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVaries"> -->
+              <label class="lable-text" for="color">Price</label>
+              <input id="Quantity" class="input-1" formControlName="a5_price" type="number"
+                placeholder="Enter product Price" name="quantity">
+              <!-- </ng-template>
+                            <ng-template #noVaries>
+                              <label class="lable-text" for="color">Price dous not varies</label>
+                            </ng-template> -->
+            </div>
+
+            <hr>
+            <br>
+
+
+          </div>
         </div>
-      </div>
+      </ng-template>
+      <!--Size-->
+      <ng-template [ngIf]="accessoriesCheck">
+        <div class="row">
+          &nbsp;&nbsp;&nbsp;<label class="lable-text" for="color" style="text-align: center;">Select Varient
+            Size</label>
+
+          <div class="col-md-5">
+            <div class="custom-control custom-switch">
+              <input type="checkbox" class="custom-control-input" id="switch1" name="example">
+              <label class="custom-control-label" for="switch1">Toggle me</label>
+            </div>
+            <br>
+            &nbsp;<label class="lable-text">Size - Default</label>
+            <input type="hidden" formControlName="size1_name" value="S">
+            <label class="switch">
+              <input type="checkbox" formControlName="default_available"
+                (click)="priceVariesCheck($event.target.checked)" class="form-control" [checked]="true ">
+              <span class="slider round"></span>
+            </label><br>
+            <div class="col-md-6">
+
+              <label class="lable-text" for="color">Inventory Quantity</label>
+              <input id="Quantity" class="input-1" formControlName="default_quantity" type="number"
+                placeholder="Enter product Quantity" name="quantity">
+
+            </div>
+            <div class="col-md-6">
+              <label class="lable-text" for="color">Product Weight</label>
+              <input id="Quantity" class="input-1" type="number" formControlName="default_weight"
+                placeholder="Enter product Weight" name="quantity">
+            </div>
+
+            <div class="col-md-6">
+              <!-- <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVaries"> -->
+              <label class="lable-text" for="color">Price</label>
+              <input id="Quantity" class="input-1" formControlName="default_price" type="number"
+                formControlName="default_price" placeholder="Enter product Price" name="quantity">
+              <!-- </ng-template>
+                    <ng-template #noVaries>
+                      <label class="lable-text" for="color">Price dous not varies</label>
+                    </ng-template> -->
+            </div>
+
+            <hr>
+            <br>
 
 
+          </div>
+        </div>
+
+      </ng-template>
+    </div>
 
 
-
-      <div class="form-group">
-        <label for="file">File</label>
-        <input formControlName="file" id="file" type="file" class="form-control" multiple=""
-          (change)="onFileChange($event)">
-        <!-- <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger"> -->
-        <!-- <div *ngIf="f.file.errors.required">File is required.</div> -->
-      </div>
+    <div class="form-group">
+      <label for="file">File</label>
+      <input formControlName="file" id="file" type="file" class="form-control" multiple=""
+        (change)="onFileChange($event)">
+      <!-- <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger"> -->
+      <!-- <div *ngIf="f.file.errors.required">File is required.</div> -->
     </div>
     <div class="col-md-12">
       <div class="text-box padding-4 white">
