@@ -35,20 +35,20 @@
       <div  *ngFor="let product of products | paginate: config" >
       <div class="col-md-4 col-sm-6 col-xs-12">
         <div class="sp-feature-box-3 margin-bottom">
-          <div class="img-box"> <a routerLink="product/view/{{product.handle}}" class="view-btn uppercase">View</a>
-            <div class="badge">Hot</div>
+          <!-- <div class="img-box"> <a routerLink="product/view/{{product.handle}}" class="view-btn uppercase">View</a>
+            <div class="badge">Hot</div> -->
 			<!-- <div class="carousel-inner">
 			 <div class="item" *ngFor="let image of product.images">-->
-            <img src='{{product.featuredImage}}' alt="" width="350" height="450" /> 
-			<!--</div>
+            <img src="assets/images/sp-23.jpg" alt="" width="350" height="350" /> 
+			<!--'{{product.featuredImage}}' </div>
 			</div>-->
-		</div>  
+		
           <div class="clearfix"></div>
           <br/>
-          <h4 class="less-mar-1">{{product.title}}</h4>
-          <p>{{product.description}}</p
-><!-- <label class="uppercase">Prize : </label> -->
-          <h5 class="text-primary">Rs.{{product.price}}</h5>
+          <h4 class="less-mar-1" style="text-align:center;">{{product.title}}</h4>
+          <!-- <p>{{product.description}}</p -->
+<!-- <label class="uppercase">Prize : </label> -->
+          <h4 class="text-primary" style="text-align:center;">Rs.{{product.price}}</h4>
           <form class="form">
             <label class="uppercase"></label>
             <div class="switch-field">
@@ -59,8 +59,8 @@
                </div> 
         </form>  
           
-         <ng-template [ngIf]="product.selectedVarient==null"[ngIfElse]="selected"> 
-            <button  class="btn btn-medium btn-cyan btn-anim-3 uppercase xround-7">
+        <ng-template [ngIf]="product.selectedVarient==null"[ngIfElse]="selected"> 
+            <button  class="btn btn-medium btn-cyan btn-anim-3 uppercase xround-7" style="align-content:center;">
               Select Size
           </button>
         </ng-template>
