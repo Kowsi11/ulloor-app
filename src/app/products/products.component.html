@@ -1,5 +1,4 @@
-
- <section>
+<section>
   <div class="pagenation-holder">
     <div class="container">
       <div class="row">
@@ -26,69 +25,80 @@
 
 
 <section class="section-side-image clearfix">
-    <section class="sec-padding">
-      <div class="container">
+  <section class="sec-padding">
+    <div class="container">
       <h4 class="uppercase">product tittle</h4>
-      <ng-template [ngIf]="products.length>0"[ngIfElse]="noProduct">
-      
-      <div class="col-md-12">
-      <div  *ngFor="let product of products | paginate: config" >
-      <div class="col-md-4 col-sm-6 col-xs-12">
-        <div class="sp-feature-box-3 margin-bottom">
-          <!-- <div class="img-box"> <a routerLink="product/view/{{product.handle}}" class="view-btn uppercase">View</a>
-            <div class="badge">Hot</div> -->
-			<!-- <div class="carousel-inner">
-			 <div class="item" *ngFor="let image of product.images">-->
-            <img src="assets/images/sp-23.jpg" alt="" width="350" height="350" /> 
-			<!--'{{product.featuredImage}}' </div>
-			</div>-->
-		
-          <div class="clearfix"></div>
-          <br/>
-          <h4 class="less-mar-1" style="text-align:center;">{{product.title}}</h4>
-          <!-- <p>{{product.description}}</p -->
-<!-- <label class="uppercase">Prize : </label> -->
-          <h4 class="text-primary" style="text-align:center;">Rs.{{product.price}}</h4>
-          <form class="form">
-            <label class="uppercase"></label>
-            <div class="switch-field">
-              <div  *ngFor="let order of product.sizePriceIdList"  > 
-                <input  type="radio"  name="switch-two" [value]="order.id" [id]="order.id" (change)="product.selectedVarient = onSizeChange($event.target.value,product.priceVaries)" />
-               <label for="{{order.id}}"> {{order.size}}</label>&nbsp;
-               </div>
-               </div> 
-        </form>  
-          
-        <ng-template [ngIf]="product.selectedVarient==null"[ngIfElse]="selected"> 
-            <button  class="btn btn-medium btn-cyan btn-anim-3 uppercase xround-7" style="align-content:center;">
-              Select Size
-          </button>
-        </ng-template>
-        <ng-template #selected>
-          <a class="btn btn-medium btn-primary btn-anim-3 uppercase xround-7" href="javascript:void(0)" (click)="addToCart(product.handle,product.selectedVarient,1)">Add to cart</a> 
-        </ng-template>
-         </div>
-      </div>
-      </div>
-      </div>
-      
-      
-    
+      <ng-template [ngIf]="products.length>0" [ngIfElse]="noProduct">
+
+        <div class="col-md-12" style="padding-top: 40px;">
+          <div *ngFor="let product of products | paginate: config">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+              <div class="ce-feature-box-7 margin-bottom">
+                <!-- <div class="img-box"> <a routerLink="product/view/{{product.handle}}" class="view-btn uppercase">View</a>
+                <div class="badge">Hot</div> -->
+                <!-- <div class="carousel-inner">
+			          <div class="item" *ngFor="let image of product.images">-->
+                <img src="assets/images/sp-23.jpg" alt="" width="350" height="350" class="img-responsive" />
+                <!--'{{product.featuredImage}}' </div>
+			          </div>-->
+
+                <div class="clearfix"></div>
+                <br />
+                <h4 class="less-mar-1" style="text-align:center;">{{product.title}}</h4>
+                <!-- <p>{{product.description}}</p -->
+                <!-- <label class="uppercase">Prize : </label> -->
+
+
+
+
+                <div class="text-primary" style="text-align:center;">Rs.{{product.price}}</div>
+                <div class="switch-field">
+                  <h4 class="less-mar-1" style="text-align:center;"> </h4>
+                  <div *ngFor="let order of product.sizePriceIdList">
+                    <input type="radio" name="switch-two" [value]="order.id" [id]="order.id"
+                      (change)="product.selectedVarient = onSizeChange($event.target.value,product.priceVaries)" />
+                    <label for="{{order.id}}"> {{order.size}}</label>&nbsp;
+                  </div>
+                </div>
+
+
+                <ng-template [ngIf]="product.selectedVarient==null" [ngIfElse]="selected">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <a class="selectsize btn btn-anim-3 uppercase" style="align-content:center;align-self: center;"
+                    href="javascript:void(0)">
+                   select size
+                  </a>
+
+                </ng-template>
+                <ng-template #selected>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <a class="addtocart btn btn-anim-3 uppercase " href="javascript:void(0)"
+                    (click)="addToCart(product.handle,product.selectedVarient,1)"><span
+                      class="fa fa-shopping-cart"></span>&nbsp;Add to cart</a>
+                </ng-template><br> <br>
+              </div>
+              <div style="padding-top: 50px;">&nbsp;</div>
+            </div>
+          </div>
+        </div>
+
+
+
       </ng-template>
       <ng-template #noProduct>
-        <br><br>Ther is no product 
+        <br><br>Ther is no product
       </ng-template>
-      </div>
-      </section>
-    <div class="clearfix"></div>
-      <!-- end section  (click)="product.description=onSizeChange($event.target.value)"  (change)="onQuantityChange($event.target.value)"/-->
-      
-    
-    
+    </div>
   </section>
-  
+  <div class="clearfix"></div>
+  <!-- end section  (click)="product.description=onSizeChange($event.target.value)"  (change)="onQuantityChange($event.target.value)"/-->
 
-  <!--<div style="text-align:center">
+
+
+</section>
+
+
+<!--<div style="text-align:center">
     <h4>
       Basic Pagination
     </h4>
@@ -106,21 +116,10 @@
           <td>{{item.value}}</td>
         </tr>
       </tbody>
-    </table>--> 
-    
-    <pagination-controls 
-                         [maxSize]="maxSize"
-                         [directionLinks]="directionLinks"
-                         [autoHide]="autoHide"
-                         [responsive]="responsive"
-                         [previousLabel]="labels.previousLabel"
-                         [nextLabel]="labels.nextLabel"
-                         [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
-                         [screenReaderPageLabel]="labels.screenReaderPageLabel"
-                         [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel"
-                         (pageChange)="onPageChange($event)"></pagination-controls>
+    </table>-->
 
-  
-  
-
-
+<pagination-controls [maxSize]="maxSize" [directionLinks]="directionLinks" [autoHide]="autoHide"
+  [responsive]="responsive" [previousLabel]="labels.previousLabel" [nextLabel]="labels.nextLabel"
+  [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
+  [screenReaderPageLabel]="labels.screenReaderPageLabel" [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel"
+  (pageChange)="onPageChange($event)"></pagination-controls>

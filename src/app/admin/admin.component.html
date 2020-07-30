@@ -22,12 +22,7 @@
             </select>
           </div>
         </div>
-      </div>
-      <!-- end row -->
-      <br>
-      <!--Sub category-->
-
-      <div class="row center">
+         <!--Sub category-->
         <div class="col-md-6">
           <label class="lable-text" for="phone">Select Subcategory</label>
           <div class="select-box-2">
@@ -40,6 +35,11 @@
           </div>
         </div>
       </div>
+      <!-- end row -->
+      <br>
+     
+
+      
       <br>
       <!--Product Name-->
       <div class="row center">
@@ -49,33 +49,41 @@
             placeholder="Enter Product Name">
           <br />
         </div>
-      </div>
-      <!--Product description-->
-
-      <div class="row">
         <div class="col-md-6">
           <label class="lable-text" for="message">Product Description</label>
           <textarea id="comment" formControlName="description" class="form-control" placeholder="Enter your message"
             name="message"></textarea>
         </div>
       </div>
+      <!--Product description-->
+
+      
       <div class="row">
-        <div class="col-md-6">
-          <label class="lable-text" for="name" style="align-items: center;">Price Varies</label>
+        <div class="col-md-12">
+          <div class="col-md-6">
+          <label class="lable-text" for="priceVaries">Price Varies </label>
+        </div>
+        <div class="col-md-4">
           <label class="switch">
-            <input type="checkbox" formControlName="priceVaries" (click)="priceVariesCheck($event.target.checked)"
+            &nbsp; <input type="checkbox" formControlName="priceVaries" (click)="priceVariesCheck($event.target.checked)"
               class="form-control" [checked]="priceVariesBoolean">
             <span class="slider round"></span>
           </label>{{priceVariesBoolean}}
         </div>
-        <div class="col-md-6">
+
+
+          <div class="col-md-6">
           <label class="lable-text" for="name" style="align-items: center;">Compare Price</label>
+        </div>   
+
+        <div class="col-md-6">
           <label class="switch">
             <input type="checkbox" formControlName="compareAtPriceVaries" class="form-control"
               [checked]="compareAtPriceCheck" (click)="compareAtPriceVaries($event.target.checked)">
             <span class="slider round"></span>
           </label>{{getcompareAtPriceVaries()}}
         </div>
+      </div>
       </div>
       <!--Price and Discount-->
       <div class="row">
