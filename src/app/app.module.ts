@@ -36,6 +36,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AdminComponent } from './admin/admin.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 
 
@@ -61,7 +63,8 @@ import { AdminComponent } from './admin/admin.component';
     HomeBannersComponent,
     TestimonialsComponent,
     CheckoutComponent,
-    AdminComponent
+    AdminComponent,
+
 
 
   ],
@@ -75,7 +78,9 @@ import { AdminComponent } from './admin/admin.component';
     HttpClientModule,
     BrowserAnimationsModule,
     NgbModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatRadioModule,
+    MatSlideToggleModule
 
 
 

@@ -1,5 +1,7 @@
 <div class="container">
 
+
+
   <div class="col-md-12 text-center">
     <h4 class="uppercase">Upload Products Here</h4>
   </div>
@@ -33,9 +35,9 @@
           <div class="select-box-2">
             <select formControlName="subCategoryName" (click)="getSubCategory($event.target.value)"
               class="form-control">
-              <option value='hollywood'>Hollywood</option>
-              <option value="kollywood">Kollywood</option>
-              <option value="love">Love</option>
+              <ng-template ngFor [ngForOf]="subCategories" let-subCategory>
+                <option value='{{subCategory.handle}}'>{{subCategory.name}}</option>
+              </ng-template>
             </select>
           </div>
         </div>
@@ -59,14 +61,18 @@
             name="message"></textarea>
         </div>
       </div>
+
       <div class="row">
         <div class="col-md-6">
           <label class="lable-text" for="name" style="align-items: center;">Price Varies</label>
-          <label class="switch">
+          <mat-slide-toggle (click)="priceVariesCheck(priceVariesBoolean)" [checked]="false">
+          </mat-slide-toggle>
+          {{priceVariesBoolean}}
+          <!-- <label class="switch">
             <input type="checkbox" formControlName="priceVaries" (click)="priceVariesCheck($event.target.checked)"
-              class="form-control" [checked]="priceVariesBoolean">
+              [checked]="priceVariesBoolean" style="padding-bottom: 20px;">
             <span class="slider round"></span>
-          </label>{{priceVariesBoolean}}
+          </label>{{priceVariesBoolean}} -->
         </div>
         <div class="col-md-6">
           <label class="lable-text" for="name" style="align-items: center;">Compare Price</label>
@@ -142,7 +148,7 @@
             <br>
             &nbsp;<label class="lable-text">Size - S</label>
             <input type="hidden" formControlName="size1_name" value="S">
-            <label class="switch">
+            Available :<label class="switch">
               <input type="checkbox" formControlName="size1_available" (click)="priceVariesCheck($event.target.checked)"
                 class="form-control" [checked]="true ">
               <span class="slider round"></span>
@@ -307,7 +313,7 @@
             <br>
             &nbsp;<label class="lable-text">Size - A2</label>
             <input type="hidden" formControlName="size1_name" value="S">
-            <label class="switch">
+            Available :<label class="switch">
               <input type="checkbox" formControlName="size1_available" (click)="priceVariesCheck($event.target.checked)"
                 class="form-control" [checked]="true ">
               <span class="slider round"></span>
@@ -349,7 +355,7 @@
             <br>
             &nbsp;<label class="lable-text">Size - A3</label>
             <input type="hidden" formControlName="size1_name" value="S">
-            <label class="switch">
+            Available :<label class="switch">
               <input type="checkbox" formControlName="a3_available" (click)="priceVariesCheck($event.target.checked)"
                 class="form-control" [checked]="true ">
               <span class="slider round"></span>
@@ -392,7 +398,7 @@
             <br>
             &nbsp;<label class="lable-text">Size - A5</label>
             <input type="hidden" formControlName="size1_name" value="S">
-            <label class="switch">
+            Available :<label class="switch">
               <input type="checkbox" formControlName="a5_available" (click)="priceVariesCheck($event.target.checked)"
                 class="form-control" [checked]="true ">
               <span class="slider round"></span>
@@ -435,14 +441,11 @@
             Size</label>
 
           <div class="col-md-5">
-            <div class="custom-control custom-switch">
-              <input type="checkbox" class="custom-control-input" id="switch1" name="example">
-              <label class="custom-control-label" for="switch1">Toggle me</label>
-            </div>
+
             <br>
             &nbsp;<label class="lable-text">Size - Default</label>
             <input type="hidden" formControlName="size1_name" value="S">
-            <label class="switch">
+            Available : <label class="switch">
               <input type="checkbox" formControlName="default_available"
                 (click)="priceVariesCheck($event.target.checked)" class="form-control" [checked]="true ">
               <span class="slider round"></span>

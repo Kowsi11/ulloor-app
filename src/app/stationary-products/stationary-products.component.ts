@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppSubCategoryHandle } from '@app/_models/product/AppSubCategoryHandle';
 
 @Component({
   selector: 'app-stationary-products',
@@ -12,14 +13,11 @@ export class StationaryProductsComponent implements OnInit {
 
   constructor() { }
 
-  
-  ngOnInit() {
-      // an example array of 150 items to be paged
-      this.items = Array(150).fill(0).map((x, i) => ({ id: (i + 1), name: `Item ${i + 1}`}));
-  }
+  NotePad = AppSubCategoryHandle.Notepad;
+  Stickers = AppSubCategoryHandle.Stickers;
+  A3_Posters = AppSubCategoryHandle.A3Posters;
 
-  onChangePage(pageOfItems: Array<any>) {
-      // update current page of items
-      this.pageOfItems = pageOfItems;
+  ngOnInit() {
+
   }
 }

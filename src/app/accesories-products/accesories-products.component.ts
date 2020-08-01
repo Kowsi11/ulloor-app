@@ -1,22 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { AppSubCategoryId } from '@app/_models/product/AppSubCategoryId';
-import { SubCategory } from '@app/_models/product/SubCategory';
+import { AppSubCategoryHandle } from '@app/_models/product/AppSubCategoryHandle';
 @Component({
   selector: 'app-accesories-products',
   templateUrl: './accesories-products.component.html',
   styleUrls: ['./accesories-products.component.css']
 })
 export class AccesoriesProductsComponent implements OnInit {
-  
-  Wristbands=AppSubCategoryId.Wristbands;
-  Mugs=AppSubCategoryId.Mugs;
 
-  Keychains= AppSubCategoryId.Keychains;
-  Mobilecase= AppSubCategoryId.Mobilecase;
-  PinBadges=AppSubCategoryId.PinBadges;
-  PopSockets= AppSubCategoryId.PopSockets;
+  Wristbands = AppSubCategoryHandle.Wristbands;
+  Mugs = AppSubCategoryHandle.Mugs;
+
+  Keychains = AppSubCategoryHandle.Keychains;
+  Mobilecase = AppSubCategoryHandle.Mobilecase;
+  PinBadges = AppSubCategoryHandle.PinBadges;
+  PopSockets = AppSubCategoryHandle.PopSockets;
+  photoFrames = AppSubCategoryHandle.PhotoFrames
   constructor() { }
-  
+
   ngOnInit(): void {
   }
 
