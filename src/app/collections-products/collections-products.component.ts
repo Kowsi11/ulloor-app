@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppSubCategoryId } from '@app/_models/product/AppSubCategoryId';
+import { AppSubCategoryHandle } from '@app/_models/product/AppSubCategoryHandle';
 
 @Component({
   selector: 'app-collections-products',
@@ -8,16 +8,16 @@ import { AppSubCategoryId } from '@app/_models/product/AppSubCategoryId';
 })
 export class CollectionsProductsComponent implements OnInit {
 
-  
-  Hollywood= AppSubCategoryId.Hollywood;
-  Kollywood=AppSubCategoryId.Kollywood;
-  ChennaiMania= AppSubCategoryId.ChennaiMania;
-  Couple=AppSubCategoryId.Couple;
-  Friendship= AppSubCategoryId.Friendship;
-  
+
+  Hollywood = AppSubCategoryHandle.Hollywood;
+  Kollywood = AppSubCategoryHandle.Kollywood;
+  ChennaiMania = AppSubCategoryHandle.ChennaiMania;
+  Couple = AppSubCategoryHandle.Couple;
+  Friendship = AppSubCategoryHandle.Friendship;
+
   constructor() { }
 
   ngOnInit(): void {
   }
- 
+
 }

@@ -38,6 +38,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ProducteditComponent } from './admin/productedit/productedit.component';
 import { AdminComponent } from './admin/admin.component';
 import { ProductlistComponent } from './admin/productlist/productlist.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 
 
@@ -79,7 +81,9 @@ import { ProductlistComponent } from './admin/productlist/productlist.component'
     HttpClientModule,
     BrowserAnimationsModule,
     NgbModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatRadioModule,
+    MatSlideToggleModule
 
 
 

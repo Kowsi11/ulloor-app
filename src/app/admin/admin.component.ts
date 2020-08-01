@@ -4,7 +4,9 @@ import { HttpClient } from '@angular/common/http';
 import { Media } from '@app/_models/newProduct/Media';
 import { ImageDomain } from '@app/_models/ImageDomain';
 import { title } from 'process';
+import { MatRadioModule } from '@angular/material/radio';
 import { ProductService } from '@app/_services/product.service';
+import { CategoryHandle, SubCategoryValue } from '@app/_models/product/Category';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -13,6 +15,7 @@ import { ProductService } from '@app/_services/product.service';
 export class AdminComponent implements OnInit {
 
 
+  subCategories: CategoryHandle[] = [];
   images: Media[] = []
   form: FormGroup;
   colorAvailable: boolean;
@@ -81,21 +84,29 @@ export class AdminComponent implements OnInit {
   }
   getCategory(value) {
     this.category = value
+    let subCat = new SubCategoryValue()
     if (this.category === 'collections') {
+      console.log("////////////////")
+      console.log(subCat.getCollections())
+      this.subCategories = subCat.getCollections()
+
       this.collectionCheck = true
       this.stationariesCheck = false
       this.accessoriesCheck = false
     } else if (this.category === 'stationaries') {
+      this.subCategories = subCat.getStationary()
       this.collectionCheck = false
       this.stationariesCheck = true
       this.accessoriesCheck = false
     } else if (this.category === 'accessories') {
+      this.subCategories = subCat.getAccesories()
       this.collectionCheck = false
       this.stationariesCheck = false
       this.accessoriesCheck = true
     }
   }
   getSubCategory(value) {
+    console.log(value)
     this.subCategory = value
   }
 
@@ -108,9 +119,11 @@ export class AdminComponent implements OnInit {
     this.colorAvailable = !this.colorAvailable
   }
   priceVariesCheck(isChecked: boolean) {
+    console.log("//////////////////////////")
+
     console.log("price varies check " + isChecked)
     this.test = "ashaujn"
-    this.priceVariesBoolean = isChecked;
+    this.priceVariesBoolean = !isChecked;
   }
   compareAtPriceVaries(isChecked: boolean) {
     this.compareAtPriceCheck = isChecked
