@@ -37,6 +37,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ProducteditComponent } from './admin/productedit/productedit.component';
 import { AdminComponent } from './admin/admin.component';
+import { ProductlistComponent } from './admin/productlist/productlist.component';
 
 
 
@@ -63,9 +64,8 @@ import { AdminComponent } from './admin/admin.component';
     TestimonialsComponent,
     CheckoutComponent,
     ProducteditComponent,
-  
-  
-    AdminComponent
+    AdminComponent,
+    ProductlistComponent
 
 
   ],
