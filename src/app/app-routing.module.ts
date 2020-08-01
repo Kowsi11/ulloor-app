@@ -14,6 +14,7 @@ import { HomeBannersComponent } from './home-banners/home-banners.component';
 import { CheckoutComponent } from './checkout/checkout.component'
 import { StationaryProductsComponent } from './stationary-products/stationary-products.component';
 import { CombosComponent } from './combos/combos.component';
+import { ProducteditComponent } from './admin/productedit/productedit.component';
 
 const accountModule = () => import('./account/account.module').then(x => x.AccountModule);
 const usersModule = () => import('./users/users.module').then(x => x.UsersModule);
@@ -37,6 +38,8 @@ const routes: Routes = [
       {path : 'combo/:category' , component : CombosComponent},
      
       {path : 'admin' , component : AdminComponent},
+
+      {path : 'admin/productedit' , component : ProducteditComponent},
 
      {path : 'Cart' , component : CartComponent},
       {path : 'checkout',component:CheckoutComponent},

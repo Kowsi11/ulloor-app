@@ -413,14 +413,36 @@ The following part can be removed on Server for On Demand Loading) -->
 			$('#file-4').fileinput('refresh', { previewClass: 'bg-info' });
 		});
     /*
-											$('#file-4').on('fileselectnone', function() {
-												alert('Huh! You selected no files.');
-											});
-											$('#file-4').on('filebrowse', function() {
-												alert('File browse clicked for #file-4');
-											});
-											*/
+												$('#file-4').on('fileselectnone', function() {
+													alert('Huh! You selected no files.');
+												});
+												$('#file-4').on('filebrowse', function() {
+													alert('File browse clicked for #file-4');
+												});
+												*/
 
+	</script>
+
+	<!--admin product edit plus component-->
+	<script type="text/javascript" src="assets/js/accordion/js/accordion.js"></script>
+	<script>
+
+		$(document).ready(function () {
+			//toggle the component with class accordion_body
+			$(".accordion_head").click(function () {
+				if ($('.accordion_body').is(':visible')) {
+					$(".accordion_body").slideUp(300);
+					$(".plusminus").text('+');
+				}
+				if ($(this).next(".accordion_body").is(':visible')) {
+					$(this).next(".accordion_body").slideUp(300);
+					$(this).children(".plusminus").text('+');
+				} else {
+					$(this).next(".accordion_body").slideDown(300);
+					$(this).children(".plusminus").text('-');
+				}
+			});
+		});
 	</script>
 
 

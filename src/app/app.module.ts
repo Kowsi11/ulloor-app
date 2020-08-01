@@ -35,6 +35,7 @@ import { TestimonialsComponent } from './testimonials/testimonials.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ProducteditComponent } from './admin/productedit/productedit.component';
 import { AdminComponent } from './admin/admin.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';

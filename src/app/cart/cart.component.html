@@ -17,18 +17,23 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let product of carts.products; let  indexOfCart=index">
-                <img src="assets/images/cart-img1.jpg" alt="" class="img-responsive" />
+              <!-- <tr *ngFor="let product of carts.products; let  indexOfCart=index"> -->
+              <tr *ngFor="let product of cartProduct; let  indexOfCart=index">
+                <img src="assets/images/sp-23.jpg" alt="" width="70" height="60"class="img-responsive" />
 
 
                 <td>{{product.name}} </td>
                 <td>{{product.price}}</td>
                 <td>
-                  <div class="col-xs-3">
-                    <input type="text" class="product" [value]="product.quantity" />
-                  </div> <a href="javascript:void(0)">update</a> &nbsp;<a href="javascript:void(0)">delete</a>
+                  
+                    <div class="btn inputbox btn-tiny xround-7">
+                      <input type="number" class="product" value="1" />
+                    </div> &nbsp;&nbsp;
+                  
+                  <a href="javascript:void(0)"><span class="fa fa-refresh" style="color: rgb(72, 189, 72);"></span></a> &nbsp;
+                  <a href="javascript:void(0)"><span class="fa fa-remove" style="color: rgb(233, 35, 35);"></span></a>
                 </td>
-                <td>$ {{product.price}}*{{product.quantity}}</td>
+                <td>$ {{product.price}}</td>
               </tr>
 
             </tbody>
@@ -38,10 +43,10 @@
 
       <div class="row">
         <ng-template [ngIf]="loggedIn" [ngIfElse]="notLoggedIn">
-          <a class="btn btn-gyellow btn-round pull-right" routerLink='/Checkout'>CheckOut</a>
+          <a class="btn btn-medium btn-orange btn-anim-2 uppercase xround-4" routerLink='/Checkout'>CheckOut</a>
         </ng-template>
         <ng-template #notLoggedIn>
-          <a class="btn btn-gyellow btn-round pull-right" routerLink='/Checkout'>Login </a>
+          <a class="btn btn-medium btn-orange btn-anim-2 uppercase xround-5 pull-right" routerLink='/account/login'>Login </a>
         </ng-template>
 
       </div>
