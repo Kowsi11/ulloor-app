@@ -1,12 +1,17 @@
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { MatChipInputEvent } from '@angular/material/chips';
+
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators, FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Media } from '@app/_models/newProduct/Media';
 import { ImageDomain } from '@app/_models/ImageDomain';
-import { title } from 'process';
-import { MatRadioModule } from '@angular/material/radio';
 import { ProductService } from '@app/_services/product.service';
 import { CategoryHandle, SubCategoryValue } from '@app/_models/product/Category';
+import { Color } from '@app/_models/Color';
+export interface MatChips {
+  name: string;
+}
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -29,6 +34,18 @@ export class AdminComponent implements OnInit {
   collectionCheck: Boolean = false;
   accessoriesCheck: Boolean = false;
   stationariesCheck: Boolean = false;
+
+
+  visible = true;
+  selectable = true;
+  removable = true;
+  addOnBlur = true;
+  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
+  tags: MatChips[] = [{
+    name: "collections"
+  }
+  ];
+  color: MatChips[] = []
   constructor(public formBuilder: FormBuilder, private http: HttpClient, private productService: ProductService) {
 
     this.form = this.formBuilder.group({
@@ -119,18 +136,12 @@ export class AdminComponent implements OnInit {
     this.colorAvailable = !this.colorAvailable
   }
   priceVariesCheck(isChecked: boolean) {
-    console.log("//////////////////////////")
-
-    console.log("price varies check " + isChecked)
-    this.test = "ashaujn"
     this.priceVariesBoolean = !isChecked;
   }
   compareAtPriceVaries(isChecked: boolean) {
-    this.compareAtPriceCheck = isChecked
+    this.compareAtPriceCheck = !isChecked
   }
-  getcompareAtPriceVaries() {
-    return this.compareAtPriceCheck
-  }
+
 
   ngOnInit() {
     this.colorAvailable = false
@@ -191,4 +202,57 @@ export class AdminComponent implements OnInit {
     formData.append("img", this.form.get('img').value);
 
   }
+
+  addTag(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+
+    // Add our tags
+    if ((value || '').trim()) {
+      this.tags.push({ name: value.trim() });
+    }
+
+    // Reset the input value
+    if (input) {
+      input.value = '';
+    }
+  }
+
+  removeTag(tag: MatChips): void {
+    const index = this.tags.indexOf(tag);
+
+    if (index >= 0) {
+      this.tags.splice(index, 1);
+    }
+  }
+
+  addColor(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+
+    let colors = new Color()
+    // Add our tags
+    if ((value || '').trim()) {
+
+      let hex = colors.getHex(value.replace(/\s/g, "").toLowerCase())
+      if (hex != null) {
+        this.color.push({ name: value.trim() });
+      }
+
+    }
+
+    // Reset the input value
+    if (input) {
+      input.value = '';
+    }
+  }
+
+  removeColor(color: MatChips): void {
+    const index = this.color.indexOf(color);
+
+    if (index >= 0) {
+      this.color.splice(index, 1);
+    }
+  }
+
 }

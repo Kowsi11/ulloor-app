@@ -41,8 +41,11 @@ import { ProductlistComponent } from './admin/productlist/productlist.component'
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
+import { MatChipsModule } from '@angular/material/chips'
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatRippleModule } from '@angular/material/core';
 
-
+import { MatChipInputEvent } from '@angular/material/chips';
 @NgModule({
   declarations: [
     AppComponent,
@@ -83,9 +86,9 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     NgbModule,
     NgxPaginationModule,
     MatRadioModule,
-    MatSlideToggleModule
-
-
+    MatSlideToggleModule,
+    MatChipsModule,
+    MatFormFieldModule
 
   ],
   providers: [
