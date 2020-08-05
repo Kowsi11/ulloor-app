@@ -8,7 +8,8 @@ import { Media } from '@app/_models/newProduct/Media';
 import { ImageDomain } from '@app/_models/ImageDomain';
 import { ProductService } from '@app/_services/product.service';
 import { CategoryHandle, SubCategoryValue } from '@app/_models/product/Category';
-import { Color } from '@app/_models/Color';
+import { ColorTemplate, Color } from '@app/_models/Color';
+import { ImageWithPosition } from '@app/_models/newProduct/ImageWithPosition';
 export interface MatChips {
   name: string;
 }
@@ -18,8 +19,13 @@ export interface MatChips {
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
+  size1Available: boolean = false
+  size2Available: boolean = false
+  size3Available: boolean = false
+  size4Available: boolean = false
+  size5Available: boolean = false
 
-
+  sizeSAvailable: boolean = true
   subCategories: CategoryHandle[] = [];
   images: Media[] = []
   form: FormGroup;
@@ -35,24 +41,23 @@ export class AdminComponent implements OnInit {
   accessoriesCheck: Boolean = false;
   stationariesCheck: Boolean = false;
 
+  imageResponse: ImageWithPosition[];
+
 
   visible = true;
   selectable = true;
   removable = true;
   addOnBlur = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  tags: MatChips[] = [{
-    name: "collections"
-  }
-  ];
-  color: MatChips[] = []
+  tags: string[] = ["collections"];
+  color: string[] = []
   constructor(public formBuilder: FormBuilder, private http: HttpClient, private productService: ProductService) {
 
     this.form = this.formBuilder.group({
       subCategoryName: ['', Validators.required],
       productTitle: ['', Validators.required],
       description: ['', Validators.required],
-      priceVaries: ['', [Validators.required]],
+      priceVaries: this.priceVariesBoolean,
       compareAtPriceVaries: ['', [Validators.required]],
       price: ['', [Validators.required]],
       compareAtPriceMin: ['', Validators.required],
@@ -60,30 +65,35 @@ export class AdminComponent implements OnInit {
       color: ['', [Validators.required]],
       size1_name: ['', [Validators.required]],
       size1_available: ['', [Validators.required]],
+      size1_stock_available: ['', [Validators.required]],
       size1_quantity: ['', [Validators.required]],
       size1_weight: ['', [Validators.required]],
       size1_price: ['', [Validators.required]],
       size1_default: ['', [Validators.required]],
       size2_name: ['', [Validators.required]],
       size2_available: ['', [Validators.required]],
+      size2_stock_available: ['', [Validators.required]],
       size2_quantity: ['', [Validators.required]],
       size2_weight: ['', [Validators.required]],
       size2_price: ['', [Validators.required]],
       size2_default: ['', [Validators.required]],
       size3_name: ['', [Validators.required]],
       size3_available: ['', [Validators.required]],
+      size3_stock_available: ['', [Validators.required]],
       size3_quantity: ['', [Validators.required]],
       size3_weight: ['', [Validators.required]],
       size3_price: ['', [Validators.required]],
       size3_default: ['', [Validators.required]],
       size4_name: ['', [Validators.required]],
       size4_available: ['', [Validators.required]],
+      size4_stock_available: ['', [Validators.required]],
       size4_quantity: ['', [Validators.required]],
       size4_weight: ['', [Validators.required]],
       size4_price: ['', [Validators.required]],
       size4_default: ['', [Validators.required]],
       size5_name: ['', [Validators.required]],
       size5_available: ['', [Validators.required]],
+      size5_stock_available: ['', [Validators.required]],
       size5_quantity: ['', [Validators.required]],
       size5_weight: ['', [Validators.required]],
       size5_price: ['', [Validators.required]],
@@ -92,8 +102,11 @@ export class AdminComponent implements OnInit {
       fileSource: new FormControl('', [Validators.required])
 
     })
-    console.log("entered to constructor")
-    console.log(this.priceVariesBoolean)
+    // this.form.valueChanges.subscribe((value) => {
+    //   console.log("check990")
+    //   value.size1_stock_available ? this.form.get('size1_quantity').disabled : this.form.get('size1_quantity').enable()
+    // })
+
     this.colorAvailable = false;
     this.priceVariesBoolean = false
     this.compareAtPriceCheck = false
@@ -103,10 +116,7 @@ export class AdminComponent implements OnInit {
     this.category = value
     let subCat = new SubCategoryValue()
     if (this.category === 'collections') {
-      console.log("////////////////")
-      console.log(subCat.getCollections())
       this.subCategories = subCat.getCollections()
-
       this.collectionCheck = true
       this.stationariesCheck = false
       this.accessoriesCheck = false
@@ -131,6 +141,9 @@ export class AdminComponent implements OnInit {
     console.log(this.category)
     console.log("admin submit")
     console.log(this.form.value)
+
+    let productRequest = this.productService.generateProductResponse(this.form.value, this.imageResponse, this.category, this.color, this.tags)
+    console.log(productRequest)
   }
   colorAvaliableCheck() {
     this.colorAvailable = !this.colorAvailable
@@ -189,7 +202,8 @@ export class AdminComponent implements OnInit {
     if (this.images.length > 0) {
       imageDomain = new ImageDomain(this.category, this.subCategory, this.title, this.images)
 
-      this.productService.uploadImage(imageDomain)
+      console.log(imageDomain)
+      this.imageResponse = this.productService.uploadImage(imageDomain)
     }
     console.log("upload image to server")
   }
@@ -209,7 +223,7 @@ export class AdminComponent implements OnInit {
 
     // Add our tags
     if ((value || '').trim()) {
-      this.tags.push({ name: value.trim() });
+      this.tags.push(value.trim());
     }
 
     // Reset the input value
@@ -218,7 +232,7 @@ export class AdminComponent implements OnInit {
     }
   }
 
-  removeTag(tag: MatChips): void {
+  removeTag(tag: string): void {
     const index = this.tags.indexOf(tag);
 
     if (index >= 0) {
@@ -227,16 +241,16 @@ export class AdminComponent implements OnInit {
   }
 
   addColor(event: MatChipInputEvent): void {
-    const input = event.input;
-    const value = event.value;
+    let input = event.input;
+    let value = event.value;
 
-    let colors = new Color()
+    let colors = new ColorTemplate()
     // Add our tags
     if ((value || '').trim()) {
 
       let hex = colors.getHex(value.replace(/\s/g, "").toLowerCase())
       if (hex != null) {
-        this.color.push({ name: value.trim() });
+        this.color.push(value.toUpperCase());
       }
 
     }
@@ -247,7 +261,7 @@ export class AdminComponent implements OnInit {
     }
   }
 
-  removeColor(color: MatChips): void {
+  removeColor(color: string): void {
     const index = this.color.indexOf(color);
 
     if (index >= 0) {

@@ -1,5 +1,20 @@
+
 .example-chip-list {
   width: 100%;
+}
+.example-card {
+  max-width: 400px;
+}
+.inventory-input {
+  width: 100%;
+}
+.circle {
+  height: 40px;
+  width: 40px;
+  box-sizing: border-box;
+  border-radius: 100%;
+  border: 1px solid #dadada;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.14);
 }
 .switch {
   position: relative;

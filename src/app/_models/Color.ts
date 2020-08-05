@@ -1,10 +1,12 @@
 import { map } from 'rxjs/operators';
 
-export interface IColor {
-    name: string,
+export class Color {
+    name: string
     colorHex: string
 }
-export class Color {
+
+
+export class ColorTemplate {
 
     jsonObject = {
 

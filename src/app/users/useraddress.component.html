@@ -1,41 +1,43 @@
+<section class="sec-padding section-light">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2 class="uppercase">User Address Details</h2>
+            </div>
+
+            <div class="col-md-4" *ngFor="let Address of user.address">
+
+                <div class="text-box padding-4 white">
+
+                    <div class="clearfix"></div>
+                    <br />
+                    <h4 class="uppercase"><span>Kowsalya</span>&nbsp;<span>Arivazhagan</span></h4>
+                    <div class="divider-line solid dark"></div>
+                    <h4 class=" typography-title-6 text-dark font-weight-7 playfair">Home Address </h4>
+
+                    <p>Rajeshwari Complex, 347, 7th St, Gandhipuram, Tamil Nadu hdxuiyeduhh uidwhddhui huhuwwquu
+                        huwusswushu </p>
+                    <label>Pincode :</label>&nbsp;641012 <br>
+                    <label>Mobile Number :</label> &nbsp; 6378267887778
+                    <br>
+                    <button class="btn btn-blue btn-small xround-7" name="edit"> Edit</button> &nbsp; <button
+                        class="btn btn-red btn-small xround-3" name="delete">Delete</button>
 
 
- <section class="sec-padding section-light">
-  <div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12 text-center">  <h2 class="uppercase">User Address Details</h2></div>
+                </div>
 
-<div class="col-md-4" *ngFor="let Address of user.address">
-  
-    <div class="text-box padding-4 white">
-    
-    <div class="clearfix"></div>
-    <br/>  
-    <h4 class="uppercase"><span>Kowsalya</span>&nbsp;<span>Arivazhagan</span></h4>
-    <div class="divider-line solid dark"></div>
-   <h4 class=" typography-title-6 text-dark font-weight-7 playfair">Home Address </h4>
-    
-    <p>Rajeshwari Complex, 347, 7th St, Gandhipuram, Tamil Nadu hdxuiyeduhh  uidwhddhui huhuwwquu huwusswushu </p>
-    <label>Pincode :</label>&nbsp;641012 <br> 
-    <label>Mobile Number :</label> &nbsp; 6378267887778
-     <br>
-    <button class="btn btn-blue btn-small xround-7" name="edit"> Edit</button> &nbsp;  <button class="btn btn-red btn-small xround-3" name="delete">Delete</button>
-    
-   
+            </div>
+            <!-- end item-->
+
+        </div>
+        <br>
+        <div class="clearfix"></div>
+        <div class="divider-line solid light-blue"></div>
+        <br>
+        <h4> Wanna Add your New address?</h4>
+        <a class="btn btn-medium btn-cyan btn-anim-4 uppercase xround-7" routerLink="users/add">
+            <span>Add Address</span>
+            <i>Add Address</i></a>
+
     </div>
-    
-</div>
-     <!-- end item-->
-     
-</div> 
-<br>
-     <div class="clearfix"></div>
-     <div class="divider-line solid light-blue"></div>
-     <br>
-     <h4> Wanna Add your New address?</h4>
-     <a class="btn btn-medium btn-cyan btn-anim-4 uppercase xround-7"  routerLink="users/add">
-      <span>Add Address</span> 
-      <i>Add Address</i></a>
-
-</div>
- </section>
+</section>

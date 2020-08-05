@@ -68,8 +68,9 @@
 
 
         <div class="col-md-6">
-          <label class="lable-text" for="name" style="align-items: center;">Compare Price</label>&nbsp;&nbsp;
-          <mat-slide-toggle (click)="compareAtPriceVaries(compareAtPriceCheck)" [checked]="false">
+          <label class="lable-text" for="name" style="align-items: center;">Discount Price</label>&nbsp;&nbsp;
+          <mat-slide-toggle formControlName="compareAtPriceVaries" (click)="compareAtPriceVaries(compareAtPriceCheck)"
+            [checked]="false">
           </mat-slide-toggle>
         </div>
         <br>
@@ -108,7 +109,7 @@
             </mat-chip-list>
             <mat-chip *ngFor="let tag of tags" [selectable]="selectable" [removable]="removable"
               (removed)="removeTag(tag)">
-              {{tag.name}}
+              {{tag}}
               <mat-icon matChipRemove *ngIf="removable"><span class="glyphicon glyphicon-remove-sign"></span></mat-icon>
             </mat-chip>
           </mat-form-field>
@@ -138,7 +139,7 @@
             </mat-chip-list>
             <mat-chip *ngFor="let color of color" [selectable]="selectable" [removable]="removable"
               (removed)="removeColor(color)">
-              {{color.name}}
+              {{color}}
               <mat-icon matChipRemove *ngIf="removable"><span class="glyphicon glyphicon-remove-sign"></span></mat-icon>
             </mat-chip>
           </mat-form-field>
@@ -149,162 +150,199 @@
       <!--Size-->
       <ng-template [ngIf]="collectionCheck">
         <div class="row">
-          &nbsp;<label class="lable-text" for="color" style="text-align: center;">Select Varient
-            Size</label>
-
-          <div class="col-md-5">
-
-            <br>
-            &nbsp;<label class="lable-text">Size - S</label>
-            <mat-slide-toggle [checked]="false"> </mat-slide-toggle>
-            <input type="hidden" formControlName="size1_name" value="S">
-            Available :<label class="switch">
-              <input type="checkbox" formControlName="size1_available" (click)="priceVariesCheck($event.target.checked)"
-                class="form-control" [checked]="true ">
-              <span class="slider round"></span>
-            </label><br>
-            <div class="col-md-6">
-
-              <label class="lable-text" for="color">Inventory Quantity</label>
-              <input id="Quantity" class="input-1" formControlName="size1_quantity" type="number"
-                placeholder="Enter product Quantity" name="quantity">
-
-            </div>
-            <div class="col-md-6">
-              <label class="lable-text" for="color">Product Weight</label>
-              <input id="Quantity" class="input-1" type="number" formControlName="size1_weight"
-                placeholder="Enter product Weight" name="quantity">
-            </div>
-
-            <div class="col-md-6">
-              <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVaries">
-                <label class="lable-text" for="color">Price</label>
-                <input id="Quantity" class="input-1" formControlName="size1_price" type="number"
-                  formControlName="size1_price" placeholder="Enter product Price" name="quantity">
-              </ng-template>
-              <ng-template #noVaries>
-                <label class="lable-text" for="color">Price dous not varies</label>
-              </ng-template>
-            </div>
-
-            <hr>
-            <br>
-
-
+          <div class="col-md-12 text-center">
+            <h2 class="uppercase">Select Varient Size</h2>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-5">
 
-            <br>
-            &nbsp;<label class="lable-text">Size - M</label>
-            <mat-slide-toggle [checked]="false"> </mat-slide-toggle><br>
-            <div class="col-md-6">
-              <label class="lable-text" for="color">Inventory Quantity</label>
-              <input id="Quantity" class="input-1" type="number" placeholder="Enter product Quantity" name="quantity">
+          <div class="col-md-4">
 
-            </div>
-            <div class="col-md-6">
-              <label class="lable-text" for="color">Product Weight</label>
-              <input id="Quantity" class="input-1" type="number" placeholder="Enter product Weight" name="quantity">
-            </div>
+            <mat-card class="example-card">
+              <mat-card-header>
 
-            <div class="col-md-6">
-              <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVaries">
-                <label class="lable-text" for="color">Price</label>
-                <input id="Quantity" class="input-1" type="number" placeholder="Enter product Price" name="quantity">
+                <mat-card-title>Size - S</mat-card-title>
+                <mat-card-subtitle>
+
+                  <mat-checkbox formControlName="size1_available" [(ngModel)]="size1Available">Size S Available
+                  </mat-checkbox>
+                  <br>
+                  <mat-slide-toggle formControlName="size1_stock_available" [checked]="size1Available"> Stock
+                    Available
+                  </mat-slide-toggle>
+                </mat-card-subtitle>
+              </mat-card-header>
+              <ng-template [ngIf]="size1Available" [ngIfElse]="disabledMatContent">
+                <mat-card-content>
+                  <mat-form-field class="inventory-input">
+                    <mat-label>Inventory Quantity</mat-label>
+                    <input matInput type="number" disabled formControlName="size1_quantity" placeholder="Ex. 100">
+                  </mat-form-field>
+                  <mat-form-field class="inventory-input">
+                    <mat-label>Product Weight</mat-label>
+                    <input matInput formControlName="size1_weight" placeholder="Ex.50">
+                  </mat-form-field>
+                  <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVariesnew">
+                    <mat-form-field class="inventory-input">
+                      <mat-label>Product Price</mat-label>
+                      <input matInput formControlName="size1_price" placeholder="Ex.550">
+                    </mat-form-field>
+                  </ng-template>
+
+                </mat-card-content>
               </ng-template>
-              <ng-template #noVaries>
-                <label class="lable-text" for="color">Price dous not varies</label>
-              </ng-template>
-            </div>
-            <br>
-
-
+            </mat-card>
           </div>
-        </div>
 
-        <div class="row">
-          <div class="col-md-5">
 
-            <br>
-            &nbsp;<label class="lable-text">Size - L</label><br>
-            <div class="col-md-6">
-              <label class="lable-text" for="color">Inventory Quantity</label>
-              <input id="Quantity" class="input-1" type="number" placeholder="Enter product Quantity" name="quantity">
 
-            </div>
-            <div class="col-md-6">
-              <label class="lable-text" for="color">Product Weight</label>
-              <input id="Quantity" class="input-1" type="number" placeholder="Enter product Weight" name="quantity">
-            </div>
+          <div class="col-md-4 margin-bottom">
 
-            <div class="col-md-6">
-              <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVaries">
-                <label class="lable-text" for="color">Price</label>
-                <input id="Quantity" class="input-1" type="number" placeholder="Enter product Price" name="quantity">
+            <mat-card class="example-card">
+              <mat-card-header>
+
+                <mat-card-title>Size - M</mat-card-title>
+                <mat-card-subtitle>
+
+                  <mat-checkbox formControlName="size2_available" [(ngModel)]="size2Available">Size M Available
+                  </mat-checkbox>
+                  <br>
+                  <mat-slide-toggle formControlName="size2_stock_available" [checked]="size2Available"> Stock
+                    Available
+                  </mat-slide-toggle>
+                </mat-card-subtitle>
+              </mat-card-header>
+              <ng-template [ngIf]="size2Available" [ngIfElse]="disabledMatContent">
+                <mat-card-content>
+                  <mat-form-field class="inventory-input">
+                    <mat-label>Inventory Quantity</mat-label>
+                    <input matInput type="number" disabled formControlName="size2_quantity" placeholder="Ex. 100">
+                  </mat-form-field>
+                  <mat-form-field class="inventory-input">
+                    <mat-label>Product Weight</mat-label>
+                    <input matInput formControlName="size2_weight" placeholder="Ex.50">
+                  </mat-form-field>
+                  <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVariesnew">
+                    <mat-form-field class="inventory-input">
+                      <mat-label>Product Price</mat-label>
+                      <input matInput formControlName="size2_price" placeholder="Ex.550">
+                    </mat-form-field>
+                  </ng-template>
+
+                </mat-card-content>
               </ng-template>
-              <ng-template #noVaries>
-                <label class="lable-text" for="color">Price dous not varies</label>
-              </ng-template>
-            </div>
-            <br>
+            </mat-card>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-5">
 
-            <br>
-            &nbsp;<label class="lable-text">Size - XL</label>
-            <mat-slide-toggle [checked]="false"> </mat-slide-toggle><br>
-            <div class="col-md-6">
-              <label class="lable-text" for="color">Inventory Quantity</label>
-              <input id="Quantity" class="input-1" type="number" placeholder="Enter product Quantity" name="quantity">
+          <div class="col-md-4">
 
-            </div>
-            <div class="col-md-6">
-              <label class="lable-text" for="color">Product Weight</label>
-              <input id="Quantity" class="input-1" type="number" placeholder="Enter product Weight" name="quantity">
-            </div>
+            <mat-card class="example-card">
+              <mat-card-header>
 
-            <div class="col-md-6">
-              <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVaries">
-                <label class="lable-text" for="color">Price</label>
-                <input id="Quantity" class="input-1" type="number" placeholder="Enter product Price" name="quantity">
+                <mat-card-title>Size - L</mat-card-title>
+                <mat-card-subtitle>
+
+                  <mat-checkbox formControlName="size3_available" [(ngModel)]="size3Available">Size L Available
+                  </mat-checkbox>
+                  <br>
+                  <mat-slide-toggle formControlName="size3_stock_available" [checked]="size3Available"> Stock Available
+                  </mat-slide-toggle>
+                </mat-card-subtitle>
+              </mat-card-header>
+              <ng-template [ngIf]="size3Available" [ngIfElse]="disabledMatContent">
+                <mat-card-content>
+                  <mat-form-field class="inventory-input">
+                    <mat-label>Inventory Quantity</mat-label>
+                    <input matInput type="number" disabled formControlName="size3_quantity" placeholder="Ex. 100">
+                  </mat-form-field>
+                  <mat-form-field class="inventory-input">
+                    <mat-label>Product Weight</mat-label>
+                    <input matInput formControlName="size3_weight" placeholder="Ex.50">
+                  </mat-form-field>
+                  <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVariesnew">
+                    <mat-form-field class="inventory-input">
+                      <mat-label>Product Price</mat-label>
+                      <input matInput formControlName="size3_price" placeholder="Ex.550">
+                    </mat-form-field>
+                  </ng-template>
+
+                </mat-card-content>
               </ng-template>
-              <ng-template #noVaries>
-                <label class="lable-text" for="color">Price dous not varies</label>
-              </ng-template>
-            </div>
-            <br>
+            </mat-card>
           </div>
+
         </div>
+        <br><br>
         <div class="row">
-          <div class="col-md-5">
+          <div class="col-md-4">
 
-            <br>
-            &nbsp;<label class="lable-text">Size - XXL</label>
-            <mat-slide-toggle [checked]="false"> </mat-slide-toggle>
-            <div class="col-md-6">
-              <label class="lable-text" for="color">Inventory Quantity</label>
-              <input id="Quantity" class="input-1" type="number" placeholder="Enter product Quantity" name="quantity">
+            <mat-card class="example-card">
+              <mat-card-header>
 
-            </div>
-            <div class="col-md-6">
-              <label class="lable-text" for="color">Product Weight</label>
-              <input id="Quantity" class="input-1" type="number" placeholder="Enter product Weight" name="quantity">
-            </div>
+                <mat-card-title>Size - XL</mat-card-title>
+                <mat-card-subtitle>
 
-            <div class="col-md-6">
-              <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVaries">
-                <label class="lable-text" for="color">Price</label>
-                <input id="Quantity" class="input-1" type="number" placeholder="Enter product Price" name="quantity">
+                  <mat-checkbox formControlName="size4_available" [(ngModel)]="size4Available">Size XL Available
+                  </mat-checkbox>
+                  <br>
+                  <mat-slide-toggle formControlName="size4_stock_available" [checked]="size4Available"> Stock Available
+                  </mat-slide-toggle>
+                </mat-card-subtitle>
+              </mat-card-header>
+              <ng-template [ngIf]="size4Available" [ngIfElse]="disabledMatContent">
+                <mat-card-content>
+                  <mat-form-field class="inventory-input">
+                    <mat-label>Inventory Quantity</mat-label>
+                    <input matInput type="number" disabled formControlName="size4_quantity" placeholder="Ex. 100">
+                  </mat-form-field>
+                  <mat-form-field class="inventory-input">
+                    <mat-label>Product Weight</mat-label>
+                    <input matInput formControlName="size4_weight" placeholder="Ex.50">
+                  </mat-form-field>
+                  <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVariesnew">
+                    <mat-form-field class="inventory-input">
+                      <mat-label>Product Price</mat-label>
+                      <input matInput formControlName="size4_price" placeholder="Ex.550">
+                    </mat-form-field>
+                  </ng-template>
+
+                </mat-card-content>
               </ng-template>
-              <ng-template #noVaries>
-                <label class="lable-text" for="color">Price dous not varies</label>
+            </mat-card>
+          </div>
+          <div class="col-md-4">
+
+            <mat-card class="example-card">
+              <mat-card-header>
+
+                <mat-card-title>Size - XXL</mat-card-title>
+                <mat-card-subtitle>
+
+                  <mat-checkbox formControlName="size5_available" [(ngModel)]="size5Available">Size XXL Available
+                  </mat-checkbox>
+                  <br>
+                  <mat-slide-toggle formControlName="size5_stock_available" [checked]="size5Available"> Stock Available
+                  </mat-slide-toggle>
+                </mat-card-subtitle>
+              </mat-card-header>
+              <ng-template [ngIf]="size5Available" [ngIfElse]="disabledMatContent">
+                <mat-card-content>
+                  <mat-form-field class="inventory-input">
+                    <mat-label>Inventory Quantity</mat-label>
+                    <input matInput type="number" disabled formControlName="size5_quantity" placeholder="Ex. 100">
+                  </mat-form-field>
+                  <mat-form-field class="inventory-input">
+                    <mat-label>Product Weight</mat-label>
+                    <input matInput formControlName="size5_weight" placeholder="Ex.50">
+                  </mat-form-field>
+                  <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVariesnew">
+                    <mat-form-field class="inventory-input">
+                      <mat-label>Product Price</mat-label>
+                      <input matInput formControlName="size5_price" placeholder="Ex.550">
+                    </mat-form-field>
+                  </ng-template>
+
+                </mat-card-content>
               </ng-template>
-            </div>
-            <br>
+            </mat-card>
           </div>
         </div>
       </ng-template>
@@ -315,192 +353,183 @@
       <!--Size-->
       <ng-template [ngIf]="stationariesCheck">
         <div class="row">
-          &nbsp;&nbsp;&nbsp;<label class="lable-text" for="color" style="text-align: center;">Select Varient
-            Size</label>
-
-          <div class="col-md-5">
-
-            <br>
-            &nbsp;<label class="lable-text">Size - A2</label>
-            <mat-slide-toggle [checked]="false"> </mat-slide-toggle>
-            <input type="hidden" formControlName="size1_name" value="S">
-            Available :<label class="switch">
-              <input type="checkbox" formControlName="size1_available" (click)="priceVariesCheck($event.target.checked)"
-                class="form-control" [checked]="true ">
-              <span class="slider round"></span>
-            </label><br>
-            <div class="col-md-6">
-
-              <label class="lable-text" for="color">Inventory Quantity</label>
-              <input id="Quantity" class="input-1" formControlName="size1_quantity" type="number"
-                placeholder="Enter product Quantity" name="quantity">
-
-            </div>
-            <div class="col-md-6">
-              <label class="lable-text" for="color">Product Weight</label>
-              <input id="Quantity" class="input-1" type="number" formControlName="size1_weight"
-                placeholder="Enter product Weight" name="quantity">
-            </div>
-
-            <div class="col-md-6">
-              <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVaries">
-                <label class="lable-text" for="color">Price</label>
-                <input id="Quantity" class="input-1" formControlName="size1_price" type="number"
-                  formControlName="size1_price" placeholder="Enter product Price" name="quantity">
-              </ng-template>
-              <ng-template #noVaries>
-                <label class="lable-text" for="color">Price dous not varies</label>
-              </ng-template>
-            </div>
-
-            <hr>
-            <br>
-
-
-          </div>
-          <div class="col-md-5">
-
-            <br>
-            &nbsp;<label class="lable-text">Size - A3</label>
-            <mat-slide-toggle [checked]="false"> </mat-slide-toggle>
-            <input type="hidden" formControlName="size1_name" value="S">
-            Available :<label class="switch">
-              <input type="checkbox" formControlName="a3_available" (click)="priceVariesCheck($event.target.checked)"
-                class="form-control" [checked]="true ">
-              <span class="slider round"></span>
-            </label><br>
-            <div class="col-md-6">
-
-              <label class="lable-text" for="color">Inventory Quantity</label>
-              <input id="Quantity" class="input-1" formControlName="a3_quantity" type="number"
-                placeholder="Enter product Quantity" name="quantity">
-
-            </div>
-            <div class="col-md-6">
-              <label class="lable-text" for="color">Product Weight</label>
-              <input id="Quantity" class="input-1" type="number" formControlName="a3_weight"
-                placeholder="Enter product Weight" name="quantity">
-            </div>
-
-            <div class="col-md-6">
-              <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVaries">
-                <label class="lable-text" for="color">Price</label>
-                <input id="Quantity" class="input-1" formControlName="a3_price" type="number"
-                  placeholder="Enter product Price" name="quantity">
-              </ng-template>
-              <ng-template #noVaries>
-                <label class="lable-text" for="color">Price dous not varies</label>
-              </ng-template>
-            </div>
-
-            <hr>
-            <br>
-
-
+          <div class="col-md-12 text-center">
+            <h2 class="uppercase">Select Varient Size</h2>
           </div>
 
-          <div class="col-md-5">
+          <div class="col-md-4">
 
-            <br>
-            &nbsp;<label class="lable-text">Size - A5</label>
-            <mat-slide-toggle [checked]="false"> </mat-slide-toggle>
-            <input type="hidden" formControlName="size1_name" value="S">
-            Available :<label class="switch">
-              <input type="checkbox" formControlName="a5_available" (click)="priceVariesCheck($event.target.checked)"
-                class="form-control" [checked]="true ">
-              <span class="slider round"></span>
-            </label><br>
-            <div class="col-md-6">
+            <mat-card class="example-card">
+              <mat-card-header>
 
-              <label class="lable-text" for="color">Inventory Quantity</label>
-              <input id="Quantity" class="input-1" formControlName="a5_quantity" type="number"
-                placeholder="Enter product Quantity" name="quantity">
+                <mat-card-title>Size - A2</mat-card-title>
+                <mat-card-subtitle>
 
-            </div>
-            <div class="col-md-6">
-              <label class="lable-text" for="color">Product Weight</label>
-              <input id="Quantity" class="input-1" type="number" formControlName="a5_weight"
-                placeholder="Enter product Weight" name="quantity">
-            </div>
+                  <mat-checkbox formControlName="size1_available" [(ngModel)]="size1Available">Size A2 Available
+                  </mat-checkbox>
+                  <br>
+                  <mat-slide-toggle formControlName="size1_stock_available" [checked]="size1Available"> Stock Available
+                  </mat-slide-toggle>
+                </mat-card-subtitle>
+              </mat-card-header>
+              <ng-template [ngIf]="size1Available" [ngIfElse]="disabledMatContent">
+                <mat-card-content>
+                  <mat-form-field class="inventory-input">
+                    <mat-label>Inventory Quantity</mat-label>
+                    <input matInput type="number" disabled formControlName="size1_quantity" placeholder="Ex. 100">
+                  </mat-form-field>
+                  <mat-form-field class="inventory-input">
+                    <mat-label>Product Weight</mat-label>
+                    <input matInput formControlName="size1_weight" placeholder="Ex.50">
+                  </mat-form-field>
+                  <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVariesnew">
+                    <mat-form-field class="inventory-input">
+                      <mat-label>Product Price</mat-label>
+                      <input matInput formControlName="size1_price" placeholder="Ex.550">
+                    </mat-form-field>
+                  </ng-template>
 
-            <div class="col-md-6">
-              <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVaries">
-                <label class="lable-text" for="color">Price</label>
-                <input id="Quantity" class="input-1" formControlName="a5_price" type="number"
-                  placeholder="Enter product Price" name="quantity">
+                </mat-card-content>
               </ng-template>
-              <ng-template #noVaries>
-                <label class="lable-text" for="color">Price dous not varies</label>
-              </ng-template>
-            </div>
-
-            <hr>
-            <br>
-
-
+            </mat-card>
           </div>
+
+
+
+          <div class="col-md-4 margin-bottom">
+
+            <mat-card class="example-card">
+              <mat-card-header>
+
+                <mat-card-title>Size - A3</mat-card-title>
+                <mat-card-subtitle>
+
+                  <mat-checkbox formControlName="size2_available" [(ngModel)]="size2Available">Size A3 Available
+                  </mat-checkbox>
+                  <br>
+                  <mat-slide-toggle formControlName="size2_stock_available" [checked]="size2Available"> Stock Available
+                  </mat-slide-toggle>
+                </mat-card-subtitle>
+              </mat-card-header>
+              <ng-template [ngIf]="size2Available" [ngIfElse]="disabledMatContent">
+                <mat-card-content>
+                  <mat-form-field class="inventory-input">
+                    <mat-label>Inventory Quantity</mat-label>
+                    <input matInput type="number" disabled formControlName="size2_quantity" placeholder="Ex. 100">
+                  </mat-form-field>
+                  <mat-form-field class="inventory-input">
+                    <mat-label>Product Weight</mat-label>
+                    <input matInput formControlName="size2_weight" placeholder="Ex.50">
+                  </mat-form-field>
+                  <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVariesnew">
+                    <mat-form-field class="inventory-input">
+                      <mat-label>Product Price</mat-label>
+                      <input matInput formControlName="size2_price" placeholder="Ex.550">
+                    </mat-form-field>
+                  </ng-template>
+
+                </mat-card-content>
+              </ng-template>
+            </mat-card>
+          </div>
+
+          <div class="col-md-4">
+
+            <mat-card class="example-card">
+              <mat-card-header>
+
+                <mat-card-title>Size - A5</mat-card-title>
+                <mat-card-subtitle>
+
+                  <mat-checkbox formControlName="size3_available" [(ngModel)]="size3Available">Size A5 Available
+                  </mat-checkbox>
+                  <br>
+                  <mat-slide-toggle formControlName="size3_stock_available" [checked]="size3Available"> Stock Available
+                  </mat-slide-toggle>
+                </mat-card-subtitle>
+              </mat-card-header>
+              <ng-template [ngIf]="size3Available" [ngIfElse]="disabledMatContent">
+                <mat-card-content>
+                  <mat-form-field class="inventory-input">
+                    <mat-label>Inventory Quantity</mat-label>
+                    <input matInput type="number" disabled formControlName="size3_quantity" placeholder="Ex. 100">
+                  </mat-form-field>
+                  <mat-form-field class="inventory-input">
+                    <mat-label>Product Weight</mat-label>
+                    <input matInput formControlName="size3_weight" placeholder="Ex.50">
+                  </mat-form-field>
+                  <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVariesnew">
+                    <mat-form-field class="inventory-input">
+                      <mat-label>Product Price</mat-label>
+                      <input matInput formControlName="size3_price" placeholder="Ex.550">
+                    </mat-form-field>
+                  </ng-template>
+
+                </mat-card-content>
+              </ng-template>
+            </mat-card>
+          </div>
+
         </div>
       </ng-template>
       <!--Size-->
       <ng-template [ngIf]="accessoriesCheck">
         <div class="row">
-          &nbsp;&nbsp;&nbsp;<label class="lable-text" for="color" style="text-align: center;">Select Varient
-            Size</label>
-
-          <div class="col-md-5">
-
-            <br>
-            &nbsp;<label class="lable-text">Size - Default</label>
-            <mat-slide-toggle [checked]="false"> </mat-slide-toggle>
-            <input type="hidden" formControlName="size1_name" value="S">
-            Available : <label class="switch">
-              <input type="checkbox" formControlName="default_available"
-                (click)="priceVariesCheck($event.target.checked)" class="form-control" [checked]="true ">
-              <span class="slider round"></span>
-            </label><br>
-            <div class="col-md-6">
-
-              <label class="lable-text" for="color">Inventory Quantity</label>
-              <input id="Quantity" class="input-1" formControlName="default_quantity" type="number"
-                placeholder="Enter product Quantity" name="quantity">
-
-            </div>
-            <div class="col-md-6">
-              <label class="lable-text" for="color">Product Weight</label>
-              <input id="Quantity" class="input-1" type="number" formControlName="default_weight"
-                placeholder="Enter product Weight" name="quantity">
-            </div>
-
-            <div class="col-md-6">
-              <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVaries">
-                <label class="lable-text" for="color">Price</label>
-                <input id="Quantity" class="input-1" formControlName="default_price" type="number"
-                  formControlName="default_price" placeholder="Enter product Price" name="quantity">
-              </ng-template>
-              <ng-template #noVaries>
-                <label class="lable-text" for="color">Price dous not varies</label>
-              </ng-template>
-            </div>
-
-            <hr>
-            <br>
-
-
+          <div class="col-md-12 text-center">
+            <h2 class="uppercase">Select Varient Size</h2>
           </div>
+
+          <div class="col-md-4">
+
+            <mat-card class="example-card">
+              <mat-card-header>
+
+                <mat-card-title>Default Size</mat-card-title>
+                <mat-card-subtitle>
+
+                  <!-- <mat-checkbox formControlName="size1_available" [(ngModel)]="size1Available">Size S Available
+                  </mat-checkbox>
+                  <br>
+                  <mat-slide-toggle formControlName="size1_stock_available" [checked]="size1Available"> Stock Available
+                  </mat-slide-toggle> -->
+                </mat-card-subtitle>
+              </mat-card-header>
+              <!-- <ng-template [ngIf]="size1Available" [ngIfElse]="disabledMatContent"> -->
+              <mat-card-content>
+                <mat-form-field class="inventory-input">
+                  <mat-label>Inventory Quantity</mat-label>
+                  <input matInput type="number" disabled formControlName="size1_quantity" placeholder="Ex. 100">
+                </mat-form-field>
+                <mat-form-field class="inventory-input">
+                  <mat-label>Product Weight</mat-label>
+                  <input matInput formControlName="size1_weight" placeholder="Ex.50">
+                </mat-form-field>
+                <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVariesnew">
+                  <mat-form-field class="inventory-input">
+                    <mat-label>Product Price</mat-label>
+                    <input matInput formControlName="size1_price" placeholder="Ex.550">
+                  </mat-form-field>
+                </ng-template>
+
+              </mat-card-content>
+              <!-- </ng-template> -->
+            </mat-card>
+          </div>
+
         </div>
 
       </ng-template>
 
 
-
-      <div class="form-group">
-        <label for="file">File</label>
-        <input formControlName="file" id="file" type="file" class="form-control" multiple=""
-          (change)="onFileChange($event)">
-        <!-- <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger"> -->
-        <!-- <div *ngIf="f.file.errors.required">File is required.</div> -->
-      </div>
-      <div class="col-md-12">
+      <br><br>
+      <!-- <mat-form-field class="inventory-input">
+        <mat-label>Image File</mat-label> -->
+      <label class="lable-text" for="phone">image upload</label>
+      <input type="file" (change)="onFileChange($event)">
+      <!-- </mat-form-field> -->
+      <!-- <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger"> -->
+      <!-- <div *ngIf="f.file.errors.required">File is required.</div> -->
+      <!-- <div class="col-md-12">
         <div class="text-box padding-4 white">
           <div *ngFor='let url of images'>
             <img [src]="url" height="150" width="200px">&nbsp;
@@ -508,167 +537,72 @@
           </div>
           <button (click)="uploadImageToServer()">Upload image</button>
         </div>
+      </div> -->
+      <br>
+      <div class="row">
+        <ng-template ngFor [ngForOf]="images" let-url>
+          <div class="col-md-2">
+            <mat-card class="example-card">
+              <mat-card-content>
+                <img mat-card-image [src]="url" height="150" width="200px">
+              </mat-card-content>
+              <mat-card-actions>
+                <button mat-raised-button color="warn" (click)="removeImage(url)">Delete</button>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+        </ng-template>
       </div>
+
+      <br><br>
+
+      <button mat-raised-button color="primary" (click)="uploadImageToServer()">Upload image</button>
+      <!-- <button (click)="uploadImageToServer()">Upload image</button> -->
       <div class="row">
         <br />
+
         <div class="col-md-12 text-center">
-          <button class="btn btn-dark btn-medium uppercase" type="submit">
+          <ng-template [ngIf]="imageResponse !== undefined && imageResponse.length>0" [ngIfElse]="invalidForm">
+            <button mat-raised-button color="primary" type="submit">submit</button>
+          </ng-template>
+          <ng-template #invalidForm>
+            <button mat-raised-button color="warn" type="submit">submit</button>
+          </ng-template>
+          <!-- <button class="btn btn-dark btn-medium uppercase" type="submit">
             <i class="fa fa-paper-plane"></i>
             Submit
-          </button>
+          </button> -->
 
         </div>
       </div>
     </div>
   </form>
 
+  <ng-template #noVariesnew>
+    <label style="color: crimson;">Price does not varies</label>
+  </ng-template>
 
+  <ng-template #disabledMatContent>
+    <mat-card-content>
+      <mat-form-field class="inventory-input">
+        <mat-label>Inventory Quantity</mat-label>
+        <input matInput type="number" disabled placeholder="Ex. 100">
+      </mat-form-field>
+      <mat-form-field class="inventory-input">
+        <mat-label>Product Weight</mat-label>
+        <input matInput type="number" disabled formControlName="size1_weight" placeholder="Ex.50">
+      </mat-form-field>
+      <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVariesnew">
+        <mat-form-field class="inventory-input">
+          <mat-label>Product Price</mat-label>
+          <input matInput type="number" type="number" disabled placeholder="Ex.550">
+        </mat-form-field>
+      </ng-template>
+
+    </mat-card-content>
+  </ng-template>
   <!-- end row -->
 </div>
 <!--end form body-->
 
 <div class="clearfix"></div>
-
-<!--Form for Stationary-->
-
-<!-- <div class="row">
-        <div class="col-md-3">
-          <label class="lable-text" for="color">Select Product color</label>
-          <input id="color" class="input-1" type="color" placeholder="Enter product color" name="color">
-          <br />
-        </div>
-        <br />
-        
-<div class="col-md-5">
-
-</div>
-</div>
-<div class="row">
-  <div class="col-md-6">
-    <label class="lable-text" for="phone">Select Sticker Dimensions</label>
-    <div class="select-box-2" Required>
-      <select>
-        <option value=''>Sticker Dimensions</option>
-        <option value='1'>5*5</option>
-        <option value='2'>8*8</option>
-        <option value='3'>2*2</option>
-      </select>
-    </div>
-  </div>
-
-  <div class="col-md-6">
-    <label class="lable-text" for="name">Product Price</label>
-    <input id="Price" class="input-1" type="number" placeholder="Enter product Price" name="Price">
-    <br />
-  </div>
-
-</div>
-<div class="row">
-  <div class="col-md-6">
-    <label class="lable-text" for="phone">Select Sticker Dimensions</label>
-    <div class="select-box-2" Required>
-      <select>
-        <option value=''>Sticker Dimensions</option>
-        <option value='1'>5*5</option>
-        <option value='2'>8*8</option>
-        <option value='3'>2*2</option>
-      </select>
-    </div>
-  </div>
-
-
-</div>
-<div class="row">
-  <div class="col-md-12">
-    <div class="form-group">
-
-      <input id="file-2" type="file" multiple class="file" data-upload-url="#" data-overwrite-initial="false"
-        data-min-file-count="3" (change)="uploadFile($event)">
-    </div>
-
-  </div>
-</div>
-
-
-<div class="row">
-  <br />
-  <div class="col-md-12 text-center">
-    <button class="btn btn-dark btn-medium uppercase" type="submit">
-      <i class="fa fa-paper-plane"></i>
-      Submit
-    </button>
-
-  </div>
-</div>
-
-
-
-
-<div class="row">
-  <div class="col-md-3">
-    <label class="lable-text" for="color">Select Product color</label>
-    <input id="color" class="input-1" type="color" placeholder="Enter product color" name="color">
-    <br />
-  </div>
-  <br />
-  <div class="col-md-5">
-
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-6">
-    <label class="lable-text" for="phone">Select Frame size</label>
-    <div class="select-box-2" Required>
-      <select>
-        <option value=''>Frame sizes</option>
-        <option value='1'>A3</option>
-        <option value='2'>A4</option>
-        <option value='3'>A5</option>
-      </select>
-    </div>
-  </div>
-
-  <div class="col-md-6">
-    <label class="lable-text" for="name">Product Price</label>
-    <input id="Price" class="input-1" type="number" placeholder="Enter product Price" name="Price">
-    <br />
-  </div>
-
-</div>
-<div class="row center">
-  <div class="col-md-6">
-    <label class="lable-text" for="name">Mobile Name</label>
-    <input id="mobile" class="input-1" type="text" placeholder="Enter Mobile Name" formControlName="name">
-    <br />
-  </div>
-</div>
-
-
-
-
-
-<div class="row">
-  <div class="col-md-12">
-    <div class="form-group">
-
-      <input id="file-2" type="file" multiple class="file" data-upload-url="#" data-overwrite-initial="false"
-        data-min-file-count="3" (change)="uploadFile($event)">
-    </div>
-
-  </div>
-</div>
-
-
-<div class="row">
-  <br />
-  <div class="col-md-12 text-center">
-    <button class="btn btn-dark btn-medium uppercase" type="submit">
-      <i class="fa fa-paper-plane"></i>
-      Submit
-    </button>
-
-  </div>
-
-</div>
-
-</form> -->

@@ -13,6 +13,11 @@ import { ProductResponse } from '@app/_models/newProduct/ProductResponse';
 import { CartProduct } from '@app/_models/newProduct/CartProduct';
 import { AlertService } from './alert.service';
 import { ImageDomain } from '@app/_models/ImageDomain';
+import { ProductReq } from '@app/_models/newProduct/ProductRequest';
+import { Color } from '@app/_models/Color';
+import { Size } from '@app/_models/newProduct/Size';
+import { ImageWithPosition } from '@app/_models/newProduct/ImageWithPosition';
+import { MatChips } from '@app/admin/admin.component';
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {
@@ -62,12 +67,13 @@ export class ProductService {
         return productoUseList
     }
 
-    uploadImage(imageDomain: ImageDomain) {
-        return this.http.post<ResponseDto>(`${environment.imageUrl}`, imageDomain).subscribe(
+    uploadImage(imageDomain: ImageDomain): ImageWithPosition[] {
+        let ImageResponse: ImageWithPosition[]
+        this.http.post<ResponseDto>(`${environment.imageUrl}`, imageDomain).subscribe(
             response => {
                 console.log(response)
                 if (response.status == "SUCCESS") {
-
+                    ImageResponse = response.data
                 }
 
             }
@@ -75,9 +81,125 @@ export class ProductService {
 
                 this.alertService.error(error)
                 console.log(error)
+                ImageResponse = null
 
             }
         );
+        return ImageResponse
+    }
+
+    generateProductResponse(formOutput: any, imageResponse: ImageWithPosition[], category: string, colors: string[], tags: string[]): ProductReq {
+
+        let productRequest: ProductReq = new ProductReq()
+        productRequest.title = formOutput.productTitle
+        productRequest.description = formOutput.description
+        productRequest.subCategoryName = formOutput.subCategoryName
+        productRequest.price = formOutput.price
+        productRequest.priceVaries = formOutput.priceVaries
+        productRequest.compareAtPriceVaries = formOutput.compareAtPriceVaries
+        productRequest.compareAtPriceMax = formOutput.compareAtPriceMin
+        productRequest.compareAtPriceMin = formOutput.compareAtPriceMin
+        productRequest.tags = tags
+        productRequest.color = colors
+        productRequest.imageWithPosition = imageResponse
+        if (category === "collections") {
+            productRequest.type = "T-Shirt"
+            let sizes: Size[] = []
+            let Ssize: Size;
+            Ssize.isDefault = false
+            Ssize.size = "S"
+            Ssize.available = formOutput.size1_available
+            Ssize.quantity = formOutput.size1_quantity
+            Ssize.weight = formOutput.size1_weight
+            Ssize.prize = formOutput.size1_price
+
+            let Msize: Size;
+            Msize.isDefault = false
+            Msize.size = "M"
+            Msize.available = formOutput.size2_available
+            Msize.quantity = formOutput.size2_quantity
+            Msize.weight = formOutput.size2_weight
+            Msize.prize = formOutput.size2_price
+
+            let Lsize: Size;
+            Lsize.isDefault = false
+            Lsize.size = "L"
+            Lsize.available = formOutput.size3_available
+            Lsize.quantity = formOutput.size3_quantity
+            Lsize.weight = formOutput.size3_weight
+            Lsize.prize = formOutput.size3_price
+
+            let XLsize: Size;
+            XLsize.isDefault = false
+            XLsize.size = "XL"
+            XLsize.available = formOutput.size4_available
+            XLsize.quantity = formOutput.size4_quantity
+            XLsize.weight = formOutput.size4_weight
+            XLsize.prize = formOutput.size4_price
+
+            let XXLsize: Size;
+            XXLsize.isDefault = false
+            XXLsize.size = "XXL"
+            XXLsize.available = formOutput.size5_available
+            XXLsize.quantity = formOutput.size5_quantity
+            XXLsize.weight = formOutput.size5_weight
+            XXLsize.prize = formOutput.size5_price
+
+            sizes.push(Ssize)
+            sizes.push(Msize)
+            sizes.push(Lsize)
+            sizes.push(XLsize)
+            sizes.push(XXLsize)
+
+            productRequest.size = sizes
+        } else if (category === "stationaries") {
+            let sizes: Size[] = []
+            let A2size: Size;
+            A2size.isDefault = false
+            A2size.size = "A2"
+            A2size.available = formOutput.size1_available
+            A2size.quantity = formOutput.size1_quantity
+            A2size.weight = formOutput.size1_weight
+            A2size.prize = formOutput.size1_price
+
+            let A3size: Size;
+            A3size.isDefault = false
+            A3size.size = "A3"
+            A3size.available = formOutput.size2_available
+            A3size.quantity = formOutput.size2_quantity
+            A3size.weight = formOutput.size2_weight
+            A3size.prize = formOutput.size2_price
+
+            let A5size: Size;
+            A5size.isDefault = false
+            A5size.size = "A5"
+            A5size.available = formOutput.size3_available
+            A5size.quantity = formOutput.size3_quantity
+            A5size.weight = formOutput.size3_weight
+            A5size.prize = formOutput.size3_price
+
+            sizes.push(A2size)
+            sizes.push(A3size)
+            sizes.push(A5size)
+
+            productRequest.size = sizes
+        } else if (category === "accessories") {
+            let sizes: Size[] = []
+            let default1: Size;
+            default1.isDefault = true
+            default1.size = "Default"
+            default1.available = formOutput.size1_available
+            default1.quantity = formOutput.size1_quantity
+            default1.weight = formOutput.size1_weight
+            default1.prize = formOutput.size1_price
+
+            sizes.push(default1)
+            productRequest.size = sizes
+        }
+
+
+        return productRequest
+
     }
 
 }

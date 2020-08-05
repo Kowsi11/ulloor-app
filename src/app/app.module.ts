@@ -46,6 +46,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatRippleModule } from '@angular/material/core';
 
 import { MatChipInputEvent } from '@angular/material/chips';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonModule } from '@angular/material/button';
 @NgModule({
   declarations: [
     AppComponent,
@@ -88,7 +92,12 @@ import { MatChipInputEvent } from '@angular/material/chips';
     MatRadioModule,
     MatSlideToggleModule,
     MatChipsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatCardModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatButtonModule
+
 
   ],
   providers: [
