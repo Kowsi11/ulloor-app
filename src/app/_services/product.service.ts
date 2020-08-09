@@ -31,7 +31,7 @@ export class ProductService {
     }
     getProductsByCategoryId(categoryId: string) {
         console.log(`${environment.categoryUrl}/category/${categoryId}/products`)
-        return this.http.get<ResponseDto>(`${environment.categoryUrl}/category/${categoryId}/products`);
+        return this.http.get<ResponseDto>(`${environment.categoryUrl}/subcategory/${categoryId}/products`);
     }
     getProductById(productId: string) {
         return this.http.get<ResponseDto>(`${environment.categoryUrl}/product/${productId}`);
