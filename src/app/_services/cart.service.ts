@@ -50,7 +50,6 @@ export class CartService {
 
     public get cartValue(): Cart {
 
-        console.log("fger value "+this.cartSubject.value)
 
         if(this.cartSubject.value == undefined && this.cartSubject.value == null){
             return null
@@ -105,7 +104,7 @@ export class CartService {
     // }
     public addProductToCart(title:string,varientId:string,quantity:Number){
 
-        console.log("add logic entered")
+        
         let cartsProducts:CartProduct[]
         let cartProduct:CartProduct
         this.productService.getCartProduct(title,varientId,quantity).subscribe(
@@ -198,10 +197,8 @@ export class CartService {
       return carts
     }
     saveCartsToLocal(carts:Cart){
-        console.log("cart")
         console.log(JSON.stringify(carts))
         localStorage.setItem('cart', JSON.stringify(carts));
-        console.log("saveLogic")
         console.log("check"+JSON.parse(localStorage.getItem('cart')))
     }
 }

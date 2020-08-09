@@ -14,104 +14,94 @@ import { Cart } from '@app/_models/order/Cart';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  mycart : String = "cart-parent " ;
-  mysearch : String = "search-parent " ;
-  numone  : Number = 0 ;
-  numtwo :  Number = 0 ;
-  cartSize:number = 0;
-  cartProducts:Product[];
+  mycart: String = "cart-parent ";
+  mysearch: String = "search-parent ";
+  numone: Number = 0;
+  numtwo: Number = 0;
+  cartSize: number = 0;
+  cartProducts: Product[];
   carts: Cart
-  user:User;
-  private userSubject:BehaviorSubject<User>
- loggedin:any;
- notlogged:boolean=false;
-  constructor( private router: Router,private cartService:CartService, private accountService:AccountService ) { 
+  user: User;
+  private userSubject: BehaviorSubject<User>
+  loggedin: any;
+  notlogged: boolean = false;
+  constructor(private router: Router, private cartService: CartService, private accountService: AccountService) {
 
   }
 
-  
 
-  
+
+
   ngOnInit() {
-   this.userLoggedInfo()
-   this.getCartDetails()
-}
-ngDoCheck(){
-this.userLoggedInfo()
-this.getCartDetails()
-}
+    this.userLoggedInfo()
+    this.getCartDetails()
+  }
+  ngDoCheck() {
+    this.userLoggedInfo()
+    this.getCartDetails()
+  }
 
-  getCartDetails(){
-    
-    this.carts=this.cartService.cartValue;
-    console.log("header cart")
-    console.log(this.carts)
-    if(this.carts!=null && this.carts!=undefined){
-      this.cartSize=this.carts.products.length
-    }else{
+  getCartDetails() {
+
+    this.carts = this.cartService.cartValue;
+    if (this.carts != null && this.carts != undefined) {
+      this.cartSize = this.carts.products.length
+    } else {
       this.carts = new Cart()
       this.carts.products = []
       this.carts.totalAmount = 0
     }
   }
-  removeFromCart(product:any){
+  removeFromCart(product: any) {
     this.cartService.deleteProductCart(product)
   }
 
 
-  
-  userLoggedInfo()
-  {
-    this.userSubject =new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
-      console.log(this.userSubject)
-    if(this.userSubject.value!=null)
-     {
-      this.notlogged=false;
-	  this.user=this.userSubject.value;
-     }
-    else
-    {
-      this.notlogged=true;
+
+  userLoggedInfo() {
+    this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
+    if (this.userSubject.value != null) {
+      this.notlogged = false;
+      this.user = this.userSubject.value;
+    }
+    else {
+      this.notlogged = true;
     }
   }
-  
-  logout(){
-	this.accountService.logout()
+
+  logout() {
+    this.accountService.logout()
   }
 
-  mycartfun()
-  {
+  mycartfun() {
     this.getCartDetails();
-    if (this.numone === 0 ){
-      this.mycart += 'active' ;
-      this.numone = 1 ;
-      }else if (this.numone === 1)
-  {
-    this.mycart = "cart-parent " ; 
-    this.numone = 0 ;
-   }
+    if (this.numone === 0) {
+      this.mycart += 'active';
+      this.numone = 1;
+    } else if (this.numone === 1) {
+      this.mycart = "cart-parent ";
+      this.numone = 0;
+    }
   }
-  mysearchfun()
-  {
-    if (this.numtwo === 0 ){
-      this.mysearch += 'active' ;
-      this.numtwo = 1 ;
-      }else if (this.numtwo === 1)
-  {
-    this.mysearch = "search-parent " ; 
-    this.numtwo = 0 ;
-   }
+  mysearchfun() {
+    if (this.numtwo === 0) {
+      this.mysearch += 'active';
+      this.numtwo = 1;
+    } else if (this.numtwo === 1) {
+      this.mysearch = "search-parent ";
+      this.numtwo = 0;
+    }
   }
 
 
-  
+
 
 
 }
 
 
-    
 
-    
+
+
 
 

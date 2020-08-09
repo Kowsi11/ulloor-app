@@ -5,7 +5,10 @@ import { Subscription } from 'rxjs';
 import { Alert, AlertType } from '@app/_models';
 import { AlertService } from '@app/_services';
 
-@Component({ selector: 'alert', templateUrl: 'alert.component.html' })
+@Component({
+    selector: 'alert',
+    styleUrls: ['./alert.component.css'], templateUrl: './alert.component.html'
+})
 export class AlertComponent implements OnInit, OnDestroy {
     @Input() id = 'default-alert';
     @Input() fade = true;
@@ -37,7 +40,7 @@ export class AlertComponent implements OnInit, OnDestroy {
                 if (alert.autoClose) {
                     setTimeout(() => this.removeAlert(alert), 3000);
                 }
-           });
+            });
 
         // clear alerts on location change
         this.routeSubscription = this.router.events.subscribe(event => {
@@ -75,7 +78,7 @@ export class AlertComponent implements OnInit, OnDestroy {
         if (!alert) return;
 
         const classes = ['alert', 'alert-dismissable', 'mt-4', 'container'];
-                
+
         const alertTypeClass = {
             [AlertType.Success]: 'alert alert-success',
             [AlertType.Error]: 'alert alert-danger',

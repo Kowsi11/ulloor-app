@@ -1,8 +1,9 @@
-export class Size{
-    size:string;
-	quantity:number;
-	prize:number;
-	weight:number;
-	available:Boolean; 
-	isDefault:Boolean;
+export class Size {
+	size: string;
+	quantity: number;
+	prize: number;
+	weight: number;
+	available: Boolean;
+	stockAvailable: Boolean;
+	isDefault: Boolean;
 }

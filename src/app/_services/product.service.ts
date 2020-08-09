@@ -44,6 +44,23 @@ export class ProductService {
         return this.http.get<ResponseDto>(`${environment.categoryUrl}/combos`);
 
     }
+    getProductNames() {
+        let productNames: string[] = null
+        this.http.get<ResponseDto>(`${environment.categoryUrl}/products/name`).subscribe(
+
+            response => {
+                if (response.status === " SUCCESS") {
+                    productNames = response.data
+                }
+            }, error => {
+
+                this.alertService.error(error)
+                productNames = null
+            }
+        );
+        return productNames
+
+    }
     getCartProduct(title: string, varientId: string, quantity: Number) {
         let cartProduct: CartProduct = null
         console.log(`${environment.categoryUrl}/product/${title}?varientId=${varientId}&quantity=${quantity}`)
@@ -67,13 +84,16 @@ export class ProductService {
         return productoUseList
     }
 
-    uploadImage(imageDomain: ImageDomain): ImageWithPosition[] {
-        let ImageResponse: ImageWithPosition[]
-        this.http.post<ResponseDto>(`${environment.imageUrl}`, imageDomain).subscribe(
+
+    saveProduct(productRequest) {
+        this.http.post<ResponseDto>(`${environment.categoryUrl}/newproduct`, productRequest).subscribe(
             response => {
                 console.log(response)
                 if (response.status == "SUCCESS") {
-                    ImageResponse = response.data
+                    console.log("Product saved")
+                    this.alertService.success("Product saved")
+                    this.router.navigate(["/home"])
+
                 }
 
             }
@@ -81,11 +101,17 @@ export class ProductService {
 
                 this.alertService.error(error)
                 console.log(error)
-                ImageResponse = null
 
             }
         );
-        return ImageResponse
+    }
+
+    uploadImage(imageDomain: ImageDomain) {
+        let ImageResponse: ImageWithPosition[]
+        return this.http.post<ResponseDto>(`${environment.imageUrl}`, imageDomain);
+    }
+    returnImageResponse(imageResponse: ImageWithPosition[]) {
+        return imageResponse
     }
 
     generateProductResponse(formOutput: any, imageResponse: ImageWithPosition[], category: string, colors: string[], tags: string[]): ProductReq {
@@ -95,8 +121,8 @@ export class ProductService {
         productRequest.description = formOutput.description
         productRequest.subCategoryName = formOutput.subCategoryName
         productRequest.price = formOutput.price
-        productRequest.priceVaries = formOutput.priceVaries
-        productRequest.compareAtPriceVaries = formOutput.compareAtPriceVaries
+        productRequest.priceVaries = formOutput.priceVaries == null || formOutput.priceVaries == "" ? false : formOutput.priceVaries
+        productRequest.compareAtPriceVaries = formOutput.compareAtPriceVaries == null || formOutput.compareAtPriceVaries == "" ? false : formOutput.priceVaries
         productRequest.compareAtPriceMax = formOutput.compareAtPriceMin
         productRequest.compareAtPriceMin = formOutput.compareAtPriceMin
         productRequest.tags = tags
@@ -105,42 +131,47 @@ export class ProductService {
         if (category === "collections") {
             productRequest.type = "T-Shirt"
             let sizes: Size[] = []
-            let Ssize: Size;
+            let Ssize: Size = new Size();
             Ssize.isDefault = false
             Ssize.size = "S"
             Ssize.available = formOutput.size1_available
+            Ssize.stockAvailable = formOutput.size1_available == true ? (formOutput.size1_stock_available == null || formOutput.size1_stock_available == "" ? true : formOutput.size1_stock_available) : (formOutput.size1_stock_available == null || formOutput.size1_stock_available == "" ? false : formOutput.size1_stock_available)
             Ssize.quantity = formOutput.size1_quantity
             Ssize.weight = formOutput.size1_weight
             Ssize.prize = formOutput.size1_price
 
-            let Msize: Size;
+            let Msize: Size = new Size();
             Msize.isDefault = false
             Msize.size = "M"
             Msize.available = formOutput.size2_available
+            Msize.stockAvailable = formOutput.size2_available == true ? (formOutput.size2_stock_available == null || formOutput.size2_stock_available == "" ? true : formOutput.size2_stock_available) : (formOutput.size2_stock_available == null || formOutput.size2_stock_available == "" ? false : formOutput.size2_stock_available)
             Msize.quantity = formOutput.size2_quantity
             Msize.weight = formOutput.size2_weight
             Msize.prize = formOutput.size2_price
 
-            let Lsize: Size;
+            let Lsize: Size = new Size();
             Lsize.isDefault = false
             Lsize.size = "L"
             Lsize.available = formOutput.size3_available
+            Lsize.stockAvailable = formOutput.size3_available == true ? (formOutput.size3_stock_available == null || formOutput.size3_stock_available == "" ? true : formOutput.size3_stock_available) : (formOutput.size3_stock_available == null || formOutput.size3_stock_available == "" ? false : formOutput.size3_stock_available)
             Lsize.quantity = formOutput.size3_quantity
             Lsize.weight = formOutput.size3_weight
             Lsize.prize = formOutput.size3_price
 
-            let XLsize: Size;
+            let XLsize: Size = new Size();
             XLsize.isDefault = false
             XLsize.size = "XL"
             XLsize.available = formOutput.size4_available
             XLsize.quantity = formOutput.size4_quantity
+            XLsize.stockAvailable = formOutput.size4_available == true ? (formOutput.size4_stock_available == null || formOutput.size4_stock_available == "" ? true : formOutput.size4_stock_available) : (formOutput.size4_stock_available == null || formOutput.size4_stock_available == "" ? false : formOutput.size4_stock_available)
             XLsize.weight = formOutput.size4_weight
             XLsize.prize = formOutput.size4_price
 
-            let XXLsize: Size;
+            let XXLsize: Size = new Size();
             XXLsize.isDefault = false
             XXLsize.size = "XXL"
             XXLsize.available = formOutput.size5_available
+            XXLsize.stockAvailable = formOutput.size5_available == true ? (formOutput.size5_stock_available == null || formOutput.size5_stock_available == "" ? true : formOutput.size5_stock_available) : (formOutput.size5_stock_available == null || formOutput.size5_stock_available == "" ? false : formOutput.size5_stock_available)
             XXLsize.quantity = formOutput.size5_quantity
             XXLsize.weight = formOutput.size5_weight
             XXLsize.prize = formOutput.size5_price
@@ -154,26 +185,29 @@ export class ProductService {
             productRequest.size = sizes
         } else if (category === "stationaries") {
             let sizes: Size[] = []
-            let A2size: Size;
+            let A2size: Size = new Size();
             A2size.isDefault = false
             A2size.size = "A2"
             A2size.available = formOutput.size1_available
+            A2size.stockAvailable = formOutput.size1_available == true ? (formOutput.size1_stock_available == null || formOutput.size1_stock_available == "" ? true : formOutput.size1_stock_available) : (formOutput.size1_stock_available == null || formOutput.size1_stock_available == "" ? false : formOutput.size1_stock_available)
             A2size.quantity = formOutput.size1_quantity
             A2size.weight = formOutput.size1_weight
             A2size.prize = formOutput.size1_price
 
-            let A3size: Size;
+            let A3size: Size = new Size();
             A3size.isDefault = false
             A3size.size = "A3"
             A3size.available = formOutput.size2_available
+            A3size.stockAvailable = formOutput.size2_available == true ? (formOutput.size2_stock_available == null || formOutput.size2_stock_available == "" ? true : formOutput.size2_stock_available) : (formOutput.size2_stock_available == null || formOutput.size2_stock_available == "" ? false : formOutput.size2_stock_available)
             A3size.quantity = formOutput.size2_quantity
             A3size.weight = formOutput.size2_weight
             A3size.prize = formOutput.size2_price
 
-            let A5size: Size;
+            let A5size: Size = new Size();
             A5size.isDefault = false
             A5size.size = "A5"
             A5size.available = formOutput.size3_available
+            A2size.stockAvailable = formOutput.size3_available == true ? (formOutput.size3_stock_available == null || formOutput.size3_stock_available == "" ? true : formOutput.size3_stock_available) : (formOutput.size3_stock_available == null || formOutput.size3_stock_available == "" ? false : formOutput.size3_stock_available)
             A5size.quantity = formOutput.size3_quantity
             A5size.weight = formOutput.size3_weight
             A5size.prize = formOutput.size3_price
@@ -185,10 +219,11 @@ export class ProductService {
             productRequest.size = sizes
         } else if (category === "accessories") {
             let sizes: Size[] = []
-            let default1: Size;
+            let default1: Size = new Size();
             default1.isDefault = true
             default1.size = "Default"
-            default1.available = formOutput.size1_available
+            default1.available = formOutput.size1_available == "" ? true : false
+            default1.stockAvailable = formOutput.size1_stock_available == "" ? true : false
             default1.quantity = formOutput.size1_quantity
             default1.weight = formOutput.size1_weight
             default1.prize = formOutput.size1_price
@@ -201,5 +236,7 @@ export class ProductService {
         return productRequest
 
     }
+
+
 
 }

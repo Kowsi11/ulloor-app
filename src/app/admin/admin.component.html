@@ -8,22 +8,31 @@
   <div class="clearfix"></div>
   <br /> <br />
   <!--  -->
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <form [formGroup]="form">
     <div class="form-body bg-light">
 
 
       <!--Category Dropdown-->
       <div class="row center">
         <div class="col-md-6">
+
           <label class="lable-text" for="phone">Select Category</label>
           <div class="select-box-2" Required>
             <select (click)="getCategory($event.target.value)">
               <option value=''>Select Category</option>
-              <option value='stationaries'>Stationaries</option>
               <option value='accessories'>Accessories</option>
               <option value='collections'>Collections</option>
+              <option value='stationaries'>Stationaries</option>
             </select>
           </div>
+
+          <!-- <mat-form-field appearance="fill" class="inventory-input">
+            <mat-label>Select Category</mat-label>
+            <mat-select (click)="getCategory($event.target.value)">
+              <mat-option>None</mat-option>
+              <mat-option *ngFor="let cat of categoryList" [value]="cat.handle">{{cat.name}}</mat-option>
+            </mat-select>
+          </mat-form-field> -->
         </div>
 
         <!--Sub category-->
@@ -38,6 +47,14 @@
               </ng-template>
             </select>
           </div>
+          <!-- <mat-form-field appearance="fill" class="inventory-input">
+            <mat-label>Select Sub-Category</mat-label>
+            <mat-select>
+              <mat-option>None</mat-option>
+              <mat-option *ngFor="let subCat of subCategories" [value]="subCat.handle">{{subCat.name}}</mat-option>
+            </mat-select>
+          </mat-form-field> -->
+
         </div>
       </div>
       <!-- end row -->
@@ -46,15 +63,41 @@
       <!--Product Name-->
       <div class="row center">
         <div class="col-md-6">
-          <label class="lable-text" for="name">Product Name</label>
+          <!-- <label class="lable-text" for="name">Product Name</label>
           <input id="name" formControlName="productTitle" [(ngModel)]="title" class="form-control" type="text"
             placeholder="Enter Product Name">
-          <br />
+          <br /> -->
+          <mat-form-field class="inventory-input">
+            <mat-label>Product Name</mat-label>
+            <input matInput formControlName="productTitle" [(ngModel)]="title" placeholder="Ex. pat@example.com">
+            <mat-hint>Name of the product should be unique!</mat-hint>
+            <mat-error *ngIf="f.productTitle.touched && f.productTitle.invalid">
+              <mat-error *ngIf="f.productTitle.errors.required">
+                Product Title is <strong>Required</strong>
+              </mat-error>
+              <mat-error *ngIf="f.productTitle.errors.titleValidator">
+                Product Title should be unique
+              </mat-error>
+            </mat-error>
+
+            <!-- <mat-error *ngIf="emailFormControl.hasError('required')">
+              Product Name is <strong>required</strong>
+            </mat-error> -->
+          </mat-form-field>
         </div>
         <div class="col-md-6">
-          <label class="lable-text" for="message">Product Description</label>
-          <textarea id="comment" formControlName="description" class="form-control" placeholder="Enter your message"
-            name="message"></textarea>
+          <mat-form-field class="inventory-input">
+            <mat-label>Product Description</mat-label>
+            <input matInput #message formControlName="description" maxlength="256"
+              placeholder="Ex. Full description about product...">
+            <mat-hint align="start"><strong>Description of product</strong> </mat-hint>
+            <mat-hint align="end">{{message.value.length}} / 500</mat-hint>
+            <mat-error *ngIf="f.description.touched && f.description.invalid">
+              <mat-error *ngIf="f.description.errors.required">
+                Product Description is <strong>Required</strong>
+              </mat-error>
+            </mat-error>
+          </mat-form-field>
         </div>
       </div>
 
@@ -563,7 +606,7 @@
 
         <div class="col-md-12 text-center">
           <ng-template [ngIf]="imageResponse !== undefined && imageResponse.length>0" [ngIfElse]="invalidForm">
-            <button mat-raised-button color="primary" type="submit">submit</button>
+            <button mat-raised-button color="primary" type="submit" (click)="saveProduct()">submit</button>
           </ng-template>
           <ng-template #invalidForm>
             <button mat-raised-button color="warn" type="submit">submit</button>

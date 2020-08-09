@@ -1,4 +1,13 @@
-<div *ngFor="let alert of alerts" class="{{cssClass(alert)}}">
-    <a class="close" (click)="removeAlert(alert)">&times;</a>
-    <span [innerHTML]="alert.message"></span>
+<style>
+    div.sticky {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 80px;
+    }
+</style>
+<div class="sticky">
+    <div *ngFor="let alert of alerts" class="{{cssClass(alert)}}">
+        <a class="close" (click)="removeAlert(alert)">&times;</a>
+        <span [innerHTML]="alert.message"></span>
+    </div>
 </div>
