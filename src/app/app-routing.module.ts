@@ -23,46 +23,47 @@ const usersModule = () => import('./users/users.module').then(x => x.UsersModule
 
 const routes: Routes = [
 
-  { path: 'header', component:HeaderComponent },
-  { path: 'home', component:HomeComponent },
-  {path: 'home-banners',component:HomeBannersComponent},
-  {path : 'product/:category' , component : ProductsComponent},
-      {path : 'ProductHollywood' , component : ProductsComponent},
-      {path : 'ProductChennai' , component : ProductsComponent},
-      {path : 'ProductFriendship' , component : ProductsComponent},
-      {path : 'ProductCouple', component : ProductsComponent},
-      {path : 'ProductAccessories' , component : ProductsComponent},
-      {path : 'StationaryProducts' , component : StationaryProductsComponent},
-      {path : 'product/:category/Product/view/:productId' , component : ProductpreviewComponent},
-      {path : 'product/view/:productId' , component : ProductpreviewComponent},
-      
-      {path : 'combo/:category' , component : CombosComponent},
-     
-      {path : 'admin' , component : AdminComponent},
+  { path: 'header', component: HeaderComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'home-banners', component: HomeBannersComponent },
+  { path: 'product/:category', component: ProductsComponent },
+  { path: 'ProductHollywood', component: ProductsComponent },
+  { path: 'ProductChennai', component: ProductsComponent },
+  { path: 'ProductFriendship', component: ProductsComponent },
+  { path: 'ProductCouple', component: ProductsComponent },
+  { path: 'ProductAccessories', component: ProductsComponent },
+  { path: 'StationaryProducts', component: StationaryProductsComponent },
+  { path: 'product/:category/Product/view/:productId', component: ProductpreviewComponent },
+  { path: 'product/view/:productId', component: ProductpreviewComponent },
 
-        { path: 'admin/productedit', component: ProducteditComponent },
-        { path: 'admin/productlist', component: ProductlistComponent },
+  { path: 'combo/:category', component: CombosComponent },
 
-     {path : 'Cart' , component : CartComponent},
-      {path : 'checkout',component:CheckoutComponent},
+  { path: 'admin', component: AdminComponent },
 
-  {path: '', component: HomeComponent},
-    { path: 'users', loadChildren: usersModule },
-    { path: 'account', loadChildren: accountModule },
+  { path: 'admin/productedit', component: ProducteditComponent },
+  { path: 'admin/productlist', component: ProductlistComponent },
 
-    // otherwise redirect to home
-    { path: '**', redirectTo: '' },
-  
-      
-      
-    ];
-  
+  { path: 'Cart', component: CartComponent },
+  { path: 'checkout', component: CheckoutComponent },
+
+  { path: '', component: HomeComponent },
+  { path: 'users', loadChildren: usersModule },
+  { path: 'account', loadChildren: accountModule },
+
+  // otherwise redirect to home
+  { path: '**', redirectTo: '' },
+
+
+
+];
+
 
 
 
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })],
+  // 
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

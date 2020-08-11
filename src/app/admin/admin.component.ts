@@ -13,30 +13,15 @@ import { ImageWithPosition } from '@app/_models/newProduct/ImageWithPosition';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { Title } from '@angular/platform-browser';
 import { AlertService } from '@app/_services';
+import { subscribeOn, first } from 'rxjs/operators';
+import { titleValidator } from '@app/_helpers/validation/productNameCheckValidation';
 export interface MatChips {
   name: string;
 }
-export function titleValidator(titleValue: AbstractControl) {
-
-  //productNames = this.productService.getProductNames()
-
-  let productNames = ["hi", "bye"]
-  if (productNames != null) {
-
-    productNames.forEach(element => {
-      if (element == titleValue.value as string) {
-        return { titleValidator: true };
-      } else {
-        return null
-      }
-    });
-  } else {
-    return null
-  }
 
 
-  return { titleValidator: true }
-}
+
+
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const isSubmitted = form && form.submitted;
@@ -74,6 +59,7 @@ export class AdminComponent implements OnInit {
   stationariesCheck: Boolean = false;
 
   imageResponse: ImageWithPosition[];
+  productNames: string[] = null
 
   categoryList = [{
     name: "Accessories", handle: "accessories"
@@ -97,11 +83,12 @@ export class AdminComponent implements OnInit {
 
   matcher = new MyErrorStateMatcher();
 
+  //form: FormGroup
   form: FormGroup = this.formBuilder.group({
     subCategoryName: ['', Validators.required],
-    productTitle: ['', Validators.required, titleValidator],
+    productTitle: ['', [Validators.required, titleValidator(this.productService)]],
     description: ['', Validators.required],
-    priceVaries: this.priceVariesBoolean,
+    priceVaries: ['', [Validators.required]],
     compareAtPriceVaries: ['', [Validators.required]],
     price: ['', [Validators.required]],
     compareAtPriceMin: this.compareAtPriceCheck,
@@ -146,14 +133,19 @@ export class AdminComponent implements OnInit {
     fileSource: new FormControl('', [Validators.required])
 
   })
+
   constructor(public formBuilder: FormBuilder, private http: HttpClient, private productService: ProductService,
     private alertService: AlertService) {
+    console.log(this.productNames)
 
+    console.log("construvtor")
+    console.log(this.productNames)
 
     // this.form.valueChanges.subscribe((value) => {
     //   console.log("check990")
     //   value.size1_stock_available ? this.form.get('size1_quantity').disabled : this.form.get('size1_quantity').enable()
     // })
+
 
     this.colorAvailable = false;
     this.priceVariesBoolean = false
@@ -196,7 +188,7 @@ export class AdminComponent implements OnInit {
 
     let productRequest = this.productService.generateProductResponse(this.form.value, this.imageResponse, this.category, this.color, this.tags)
     console.log(productRequest)
-    this.productService.saveProduct(productRequest)
+    //this.productService.saveProduct(productRequest)
   }
   colorAvaliableCheck() {
     this.colorAvailable = !this.colorAvailable
@@ -207,15 +199,22 @@ export class AdminComponent implements OnInit {
   compareAtPriceVaries(isChecked: boolean) {
     this.compareAtPriceCheck = !isChecked
   }
+  onSubmit() {
 
+  }
 
 
 
 
   ngOnInit() {
+    // this.productNames = this.productService.getNames()
+
     this.colorAvailable = false
     this.priceVariesBoolean = false
     this.compareAtPriceCheck = false
+  }
+  getCategoryNames() {
+
   }
   uploadFile(event) {
     const file = (event.target as HTMLInputElement).files[0];
@@ -226,6 +225,50 @@ export class AdminComponent implements OnInit {
     });
     this.form.get('img').updateValueAndValidity()
   }
+  // titleValidator(titleValue: AbstractControl) {
+  //   // let productNames = ["hi", "bye"]
+  //   console.log("titlr")
+  //   this.productService.getProductNames().pipe(first()).subscribe(
+  //     response => {
+  //       if (response.status == "SUCCESS") {
+  //         this.productNames = response.data
+  //         if (this.productNames != undefined && this.productNames != null) {
+  //           this.productNames.forEach(element => {
+  //             if (element == titleValue.value as string) {
+  //               return { titleValidator: true };
+  //             } else {
+  //               return null
+  //             }
+  //           });
+  //         } else {
+  //           return null
+  //         }
+  //       }
+  //     }, error => {
+
+  //       this.alertService.error(error)
+  //       this.productNames = null
+  //     }
+  //   );
+
+
+  //   // let productNames = this.productService.getNames()
+  //   // if (productNames != null) {
+
+  //   //   productNames.forEach(element => {
+  //   //     if (element == titleValue.value as string) {
+  //   //       return { titleValidator: true };
+  //   //     } else {
+  //   //       return null
+  //   //     }
+  //   //   });
+  //   // } else {
+  //   //   return null
+  //   // }
+
+  //   return null
+  // }
+
   removeImage(url) {
     var idx = this.images.indexOf(url);
     if (idx != -1) {

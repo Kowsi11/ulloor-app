@@ -51,6 +51,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDialogModule } from '@angular/material/dialog'
+import { DialogOverviewExampleDialog } from './_helpers/popup/EditProductPopUp';
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,7 +80,8 @@ import { MatSelectModule } from '@angular/material/select';
     CheckoutComponent,
     ProducteditComponent,
     AdminComponent,
-    ProductlistComponent
+    ProductlistComponent,
+    DialogOverviewExampleDialog
 
 
   ],
@@ -98,7 +104,11 @@ import { MatSelectModule } from '@angular/material/select';
     MatInputModule,
     MatCheckboxModule,
     MatButtonModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatProgressSpinnerModule,
+    MatDialogModule
 
 
   ],

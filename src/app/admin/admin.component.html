@@ -8,7 +8,7 @@
   <div class="clearfix"></div>
   <br /> <br />
   <!--  -->
-  <form [formGroup]="form">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="form-body bg-light">
 
 
@@ -69,7 +69,7 @@
           <br /> -->
           <mat-form-field class="inventory-input">
             <mat-label>Product Name</mat-label>
-            <input matInput formControlName="productTitle" [(ngModel)]="title" placeholder="Ex. pat@example.com">
+            <input matInput formControlName="productTitle" placeholder="Poduct Title">
             <mat-hint>Name of the product should be unique!</mat-hint>
             <mat-error *ngIf="f.productTitle.touched && f.productTitle.invalid">
               <mat-error *ngIf="f.productTitle.errors.required">
@@ -106,12 +106,11 @@
           <label class="lable-text" for="name" style="align-items: center;">Price Varies</label>&nbsp;&nbsp;
           <mat-slide-toggle (click)="priceVariesCheck(priceVariesBoolean)" [checked]="false">
           </mat-slide-toggle>
-          {{priceVariesBoolean}}
         </div>
 
 
         <div class="col-md-6">
-          <label class="lable-text" for="name" style="align-items: center;">Discount Price</label>&nbsp;&nbsp;
+          <label class="lable-text" for="name" style="align-items: center;">Compare Price</label>&nbsp;&nbsp;
           <mat-slide-toggle formControlName="compareAtPriceVaries" (click)="compareAtPriceVaries(compareAtPriceCheck)"
             [checked]="false">
           </mat-slide-toggle>
@@ -122,20 +121,33 @@
       <!--Price and Discount-->
       <div class="row">
         <div class="col-md-6">
-          <label class="lable-text" for="name">Product Price</label>
+          <!-- <label class="lable-text" for="name">Product Price</label>
           <input id="Price" class="input-1" formControlName="price" type="number" placeholder="Enter product Price"
-            name="Price">
-          <br />
-        </div>
+            name="Price"> -->
+          <mat-form-field class="inventory-input">
+            <mat-label>Product Price</mat-label>
+            <input matInput type="number" formControlName="price" placeholder="Enter product Price Example: ₹499">
+            <mat-hint>Price of the product in <strong>₹</strong></mat-hint>
 
-        <div class="col-md-6">
-          <label class="lable-text" for="name">Product Discount</label>
-          <input id="Price" class="input-1" type="number" formControlName="compareAtPriceMin"
-            placeholder="Enter product discount" name="Discount">
+          </mat-form-field>
           <br />
         </div>
+        <ng-template [ngIf]="compareAtPriceCheck">
+          <div class="col-md-6" *ngIf="compareAtPriceCheck">
+            <!-- <label class="lable-text" for="name">Product Discount</label>
+            <input id="Price" class="input-1" type="number" formControlName="compareAtPriceMin"
+              placeholder="Enter product discount" name="Discount"> -->
+            <mat-form-field class="inventory-input">
+              <mat-label>Product Compare Price</mat-label>
+              <input matInput type="number" formControlName="compareAtPriceMin"
+                placeholder="Enter product compare Price Example: ₹499">
+              <mat-hint>Compare price of the product in <strong>₹</strong> should be more then product price</mat-hint>
+
+            </mat-form-field>
+            <br />
+          </div>
+        </ng-template>
       </div>
-
 
       <!--Product Brand-->
 
@@ -162,33 +174,42 @@
       </div>
       <!--Quantity-->
 
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-md-6">
           <label class="lable-text" for="color">Product Quantity</label>
           <input id="Quantity" class="input-1" type="number" placeholder="Enter product Quantity" name="quantity">
-          <br />
-        </div>
-      </div>
-      <br>
-      <!--color-->
-      <div class="row">
-        <div class="col-md-10">
-          <mat-form-field class="example-chip-list">
-            <mat-chip-list #colorList aria-label="Product Color">
-
-              <input placeholder="Add Color..." [matChipInputFor]="colorList"
-                [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
-                (matChipInputTokenEnd)="addColor($event)">
-            </mat-chip-list>
-            <mat-chip *ngFor="let color of color" [selectable]="selectable" [removable]="removable"
-              (removed)="removeColor(color)">
-              {{color}}
-              <mat-icon matChipRemove *ngIf="removable"><span class="glyphicon glyphicon-remove-sign"></span></mat-icon>
-            </mat-chip>
+          <mat-form-field class="inventory-input">
+            <mat-label>Product Total Quantity</mat-label>
+            <input matInput type="number" formControlName="price" placeholder="Enter product Quantity Example: 500">
+            <mat-hint>Product quantity should be more than 0</mat-hint>
+          
           </mat-form-field>
           <br />
         </div>
-      </div>
+      </div> -->
+      <br>
+      <!--color-->
+      <ng-template [ngIf]="collectionCheck">
+        <div class="row">
+          <div class="col-md-10">
+            <mat-form-field class="example-chip-list">
+              <mat-chip-list #colorList aria-label="Product Color">
+
+                <input placeholder="Add Color..." [matChipInputFor]="colorList"
+                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+                  (matChipInputTokenEnd)="addColor($event)">
+              </mat-chip-list>
+              <mat-chip *ngFor="let color of color" [selectable]="selectable" [removable]="removable"
+                (removed)="removeColor(color)">
+                {{color}}
+                <mat-icon matChipRemove *ngIf="removable"><span class="glyphicon glyphicon-remove-sign"></span>
+                </mat-icon>
+              </mat-chip>
+            </mat-form-field>
+            <br />
+          </div>
+        </div>
+      </ng-template>
       <hr>
       <!--Size-->
       <ng-template [ngIf]="collectionCheck">
@@ -217,16 +238,20 @@
                 <mat-card-content>
                   <mat-form-field class="inventory-input">
                     <mat-label>Inventory Quantity</mat-label>
-                    <input matInput type="number" disabled formControlName="size1_quantity" placeholder="Ex. 100">
+                    <input matInput type="number" disabled formControlName="size1_quantity"
+                      placeholder="product Quantity Ex: 100">
+                    <mat-hint>Product quantity should be more than 0</mat-hint>
                   </mat-form-field>
                   <mat-form-field class="inventory-input">
                     <mat-label>Product Weight</mat-label>
-                    <input matInput formControlName="size1_weight" placeholder="Ex.50">
+                    <input matInput formControlName="size1_weight" placeholder="Product weight in gram Ex.50 gram">
+                    <mat-hint>Product weight in gram Ex:50</mat-hint>
                   </mat-form-field>
                   <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVariesnew">
                     <mat-form-field class="inventory-input">
                       <mat-label>Product Price</mat-label>
-                      <input matInput formControlName="size1_price" placeholder="Ex.550">
+                      <input matInput formControlName="size1_price" placeholder="Enter product Price Example: ₹499">
+                      <mat-hint>Price of the product in <strong>₹</strong></mat-hint>
                     </mat-form-field>
                   </ng-template>
 
@@ -257,16 +282,20 @@
                 <mat-card-content>
                   <mat-form-field class="inventory-input">
                     <mat-label>Inventory Quantity</mat-label>
-                    <input matInput type="number" disabled formControlName="size2_quantity" placeholder="Ex. 100">
+                    <input matInput type="number" disabled formControlName="size2_quantity"
+                      placeholder="product Quantity Ex: 100">
+                    <mat-hint>Product quantity should be more than 0</mat-hint>
                   </mat-form-field>
                   <mat-form-field class="inventory-input">
                     <mat-label>Product Weight</mat-label>
-                    <input matInput formControlName="size2_weight" placeholder="Ex.50">
+                    <input matInput formControlName="size2_weight" placeholder="Product weight in gram Ex.50 gram">
+                    <mat-hint>Product weight in gram Ex:50</mat-hint>
                   </mat-form-field>
                   <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVariesnew">
                     <mat-form-field class="inventory-input">
                       <mat-label>Product Price</mat-label>
-                      <input matInput formControlName="size2_price" placeholder="Ex.550">
+                      <input matInput formControlName="size2_price" placeholder="Enter product Price Example: ₹499">
+                      <mat-hint>Price of the product in <strong>₹</strong></mat-hint>
                     </mat-form-field>
                   </ng-template>
 
@@ -294,16 +323,20 @@
                 <mat-card-content>
                   <mat-form-field class="inventory-input">
                     <mat-label>Inventory Quantity</mat-label>
-                    <input matInput type="number" disabled formControlName="size3_quantity" placeholder="Ex. 100">
+                    <input matInput type="number" disabled formControlName="size3_quantity"
+                      placeholder="product Quantity Ex: 100">
+                    <mat-hint>Product quantity should be more than 0</mat-hint>
                   </mat-form-field>
                   <mat-form-field class="inventory-input">
                     <mat-label>Product Weight</mat-label>
-                    <input matInput formControlName="size3_weight" placeholder="Ex.50">
+                    <input matInput formControlName="size3_weight" placeholder="Product weight in gram Ex.50 gram">
+                    <mat-hint>Product weight in gram Ex:50</mat-hint>
                   </mat-form-field>
                   <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVariesnew">
                     <mat-form-field class="inventory-input">
                       <mat-label>Product Price</mat-label>
-                      <input matInput formControlName="size3_price" placeholder="Ex.550">
+                      <input matInput formControlName="size3_price" placeholder="Enter product Price Example: ₹499">
+                      <mat-hint>Price of the product in <strong>₹</strong></mat-hint>
                     </mat-form-field>
                   </ng-template>
 
@@ -334,16 +367,20 @@
                 <mat-card-content>
                   <mat-form-field class="inventory-input">
                     <mat-label>Inventory Quantity</mat-label>
-                    <input matInput type="number" disabled formControlName="size4_quantity" placeholder="Ex. 100">
+                    <input matInput type="number" disabled formControlName="size4_quantity"
+                      placeholder="product Quantity Ex: 100">
+                    <mat-hint>Product quantity should be more than 0</mat-hint>
                   </mat-form-field>
                   <mat-form-field class="inventory-input">
                     <mat-label>Product Weight</mat-label>
-                    <input matInput formControlName="size4_weight" placeholder="Ex.50">
+                    <input matInput formControlName="size4_weight" placeholder="Product weight in gram Ex.50 gram">
+                    <mat-hint>Product weight in gram Ex:50</mat-hint>
                   </mat-form-field>
                   <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVariesnew">
                     <mat-form-field class="inventory-input">
                       <mat-label>Product Price</mat-label>
-                      <input matInput formControlName="size4_price" placeholder="Ex.550">
+                      <input matInput formControlName="size4_price" placeholder="Enter product Price Example: ₹499">
+                      <mat-hint>Price of the product in <strong>₹</strong></mat-hint>
                     </mat-form-field>
                   </ng-template>
 
@@ -370,16 +407,20 @@
                 <mat-card-content>
                   <mat-form-field class="inventory-input">
                     <mat-label>Inventory Quantity</mat-label>
-                    <input matInput type="number" disabled formControlName="size5_quantity" placeholder="Ex. 100">
+                    <input matInput type="number" disabled formControlName="size5_quantity"
+                      placeholder="product Quantity Ex: 100">
+                    <mat-hint>Product quantity should be more than 0</mat-hint>
                   </mat-form-field>
                   <mat-form-field class="inventory-input">
                     <mat-label>Product Weight</mat-label>
-                    <input matInput formControlName="size5_weight" placeholder="Ex.50">
+                    <input matInput formControlName="size5_weight" placeholder="Product weight in gram Ex.50 gram">
+                    <mat-hint>Product weight in gram Ex:50</mat-hint>
                   </mat-form-field>
                   <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVariesnew">
                     <mat-form-field class="inventory-input">
                       <mat-label>Product Price</mat-label>
-                      <input matInput formControlName="size5_price" placeholder="Ex.550">
+                      <input matInput formControlName="size5_price" placeholder="Enter product Price Example: ₹499">
+                      <mat-hint>Price of the product in <strong>₹</strong></mat-hint>
                     </mat-form-field>
                   </ng-template>
 
@@ -419,16 +460,20 @@
                 <mat-card-content>
                   <mat-form-field class="inventory-input">
                     <mat-label>Inventory Quantity</mat-label>
-                    <input matInput type="number" disabled formControlName="size1_quantity" placeholder="Ex. 100">
+                    <input matInput type="number" disabled formControlName="size1_quantity"
+                      placeholder="product Quantity Ex: 100">
+                    <mat-hint>Product quantity should be more than 0</mat-hint>
                   </mat-form-field>
                   <mat-form-field class="inventory-input">
                     <mat-label>Product Weight</mat-label>
-                    <input matInput formControlName="size1_weight" placeholder="Ex.50">
+                    <input matInput formControlName="size1_weight" placeholder="Product weight in gram Ex.50 gram">
+                    <mat-hint>Product weight in gram Ex:50</mat-hint>
                   </mat-form-field>
                   <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVariesnew">
                     <mat-form-field class="inventory-input">
                       <mat-label>Product Price</mat-label>
-                      <input matInput formControlName="size1_price" placeholder="Ex.550">
+                      <input matInput formControlName="size1_price" placeholder="Enter product Price Example: ₹499">
+                      <mat-hint>Price of the product in <strong>₹</strong></mat-hint>
                     </mat-form-field>
                   </ng-template>
 
@@ -458,16 +503,20 @@
                 <mat-card-content>
                   <mat-form-field class="inventory-input">
                     <mat-label>Inventory Quantity</mat-label>
-                    <input matInput type="number" disabled formControlName="size2_quantity" placeholder="Ex. 100">
+                    <input matInput type="number" disabled formControlName="size2_quantity"
+                      placeholder="product Quantity Ex: 100">
+                    <mat-hint>Product quantity should be more than 0</mat-hint>
                   </mat-form-field>
                   <mat-form-field class="inventory-input">
                     <mat-label>Product Weight</mat-label>
-                    <input matInput formControlName="size2_weight" placeholder="Ex.50">
+                    <input matInput formControlName="size2_weight" placeholder="Product weight in gram Ex.50 gram gram">
+                    <mat-hint>Product weight in gram Ex:50</mat-hint>
                   </mat-form-field>
                   <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVariesnew">
                     <mat-form-field class="inventory-input">
                       <mat-label>Product Price</mat-label>
-                      <input matInput formControlName="size2_price" placeholder="Ex.550">
+                      <input matInput formControlName="size2_price" placeholder="Enter product Price Example: ₹499">
+                      <mat-hint>Price of the product in <strong>₹</strong></mat-hint>
                     </mat-form-field>
                   </ng-template>
 
@@ -495,16 +544,20 @@
                 <mat-card-content>
                   <mat-form-field class="inventory-input">
                     <mat-label>Inventory Quantity</mat-label>
-                    <input matInput type="number" disabled formControlName="size3_quantity" placeholder="Ex. 100">
+                    <input matInput type="number" disabled formControlName="size3_quantity"
+                      placeholder="product Quantity Ex: 100">
+                    <mat-hint>Product quantity should be more than 0</mat-hint>
                   </mat-form-field>
                   <mat-form-field class="inventory-input">
                     <mat-label>Product Weight</mat-label>
-                    <input matInput formControlName="size3_weight" placeholder="Ex.50">
+                    <input matInput formControlName="size3_weight" placeholder="Product weight in gram Ex.50 gram">
+                    <mat-hint>Product weight in gram Ex:50</mat-hint>
                   </mat-form-field>
                   <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVariesnew">
                     <mat-form-field class="inventory-input">
                       <mat-label>Product Price</mat-label>
-                      <input matInput formControlName="size3_price" placeholder="Ex.550">
+                      <input matInput formControlName="size3_price" placeholder="Enter product Price Example: ₹499">
+                      <mat-hint>Price of the product in <strong>₹</strong></mat-hint>
                     </mat-form-field>
                   </ng-template>
 
@@ -541,16 +594,20 @@
               <mat-card-content>
                 <mat-form-field class="inventory-input">
                   <mat-label>Inventory Quantity</mat-label>
-                  <input matInput type="number" disabled formControlName="size1_quantity" placeholder="Ex. 100">
+                  <input matInput type="number" disabled formControlName="size1_quantity"
+                    placeholder="product Quantity Ex: 100">
+                  <mat-hint>Product quantity should be more than 0</mat-hint>
                 </mat-form-field>
                 <mat-form-field class="inventory-input">
                   <mat-label>Product Weight</mat-label>
-                  <input matInput formControlName="size1_weight" placeholder="Ex.50">
+                  <input matInput formControlName="size1_weight" placeholder="Product weight in gram Ex.50 gram">
+                  <mat-hint>Product weight in gram Ex:50</mat-hint>
                 </mat-form-field>
                 <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVariesnew">
                   <mat-form-field class="inventory-input">
                     <mat-label>Product Price</mat-label>
-                    <input matInput formControlName="size1_price" placeholder="Ex.550">
+                    <input matInput formControlName="size1_price" placeholder="Enter product Price Example: ₹499">
+                    <mat-hint>Price of the product in <strong>₹</strong></mat-hint>
                   </mat-form-field>
                 </ng-template>
 
@@ -599,7 +656,7 @@
 
       <br><br>
 
-      <button mat-raised-button color="primary" (click)="uploadImageToServer()">Upload image</button>
+      <a mat-raised-button color="primary" (click)="uploadImageToServer()">Upload image</a>
       <!-- <button (click)="uploadImageToServer()">Upload image</button> -->
       <div class="row">
         <br />
@@ -622,23 +679,28 @@
   </form>
 
   <ng-template #noVariesnew>
-    <label style="color: crimson;">Price does not varies</label>
+    <mat-form-field class="inventory-input">
+      <mat-label>Product Price does not varies</mat-label>
+      <input matInput type="number" disabled placeholder="Product price does not varies">
+    </mat-form-field>
   </ng-template>
 
   <ng-template #disabledMatContent>
     <mat-card-content>
       <mat-form-field class="inventory-input">
         <mat-label>Inventory Quantity</mat-label>
-        <input matInput type="number" disabled placeholder="Ex. 100">
+        <input matInput type="number" disabled placeholder="product Quantity Ex: 100">
       </mat-form-field>
       <mat-form-field class="inventory-input">
         <mat-label>Product Weight</mat-label>
-        <input matInput type="number" disabled formControlName="size1_weight" placeholder="Ex.50">
+        <input matInput type="number" disabled formControlName="size1_weight"
+          placeholder="Product weight in gram Ex.50 gram">
       </mat-form-field>
       <ng-template [ngIf]="priceVariesBoolean" [ngIfElse]="noVariesnew">
         <mat-form-field class="inventory-input">
           <mat-label>Product Price</mat-label>
-          <input matInput type="number" type="number" disabled placeholder="Ex.550">
+          <input matInput type="number" type="number" disabled placeholder="Enter product Price Example: ₹499">
+          <!-- <mat-hint>Price of the product in <strong>₹</strong></mat-hint> -->
         </mat-form-field>
       </ng-template>
 

@@ -45,22 +45,28 @@ export class ProductService {
 
     }
     getProductNames() {
-        let productNames: string[] = null
-        this.http.get<ResponseDto>(`${environment.categoryUrl}/products/name`).subscribe(
+        console.log("names")
+        return this.http.get<ResponseDto>(`${environment.categoryUrl}/products/name`)
 
-            response => {
-                if (response.status === " SUCCESS") {
-                    productNames = response.data
-                }
-            }, error => {
-
-                this.alertService.error(error)
-                productNames = null
-            }
-        );
-        return productNames
 
     }
+    // getNames() {
+    //     let productNames = null
+    //     this.getProductNames().subscribe(
+    //         response => {
+    //             if (response.status == "SUCCESS") {
+    //                 productNames = response.data
+    //             }
+    //         }, error => {
+
+    //             this.alertService.error(error)
+    //             productNames = null
+    //         }
+    //     );
+    //     console.log(productNames)
+    //     return productNames
+    // }
+
     getCartProduct(title: string, varientId: string, quantity: Number) {
         let cartProduct: CartProduct = null
         console.log(`${environment.categoryUrl}/product/${title}?varientId=${varientId}&quantity=${quantity}`)
@@ -114,6 +120,10 @@ export class ProductService {
         return imageResponse
     }
 
+    getAllProductsForAdmin() {
+        console.log("eneted admin product")
+        return this.http.get<ResponseDto>(`${environment.categoryUrl}/admin/products`);
+    }
     generateProductResponse(formOutput: any, imageResponse: ImageWithPosition[], category: string, colors: string[], tags: string[]): ProductReq {
 
         let productRequest: ProductReq = new ProductReq()

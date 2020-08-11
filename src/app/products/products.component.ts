@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterEvent, NavigationEnd } from '@angular/router';
 import { ProductService } from '@app/_services/product.service';
-import { first } from 'rxjs/operators';
+import { first, filter } from 'rxjs/operators';
 import { Properties, sizePrice } from '@app/_models/product/Properties';
 import { AlertService } from '@app/_services/alert.service';
 import { ProductResponse } from '@app/_models/newProduct/ProductResponse';
@@ -51,7 +51,9 @@ export class ProductsComponent implements OnInit {
     };
     constructor(private route: ActivatedRoute, private productService: ProductService,
         private alertService: AlertService, private formBuilder: FormBuilder, private cartService: CartService) {
-        this.route.params.subscribe(parms => this.category = parms.category);
+        this.route.params.subscribe(param => {
+            this.category = param.category
+        });
 
         this.form = this.formBuilder.group({
             orders: ['']

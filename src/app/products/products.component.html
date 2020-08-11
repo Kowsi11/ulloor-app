@@ -38,7 +38,8 @@
                 <div class="badge">Hot</div> -->
                 <!-- <div class="carousel-inner">
 			          <div class="item" *ngFor="let image of product.images">-->
-                <img src="assets/images/sp-23.jpg" alt="" width="350" height="350" class="img-responsive" />
+                <!-- <img src="assets/images/sp-23.jpg" alt="" width="350" height="350" class="img-responsive" /> -->
+                <img src='{{product.featuredImage}}' alt="" width="330" height="350" />
                 <!--'{{product.featuredImage}}' </div>
 			          </div>-->
 
@@ -66,7 +67,7 @@
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <a class="selectsize btn btn-anim-3 uppercase" style="align-content:center;align-self: center;"
                     href="javascript:void(0)">
-                   select size
+                    select size
                   </a>
 
                 </ng-template>
