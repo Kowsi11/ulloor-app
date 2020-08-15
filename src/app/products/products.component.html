@@ -9,7 +9,7 @@
           <ol class="breadcrumb">
             <li><a href="#">Home</a></li>
             <li><a href="#">products</a></li>
-            <li class="current"><a href="#">Breadcrumbs</a></li>
+            <li class="current"><a href="#">{{category}}</a></li>
           </ol>
         </div>
       </div>
@@ -45,40 +45,52 @@
 
                 <div class="clearfix"></div>
                 <br />
-                <h4 class="less-mar-1" style="text-align:center;">{{product.title}}</h4>
-                <!-- <p>{{product.description}}</p -->
-                <!-- <label class="uppercase">Prize : </label> -->
+                <div style="margin: auto;text-align: center;">
+                  <p> {{product.title}}
+                    <!-- <p>{{product.description}}</p -->
+                    <!-- <label class="uppercase">Prize : </label> -->
+
+                    <br>
+                    <ng-template [ngIf]="product.compareAtPriceVaries"><span style="color: red;"><s>Rs
+                          {{product.compareAtPrice}}</s></span>
+                    </ng-template>&nbsp;
 
 
+                    <ng-template [ngIf]="product.selectedVarient != null" [ngIfElse]="productNotselected">
+                      <span style="color: rgb(75, 233, 75);">Rs {{product.selectedVarient.price}}</span></ng-template>
 
+                    <ng-template #productNotselected>
+                      <span style="color: rgb(75, 233, 75);">Rs {{product.price}}</span>
+                    </ng-template>
+                  </p>
 
-                <div class="text-primary" style="text-align:center;">Rs.{{product.price}}</div>
-                <div class="switch-field">
-                  <h4 class="less-mar-1" style="text-align:center;"> </h4>
-                  <div *ngFor="let order of product.sizePriceIdList">
-                    <input type="radio" name="switch-two" [value]="order.id" [id]="order.id"
-                      (change)="product.selectedVarient = onSizeChange($event.target.value,product.priceVaries)" />
-                    <label for="{{order.id}}"> {{order.size}}</label>&nbsp;
+                  <div class="switch-field">
+                    <h4 class="less-mar-1" style="text-align:center;"> </h4>
+                    <div *ngFor="let order of product.sizePriceIdList">
+                      <input type="radio" name="switch-two" [value]="order.id" [id]="order.id"
+                        (change)="product.selectedVarient = onSizeChange($event.target.value,product.id)" />
+                      <label for="{{order.id}}"> {{order.size}}</label>&nbsp;
+                    </div>
                   </div>
+
+
+
+                  <ng-template [ngIf]="product.selectedVarient==null" [ngIfElse]="selected">
+                    <div>
+                      <a class="selectsize btn btn-anim-3 uppercase" href="javascript:void(0)">
+                        select size
+                      </a>
+                    </div>
+                  </ng-template>
+                  <ng-template #selected>
+                    <div>
+                      <a class="addtocart btn btn-anim-3 uppercase " href="javascript:void(0)"
+                        (click)="addToCart(product.handle,product.selectedVarient,1)"><span
+                          class="fa fa-shopping-cart"></span>&nbsp;Add to cart</a>
+                    </div>
+                  </ng-template><br>
                 </div>
-
-
-                <ng-template [ngIf]="product.selectedVarient==null" [ngIfElse]="selected">
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <a class="selectsize btn btn-anim-3 uppercase" style="align-content:center;align-self: center;"
-                    href="javascript:void(0)">
-                    select size
-                  </a>
-
-                </ng-template>
-                <ng-template #selected>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <a class="addtocart btn btn-anim-3 uppercase " href="javascript:void(0)"
-                    (click)="addToCart(product.handle,product.selectedVarient,1)"><span
-                      class="fa fa-shopping-cart"></span>&nbsp;Add to cart</a>
-                </ng-template><br> <br>
               </div>
-              <div style="padding-top: 50px;">&nbsp;</div>
             </div>
           </div>
         </div>

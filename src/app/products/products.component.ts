@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import { ActivatedRoute, RouterEvent, NavigationEnd } from '@angular/router';
+import { ActivatedRoute, RouterEvent, NavigationEnd, Router } from '@angular/router';
 import { ProductService } from '@app/_services/product.service';
 import { first, filter } from 'rxjs/operators';
 import { Properties, sizePrice } from '@app/_models/product/Properties';
@@ -7,9 +7,12 @@ import { AlertService } from '@app/_services/alert.service';
 import { ProductResponse } from '@app/_models/newProduct/ProductResponse';
 import { SubProducts } from '@app/_models/newProduct/SubProducts';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ProductToUse } from '@app/_models/newProduct/productToUse';
+import { ProductToUse, SizePriceList, SelectedVarient } from '@app/_models/newProduct/productToUse';
 import { CartService } from '@app/_services/cart.service';
 import { CartProduct } from '@app/_models/newProduct/CartProduct';
+import { Product } from '@app/_models/product/product';
+import { element } from 'protractor';
+import { Size } from '@app/_models/newProduct/Size';
 
 
 
@@ -49,8 +52,12 @@ export class ProductsComponent implements OnInit {
         screenReaderPageLabel: 'page',
         screenReaderCurrentLabel: `You're on page`
     };
-    constructor(private route: ActivatedRoute, private productService: ProductService,
+    constructor(private route: ActivatedRoute, private router: Router, private productService: ProductService,
         private alertService: AlertService, private formBuilder: FormBuilder, private cartService: CartService) {
+
+        this.router.routeReuseStrategy.shouldReuseRoute = () => {
+            return false;
+        }
         this.route.params.subscribe(param => {
             this.category = param.category
         });
@@ -102,15 +109,31 @@ export class ProductsComponent implements OnInit {
     minus() {
         console.log("minus")
     }
-    private category: any;
+    category: string;
     size: string = null;
     quantity: number = 1;
-    onSizeChange(value, priceVaries): string {
-        this.size = value;
-        console.log(this.size)
-        return this.size;
+    onSizeChange(value, productId) {
+        //this.size = value;
+        let selectedVarient = new SelectedVarient()
+        this.products.forEach(element => {
+            if (element.id == productId) {
+
+                element.sizePriceIdList.forEach(s => {
+
+                    if (s.id == value) {
+                        selectedVarient.id = s.id
+                        selectedVarient.price = s.price
+                        selectedVarient.available = s.stockAvailable
+                        selectedVarient = selectedVarient
+                    }
+                })
+            }
+        })
+        console.log(selectedVarient)
+        return selectedVarient;
     }
     addToCart(title: string, varientId: string, quantity: Number) {
+        console.log(varientId)
         this.cartService.addProductToCart(title, varientId, quantity)
     }
     varientPrice(id, priceVaries) {
@@ -122,6 +145,7 @@ export class ProductsComponent implements OnInit {
 
     counts: any[] = [1, 2, 3, 4]
     ngOnInit() {
+
         // an example array of 150 items to be paged
 
     }

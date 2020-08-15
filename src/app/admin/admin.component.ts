@@ -188,7 +188,7 @@ export class AdminComponent implements OnInit {
 
     let productRequest = this.productService.generateProductResponse(this.form.value, this.imageResponse, this.category, this.color, this.tags)
     console.log(productRequest)
-    //this.productService.saveProduct(productRequest)
+    this.productService.saveProduct(productRequest)
   }
   colorAvaliableCheck() {
     this.colorAvailable = !this.colorAvailable

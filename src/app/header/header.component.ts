@@ -22,6 +22,8 @@ export class HeaderComponent implements OnInit {
   cartProducts: Product[];
   carts: Cart
   user: User;
+  userName: string = ""
+  defaultUser: boolean = true
   private userSubject: BehaviorSubject<User>
   loggedin: any;
   notlogged: boolean = false;
@@ -61,8 +63,16 @@ export class HeaderComponent implements OnInit {
   userLoggedInfo() {
     this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
     if (this.userSubject.value != null) {
-      this.notlogged = false;
-      this.user = this.userSubject.value;
+      if (this.userSubject.value.userName == "admin") {
+        this.defaultUser = false
+        this.user = this.userSubject.value
+        this.userName = this.user.userName
+      } else {
+        this.notlogged = false;
+        this.user = this.userSubject.value;
+        this.userName = this.user.userName
+      }
+
     }
     else {
       this.notlogged = true;
@@ -70,6 +80,9 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
+    this.defaultUser = true
+    this.user = null
+    this.userName = ""
     this.accountService.logout()
   }
 

@@ -17,6 +17,7 @@ import { CombosComponent } from './combos/combos.component';
 import { ProducteditComponent } from './admin/productedit/productedit.component';
 import { ProductlistComponent } from './admin/productlist/productlist.component';
 
+
 const accountModule = () => import('./account/account.module').then(x => x.AccountModule);
 const usersModule = () => import('./users/users.module').then(x => x.UsersModule);
 
@@ -27,12 +28,12 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'home-banners', component: HomeBannersComponent },
   { path: 'product/:category', component: ProductsComponent },
-  { path: 'ProductHollywood', component: ProductsComponent },
-  { path: 'ProductChennai', component: ProductsComponent },
-  { path: 'ProductFriendship', component: ProductsComponent },
-  { path: 'ProductCouple', component: ProductsComponent },
-  { path: 'ProductAccessories', component: ProductsComponent },
-  { path: 'StationaryProducts', component: StationaryProductsComponent },
+  // { path: 'ProductHollywood', component: ProductsComponent },
+  // { path: 'ProductChennai', component: ProductsComponent },
+  // { path: 'ProductFriendship', component: ProductsComponent },
+  // { path: 'ProductCouple', component: ProductsComponent },
+  // { path: 'ProductAccessories', component: ProductsComponent },
+  // { path: 'StationaryProducts', component: StationaryProductsComponent },
   { path: 'product/:category/Product/view/:productId', component: ProductpreviewComponent },
   { path: 'product/view/:productId', component: ProductpreviewComponent },
 
@@ -40,7 +41,7 @@ const routes: Routes = [
 
   { path: 'admin', component: AdminComponent },
 
-  { path: 'admin/productedit', component: ProducteditComponent },
+  { path: 'admin/productedit/:productId', component: ProducteditComponent },
   { path: 'admin/productlist', component: ProductlistComponent },
 
   { path: 'Cart', component: CartComponent },
@@ -55,7 +56,8 @@ const routes: Routes = [
 
 
 
-];
+
+]
 
 
 

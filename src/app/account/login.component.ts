@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 import { AccountService, AlertService } from '@app/_services';
+import { User } from '@app/_models';
 
 @Component({ templateUrl: 'login.component.html' })
 export class LoginComponent implements OnInit {
@@ -29,7 +30,7 @@ export class LoginComponent implements OnInit {
 
         // get return url from route parameters or default to '/'
         this.returnUrlUser = this.route.snapshot.queryParams['returnUrl'] || '/';
-        
+
         this.returnUrlAdimin = this.route.snapshot.queryParams['returnUrl'] || '/admin';
 
     }
@@ -49,26 +50,28 @@ export class LoginComponent implements OnInit {
         }
 
         this.loading = true;
-        if(this.f.username.value=='admin'){
+        if (this.f.username.value == 'admin') {
 
-            localStorage.setItem("admin","admin");
-            this.router.navigate([this.returnUrlAdimin]);
-        }else{
+            let user: User = new User()
+            user.userName = "admin"
+            localStorage.setItem("user", JSON.stringify(user));
+            this.router.navigate([this.returnUrlUser]);
+        } else {
             this.accountService.login(this.f.username.value, this.f.password.value)
-            .pipe(first())
-            .subscribe(
-                data => {
-                    localStorage.setItem('user', JSON.stringify(data.data));
-					console.log(data.data);
-                    this.router.navigate([this.returnUrlUser]);
-                },
-                error => {
-                    
-                    this.alertService.error(error);
-                    
-                    this.loading = false;
-                });
+                .pipe(first())
+                .subscribe(
+                    data => {
+                        localStorage.setItem('user', JSON.stringify(data.data));
+                        console.log(data.data);
+                        this.router.navigate([this.returnUrlUser]);
+                    },
+                    error => {
+
+                        this.alertService.error(error);
+
+                        this.loading = false;
+                    });
         }
-       
+
     }
 }

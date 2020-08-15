@@ -8,7 +8,7 @@ import { environment } from '@environments/environment';
 import { User } from '@app/_models';
 import { ResponseDto } from '@app/_models/ResponseDto';
 import { SubProducts } from '@app/_models/newProduct/SubProducts';
-import { ProductToUse } from '@app/_models/newProduct/productToUse';
+import { ProductToUse, SizePriceList } from '@app/_models/newProduct/productToUse';
 import { ProductResponse } from '@app/_models/newProduct/ProductResponse';
 import { CartProduct } from '@app/_models/newProduct/CartProduct';
 import { AlertService } from './alert.service';
@@ -28,6 +28,10 @@ export class ProductService {
         private alertService: AlertService
     ) {
 
+    }
+
+    getProductIDForAdmin(productId: string) {
+        return this.http.get<ResponseDto>(`${environment.categoryUrl}/admin/product/${productId}`)
     }
     getProductsByCategoryId(categoryId: string) {
         console.log(`${environment.categoryUrl}/category/${categoryId}/products`)
@@ -74,11 +78,12 @@ export class ProductService {
 
 
     }
-    sizeCalculation(varients: SubProducts[]): any[] {
+    sizeCalculation(varients: SubProducts[]): SizePriceList[] {
 
-        let sizePriceIdList: any[] = []
+        let sizePriceIdList: SizePriceList[] = []
         varients.forEach(element => {
-            sizePriceIdList.push({ id: element.id, size: element.option1 })
+
+            sizePriceIdList.push({ id: element.id, size: element.option1, stockAvailable: element.stockAvailable, price: element.price })
         });
         return sizePriceIdList;
     }
@@ -132,7 +137,7 @@ export class ProductService {
         productRequest.subCategoryName = formOutput.subCategoryName
         productRequest.price = formOutput.price
         productRequest.priceVaries = formOutput.priceVaries == null || formOutput.priceVaries == "" ? false : formOutput.priceVaries
-        productRequest.compareAtPriceVaries = formOutput.compareAtPriceVaries == null || formOutput.compareAtPriceVaries == "" ? false : formOutput.priceVaries
+        productRequest.compareAtPriceVaries = formOutput.compareAtPriceVaries == null || formOutput.compareAtPriceVaries == "" ? false : formOutput.compareAtPriceVaries
         productRequest.compareAtPriceMax = formOutput.compareAtPriceMin
         productRequest.compareAtPriceMin = formOutput.compareAtPriceMin
         productRequest.tags = tags

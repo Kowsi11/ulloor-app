@@ -9,6 +9,7 @@ import { ProductService } from '@app/_services/product.service';
 import { AlertService } from '@app/_services';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogOverviewExampleDialog } from '@app/_helpers/popup/EditProductPopUp';
+import { Router } from '@angular/router';
 export interface DialogData {
   id: string;
   name: string;
@@ -64,7 +65,7 @@ export class ProductlistComponent {
     pauseOnHover: true,
     clickToClose: true
   };
-  constructor(private productService: ProductService, private alertService: AlertService, public dialog: MatDialog) {
+  constructor(private productService: ProductService, private alertService: AlertService, public dialog: MatDialog, private router: Router) {
     // Create 100 users
     const users: UserData[] = [];
     let adminProduct: AdminProduct[] = []
@@ -123,6 +124,7 @@ export class ProductlistComponent {
     dialogRef.afterClosed().subscribe(result => {
 
       console.log('The dialog was closed ' + result);
+      this.router.navigateByUrl("/admin/productedit/" + result)
     });
   }
   editbut() {

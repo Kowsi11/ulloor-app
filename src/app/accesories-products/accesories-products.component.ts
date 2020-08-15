@@ -15,6 +15,12 @@ export class AccesoriesProductsComponent implements OnInit {
   PinBadges = AppSubCategoryHandle.PinBadges;
   PopSockets = AppSubCategoryHandle.PopSockets;
   photoFrames = AppSubCategoryHandle.PhotoFrames
+
+  Hollywood = AppSubCategoryHandle.Hollywood;
+  Kollywood = AppSubCategoryHandle.Kollywood;
+  ChennaiMania = AppSubCategoryHandle.ChennaiMania;
+  Couple = AppSubCategoryHandle.Couple;
+  Friendship = AppSubCategoryHandle.Friendship;
   constructor() { }
 
   ngOnInit(): void {
