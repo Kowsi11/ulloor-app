@@ -54,7 +54,9 @@
                     <ng-template [ngIf]="product.compareAtPriceVaries"><span style="color: red;"><s>Rs
                           {{product.compareAtPrice}}</s></span>
                     </ng-template>&nbsp;
-
+                    <ng-template [ngIf]="product.compareAtPriceVaries"><span style="color: red;"><s>Rs
+                          {{product.compareAtPrice}}</s></span>
+                    </ng-template>&nbsp;
 
                     <ng-template [ngIf]="product.selectedVarient != null" [ngIfElse]="productNotselected">
                       <span style="color: rgb(75, 233, 75);">Rs {{product.selectedVarient.price}}</span></ng-template>
