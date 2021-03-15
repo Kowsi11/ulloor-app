@@ -1,30 +1,89 @@
-hr.new1 {
-  border-top: 1px solid rgb(10, 10, 10);
-}
-
-.list {
-  list-style: none;
-  height: 350px;
-  overflow-x: hidden;
-  overflow-y: scroll;
- 
-}
-.header-section ul li.cart-parent .cart-box ul {
+/* .dropdown:hover>.dropdown-menu {
   display: block;
-  position: relative;
-  left: 0px;
-  margin: 0px;
-  width:100%;
-  border-top: 1px solid #ededed;
-  margin-top: 0px;
-  max-height: none !important;
-  opacity: 1 !important;
- 
 }
 
-.header-section ul li.cart-parent .cart-box ul li {
-  position: relative;
-  padding: 20px 20px 20px 100px;
-  min-height: 80px;
-  font-size: 1.21429em;
+.dropdown>.dropdown-toggle:active {
+  /*Without this, clicking will make it sticky
+    pointer-events: none;
+} */
+.list-styled {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+user agent stylesheet
+ul ul {
+    list-style-type: circle;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+}
+user agent stylesheet
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+.list-styled-link {
+    display: block;
+    color: #525252;
+}
+a {
+    transition: all .1s ease-in-out;
+    transition-property: color;
+}
+a {
+    color: #ff6f61;
+    text-decoration: none;
+    background-color: transparent;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+user agent stylesheet
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.navbar.navbar-expand-xl .navbar-collapse .dropdown .dropdown-menu .card-body {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+.position-static .dropdown-menu .card-body {
+    padding-left: 0;
+    padding-right: 0;
+}
+.card-lg .card-body, .card-lg .card-footer {
+    padding: 2rem;
+}
+.card-body {
+    flex: 0 0 auto;
+}
+.card>* {
+    flex-shrink: 0;
+}
+.card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.5rem;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+a {
+    color: #ff6f61;
+    text-decoration: none;
+    background-color: transparent;
+}
+a {
+    transition: all .1s ease-in-out;
+    transition-property: color;
 }

@@ -16,6 +16,7 @@ import { StationaryProductsComponent } from './stationary-products/stationary-pr
 import { CombosComponent } from './combos/combos.component';
 import { ProducteditComponent } from './admin/productedit/productedit.component';
 import { ProductlistComponent } from './admin/productlist/productlist.component';
+import { OrderComponent } from './order/order.component';
 
 
 const accountModule = () => import('./account/account.module').then(x => x.AccountModule);
@@ -46,6 +47,7 @@ const routes: Routes = [
 
   { path: 'Cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent },
+  { path: 'orders', component: OrderComponent },
 
   { path: '', component: HomeComponent },
   { path: 'users', loadChildren: usersModule },

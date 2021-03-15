@@ -15,6 +15,7 @@ import { Cart } from '@app/_models/order/Cart';
 })
 export class HeaderComponent implements OnInit {
   mycart: String = "cart-parent ";
+  mycart2: String = "cart-parent ";
   mysearch: String = "search-parent ";
   numone: Number = 0;
   numtwo: Number = 0;
@@ -93,6 +94,15 @@ export class HeaderComponent implements OnInit {
       this.numone = 1;
     } else if (this.numone === 1) {
       this.mycart = "cart-parent ";
+      this.numone = 0;
+    }
+  }
+  myuserfun() {
+    if (this.numone === 0) {
+      this.mycart2 += 'active';
+      this.numone = 1;
+    } else if (this.numone === 1) {
+      this.mycart2 = "cart-parent ";
       this.numone = 0;
     }
   }

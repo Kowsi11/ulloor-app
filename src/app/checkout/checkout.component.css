@@ -1,5 +1,5 @@
 /* line 1, ../sass/screen.scss */
-*:focus, button:focus, input:focus, *, input, button, *:active, input:active, button:active, .bootstrap-select .btn:focus, option {
+*:focus, button:focus, input:focus, *, input, button, *:active, input:active, button:active, .bootstrap-select .bttn:focus, option {
     outline: none !important;
     outline: 0px !important;
   }
@@ -286,7 +286,7 @@
    transition: all 0.2s ease-out 0s;
   }
   
-  .header-section.primary-dropdowns ul li.mega-menu > ul > li ul li a:hover {
+  .header-section.primaty-dropdowns ul li.mega-menu > ul > li ul li a:hover {
    color:#101010;
    margin-left:8px;
    transition: all 0.2s ease-out 0s;
@@ -334,27 +334,27 @@
     color: #727272;
   }
   /* line 222, ../sass/screen.scss */
-  .header-section ul li.search-parent .search-box .form-control .search-btn {
+  .header-section ul li.search-parent .search-box .form-control .search-bttn {
     font-size: 1.42857em;
     position: absolute;
     right: 96px;
     top: 11px;
     color: #070607;
   }
-  .header-section.dark-dropdowns ul li.search-parent .search-box .form-control .search-btn {
+  .header-section.dark-dropdowns ul li.search-parent .search-box .form-control .search-bttn {
     color: #fff;
   }
   
-  .header-section ul li.search-parent .search-box .form-control .search-btn.mar-1 {
+  .header-section ul li.search-parent .search-box .form-control .search-bttn.mar-1 {
     top: -11px;
   }
   
-  .header-section ul li.search-parent .search-box .form-control .search-btn.mar-2 {
+  .header-section ul li.search-parent .search-box .form-control .search-bttn.mar-2 {
     top: 6px;
   }
   
   /* line 230, ../sass/screen.scss */
-  .header-section ul li.search-parent .search-box .close-btn {
+  .header-section ul li.search-parent .search-box .close-bttn {
     position: absolute;
     top: 6px;
     right: 20px;
@@ -362,7 +362,7 @@
     font-size: 1.85714em;
     opacity: .5;
   }
-  .header-section ul li.search-parent .search-box .close-btn.mar-1 {
+  .header-section ul li.search-parent .search-box .close-bttn.mar-1 {
     top: -8px;
   }
   
@@ -411,7 +411,7 @@
     font-size: 1.21429em;
   }
   /* line 282, ../sass/screen.scss */
-  .header-section ul li.cart-parent .cart-box ul li .close-btn {
+  .header-section ul li.cart-parent .cart-box ul li .close-bttn {
     position: absolute;
     top: 50%;
     margin-top: -15px;
@@ -446,7 +446,7 @@
     padding-right: 5px;
   }
   /* line 313, ../sass/screen.scss */
-  .header-section ul li.cart-parent .cart-box .btn {
+  .header-section ul li.cart-parent .cart-box .bttn {
     margin-top: 30px;
     border-radius: 0px;
     background: #070607 !important;
@@ -456,7 +456,7 @@
     border: none;
   }
   /* line 324, ../sass/screen.scss */
-  .header-section ul li.cart-parent .cart-box .btn.btn-primary {
+  .header-section ul li.cart-parent .cart-box .bttn.bttn-primaty {
     background: #f51e46 !important;
     color: #fff;
   }
@@ -506,14 +506,14 @@
     padding: 25px 20px;
     border-right:1px solid #f0f0f0;
   }
-  .header-section.style1 ul li.search-parent .search-box .close-btn.mar-1 {
+  .header-section.style1 ul li.search-parent .search-box .close-bttn.mar-1 {
     top:8px;
   }
-  .header-section.style1 ul li.search-parent .search-box .form-control .search-btn.mar-1 {
+  .header-section.style1 ul li.search-parent .search-box .form-control .search-bttn.mar-1 {
     top: 5px;
   }
   
-  .btn-top-1 {
+  .bttn-top-1 {
       position: relative;
       color:#fff;
       float:right;
@@ -526,11 +526,11 @@
     background-color:#f51e46;
     transition: all 0.3s ease-out 0s;
   }
-  .btn-top-1:hover {
+  .bttn-top-1:hover {
       color:#fff;
     background-color:#101010;
   }
-  .btn-top-2 {
+  .bttn-top-2 {
       position: relative;
       color:#fff;
       float:right;
@@ -543,7 +543,7 @@
     background-color:#f51e46;
     transition: all 0.3s ease-out 0s;
   }
-  .btn-top-2:hover {
+  .bttn-top-2:hover {
       color:#fff;
     background-color:#101010;
   }
@@ -652,10 +652,10 @@
    margin-left:8px;
    transition: all 0.2s ease-out 0s;
   }
-  .header-section.dark-dropdowns.style4 ul li.search-parent .search-box .form-control .search-btn {
+  .header-section.dark-dropdowns.style4 ul li.search-parent .search-box .form-control .search-bttn {
     color: #fff;
   }
-  .header-section.dark-dropdowns.style4 ul li.search-parent .search-box .close-btn {
+  .header-section.dark-dropdowns.style4 ul li.search-parent .search-box .close-bttn {
     color: #727272;
   }
   .header-section.dark-dropdowns.style4 ul li.search-parent .search-box .form-control {
@@ -665,7 +665,7 @@
   .header-section.dark-dropdowns.style4 ul li.cart-parent .cart-box ul {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
-  .header-section.dark-dropdowns.style4 ul li.cart-parent .cart-box ul li .close-btn {
+  .header-section.dark-dropdowns.style4 ul li.cart-parent .cart-box ul li .close-bttn {
     color: #727272;
   }
   /* =========== dark color dropdowns ============ */
@@ -695,7 +695,7 @@
     max-height: 0px;
     overflow: hidden;
   }
-  .header-section.dark-dropdowns ul li.search-parent .search-box .close-btn {
+  .header-section.dark-dropdowns ul li.search-parent .search-box .close-bttn {
     color: #727272;
   }
   .header-section.dark-dropdowns ul li.cart-parent .cart-box {
@@ -704,7 +704,7 @@
   .header-section.dark-dropdowns.style4 ul li.cart-parent .cart-box {
     background: #101010;
   }
-  .header-section.dark-dropdowns ul li.cart-parent .cart-box ul li .close-btn {
+  .header-section.dark-dropdowns ul li.cart-parent .cart-box ul li .close-bttn {
     color: #727272;
   }
   .header-section.dark-dropdowns ul li.search-parent .search-box .form-control {
@@ -844,7 +844,7 @@
       transition-delay: 0s;
     }
     /* line 679, ../sass/screen.scss */
-    .header-section ul li.cart-parent .cart-box .btn:hover {
+    .header-section ul li.cart-parent .cart-box .bttn:hover {
       opacity: .8;
     }
     
@@ -951,11 +951,11 @@
       border: none;
     }
     /* line 434, ../sass/screen.scss */
-    .header-section.style3 ul li.search-parent .search-box .form-control .search-btn {
+    .header-section.style3 ul li.search-parent .search-box .form-control .search-bttn {
       color: #fff;
     }
     /* line 438, ../sass/screen.scss */
-    .header-section.style3 ul li.search-parent .search-box .close-btn {
+    .header-section.style3 ul li.search-parent .search-box .close-bttn {
       color: #fff;
     }
     /* line 442, ../sass/screen.scss */
@@ -973,7 +973,7 @@
       color: #fff;
     }
     /* line 450, ../sass/screen.scss */
-    .header-section.style3 ul li.cart-parent .cart-box ul li .close-btn {
+    .header-section.style3 ul li.cart-parent .cart-box ul li .close-bttn {
       color: #fff;
     }
     /* line 457, ../sass/screen.scss */
@@ -1160,11 +1160,11 @@
       color: #fff;
     }
     /* line 559, ../sass/screen.scss */
-    .header-section.style4 ul li.search-parent .search-box .form-control .search-btn {
+    .header-section.style4 ul li.search-parent .search-box .form-control .search-bttn {
       color: #fff;
     }
     /* line 563, ../sass/screen.scss */
-    .header-section.style4 ul li.search-parent .search-box .close-btn {
+    .header-section.style4 ul li.search-parent .search-box .close-bttn {
       color: #fff;
     }
     /* line 567, ../sass/screen.scss */
@@ -1186,11 +1186,11 @@
       color: #fff;
     }
     /* line 578, ../sass/screen.scss */
-    .header-section.style4 ul li.cart-parent .cart-box ul li .close-btn {
+    .header-section.style4 ul li.cart-parent .cart-box ul li .close-bttn {
       color: #fff;
     }
     /* line 584, ../sass/screen.scss */
-    .header-section.style4 ul li.cart-parent .cart-box .btn.btn-primary {
+    .header-section.style4 ul li.cart-parent .cart-box .bttn.bttn-primaty {
       background: #fff !important;
       color: #070607;
     }
@@ -1240,39 +1240,39 @@
       transition: all .6s;
     }
     
-  /* =========== primary color dropdowns ============ */ 
+  /* =========== primaty color dropdowns ============ */ 
   
-  .header-section.primary-dropdowns ul li ul {
+  .header-section.primaty-dropdowns ul li ul {
       background: #f51e46;
     }
     /* line 546, ../sass/screen.scss */
-    .header-section.primary-dropdowns ul li ul li a {
+    .header-section.primaty-dropdowns ul li ul li a {
       color: #fff;
     }
-    .header-section.primary-dropdowns ul li ul li a:hover {
+    .header-section.primaty-dropdowns ul li ul li a:hover {
       color: #101010;
       margin-left: 8px;
   }
-    .header-section.primary-dropdowns ul li:hover > a, .header-section.dark-dropdowns ul li.active > a {
+    .header-section.primaty-dropdowns ul li:hover > a, .header-section.dark-dropdowns ul li.active > a {
       color: #f51e46;
     }
-   .header-section.primary-dropdowns.style4 ul li:hover > a, .header-section.dark-dropdowns.style4 ul li.active > a {
+   .header-section.primaty-dropdowns.style4 ul li:hover > a, .header-section.dark-dropdowns.style4 ul li.active > a {
       color: #f51e46;
     }
     
-    .header-section.primary-dropdowns ul li ul li a:hover {
+    .header-section.primaty-dropdowns ul li ul li a:hover {
       color: #101010;
       margin-left: 8px;
   }
-  .header-section.primary-dropdowns ul li.cart-parent .cart-box {
+  .header-section.primaty-dropdowns ul li.cart-parent .cart-box {
       background: #f51e46;
   }
     
-  .header-section.primary-dropdowns.mcol-title ul li.mega-menu > ul > li a {
+  .header-section.primaty-dropdowns.mcol-title ul li.mega-menu > ul > li a {
       color: #fff;
   }
   
-  .header-section.primary-dropdowns.mcol-title ul li ul li:hover a{
+  .header-section.primaty-dropdowns.mcol-title ul li ul li:hover a{
       color: #fff !important;
   }
   
@@ -1299,7 +1299,7 @@
   .header-section.dark-dropdowns.style4 ul li.search-parent .search-box {
       background: #101010;
   }  
-   .header-section.primary-dropdowns.style4 ul li ul li a:hover {
+   .header-section.primaty-dropdowns.style4 ul li ul li a:hover {
       color: #fff;
   }
     /* =========== menu center align ============ */ 
@@ -1830,33 +1830,33 @@
   .header-section.dark-dropdowns.style4 ul li.search-parent .search-box {
       background: #101010;
   }
-  /*========== menu primary color dropdown style =============*/
+  /*========== menu primaty color dropdown style =============*/
   
-  .header-section.primary-dropdowns #menu > ul {
+  .header-section.primaty-dropdowns #menu > ul {
       background: #f51e46;
   }
-  .header-section.primary-dropdowns #menu > ul li a {
+  .header-section.primaty-dropdowns #menu > ul li a {
       color: #fff;
   }
-  .header-section.primary-dropdowns #menu > ul li {
+  .header-section.primaty-dropdowns #menu > ul li {
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
-  .header-section.primary-dropdowns #menu > ul li .arrow::before {
+  .header-section.primaty-dropdowns #menu > ul li .arrow::before {
       background: #fff;
   }
-  .header-section.primary-dropdowns #menu > ul li .arrow::after {
+  .header-section.primaty-dropdowns #menu > ul li .arrow::after {
       background: #fff;
   }
-  .header-section.primary-dropdowns #menu > ul li.hover > a, .header-section.primary-dropdowns #menu > ul li.active > a {
+  .header-section.primaty-dropdowns #menu > ul li.hover > a, .header-section.primaty-dropdowns #menu > ul li.active > a {
       color: #101010;
   }
-  .header-section.primary-dropdowns #menu > ul li ul {
+  .header-section.primaty-dropdowns #menu > ul li ul {
       border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
-  .header-section.primary-dropdowns ul li ul {
+  .header-section.primaty-dropdowns ul li ul {
       background: #f51e46;
   }
-  .btn-top-1 {
+  .bttn-top-1 {
       right:0px;
       top: 0px;
       margin:10px 0;
@@ -1874,7 +1874,7 @@
     .header-section ul li.cart-parent a.m-link {
       color: #f51e46;
   }
-  .btn-top-1 {
+  .bttn-top-1 {
       left:0px;
       text-align:left;
       float:left;
@@ -1888,7 +1888,7 @@
   /* ---------- MAX 1024PX ---------- */
   @media screen and (max-width: 1024px) {
       
-  .btn-top-1 {
+  .bttn-top-1 {
       right: -176px;
   }
       
@@ -2049,7 +2049,7 @@
   /* a link Styles
    ------------------------------ */
    
-  a, .btn {
+  a, .bttn {
       -webkit-transition: all 0.3s ease-out 0s;
       -moz-transition: all 0.3s ease-out 0s;
       -ms-transition: all 0.3s ease-out 0s;
@@ -2223,7 +2223,7 @@
   .text-light {
       color: #acacac;
   }
-  .text-primary {
+  .text-primaty {
       color: #04ce47;
   }
   .text-gray {
@@ -2232,7 +2232,7 @@
   .text-gray-2 {
       color: #a1a1a1;
   }
-  a:hover.text-hover-primary {
+  a:hover.text-hover-primaty {
       color: #04ce47;
   }
   /*=============== Margins ============= */
@@ -3041,7 +3041,7 @@
   .text-box.white {
       background-color: #fff;
   }
-  .text-box.primary {
+  .text-box.primaty {
       background-color: #04ce47;
   }
   .text-box.white-transparent-1 {
@@ -3186,87 +3186,87 @@
   a.read-more.dark-2:hover {
       color: #727272;
   }
-  a.read-more.primary {
+  a.read-more.primaty {
       color: #04ce47;
   }
-  a.read-more.primary:hover {
+  a.read-more.primaty:hover {
       color: #101010;
   }
   
   /* button styles
    ------------------------------ */
    
-  .btn {
+  .bttn {
       padding: 10px 36px;
       margin: 0px;
       box-shadow: none;
       border-radius: 0;
   }
-  .btn.btn-large {
+  .bttn.bttn-large {
       padding: 15px 60px;
   }
-  .btn.btn-medium {
+  .bttn.bttn-medium {
       padding: 10px 30px;
   }
-  .btn.btn-small {
+  .bttn.bttn-small {
       padding: 8px 18px;
   }
-  .btn.btn-small-2 {
+  .bttn.bttn-small-2 {
       padding: 4px 18px;
   }
-  .btn.btn-fullwidth {
+  .bttn.bttn-fullwidth {
       width:100%;
   }
-  .btn.btn-half-fullwidth {
+  .bttn.bttn-half-fullwidth {
       width:50%;
   }
   /* button radius
    ------------------------------ */ 
-  .btn.btn-xround {
+  .bttn.bttn-xround {
       border-radius: 20px;
   }
-  .btn.btn-xround-2 {
+  .bttn.bttn-xround-2 {
       border-radius: 30px;
   }
-  .btn.btn-round {
+  .bttn.bttn-round {
       border-radius: 5px;
   }
-  .btn.top-margin {
+  .bttn.top-margin {
       margin-top: 20px;
   }
   
   /* button right margins
    ------------------------------ */ 
-  .btn.btn-mar-right-1 {
+  .bttn.bttn-mar-right-1 {
       margin-right:10px
   }
-  .btn.btn-mar-right-2 {
+  .bttn.bttn-mar-right-2 {
       margin-right:20px
   }
-  .btn.btn-mar-right-3 {
+  .bttn.bttn-mar-right-3 {
       margin-right:30px
   }
-  .btn.btn-mar-right-4 {
+  .bttn.bttn-mar-right-4 {
       margin-right:40px
   }
-  .btn.btn-mar-right-5 {
+  .bttn.bttn-mar-right-5 {
       margin-right:50px
   }
   /* button left margins
    ------------------------------ */ 
-  .btn.btn-mar-left-1 {
+  .bttn.bttn-mar-left-1 {
       margin-left:10px
   }
-  .btn.btn-mar-left-2 {
+  .bttn.bttn-mar-left-2 {
       margin-left:20px
   }
-  .btn.btn-mar-left-3 {
+  .bttn.bttn-mar-left-3 {
       margin-left:30px
   }
-  .btn.btn-mar-left-4 {
+  .bttn.bttn-mar-left-4 {
       margin-left:40px
   }
-  .btn.btn-mar-left-5 {
+  .bttn.bttn-mar-left-5 {
       margin-left:50px
   }
   
@@ -3276,98 +3276,98 @@
   
   /* button white
    ------------------------------ */
-  .btn.btn-white {
+  .bttn.bttn-white {
       color: #101010;
       background-color: #fff;
   }
-  .btn.btn-white:hover {
+  .bttn.bttn-white:hover {
       color: #fff;
       background-color: #101010;
   }
   /* button white transparent
    ------------------------------ */
-  .btn.btn-white-tr {
+  .bttn.bttn-white-tr {
       color: #101010;
       background-color: rgba(255, 255, 255, 0.6);
   }
-  .btn.btn-white-tr:hover {
+  .bttn.bttn-white-tr:hover {
       color: #101010;
       background-color: #fff;
   }
   
   /* button dark
    ------------------------------ */
-  .btn.btn-dark {
+  .bttn.bttn-dark {
       color: #fff;
       background-color: #101010;
   }
-  .btn.btn-dark:hover {
+  .bttn.bttn-dark:hover {
       color: #fff;
       background-color: #3e3e3e;
   }
   /* button dark-2
    ------------------------------ */
-  .btn.btn-dark-2 {
+  .bttn.bttn-dark-2 {
       color: #fff;
       background-color: #161616;
   }
-  .btn.btn-dark-2:hover {
+  .bttn.bttn-dark-2:hover {
       color: #161616;
       background-color: #fff;
   }
   /* button dark-3
    ------------------------------ */
-  .btn.btn-dark-3 {
+  .bttn.bttn-dark-3 {
       color: #727272;
       background-color: #101010;
   }
-  .btn.btn-dark-3:hover {
+  .bttn.bttn-dark-3:hover {
       color: #727272;
       background-color: #242424;
   }
   /* button light
    ------------------------------ */
-  .btn.btn-light {
+  .bttn.bttn-light {
       color: #101010;
       background-color: #f5f5f5;
   }
-  .btn.btn-light:hover {
+  .bttn.bttn-light:hover {
       color: #727272;
       background-color: #101010;
   }
   /* button golden yellow
    ------------------------------ */
-  .btn.btn-prim {
+  .bttn.bttn-prim {
       color: #fff;
       background-color: #04ce47;
   }
-  .btn.btn-prim:hover {
+  .bttn.bttn-prim:hover {
       color: #fff;
       background-color: #101010;
   }
   
-  .btn.text-dark {
+  .bttn.text-dark {
       color: #101010;
   }
   /* button with border
    ------------------------------ */
-  .btn.btn-border {
+  .bttn.bttn-border {
       color: #242424;
       border: 2px solid;
   }
-  .btn.btn-border.less-bor {
+  .bttn.bttn-border.less-bor {
       border: 1px solid;
   }
-  .btn.btn-border.border-1x {
+  .bttn.bttn-border.border-1x {
       border: 1px solid;
   }
-  .btn.btn-border.border-2x {
+  .bttn.bttn-border.border-2x {
       border: 2px solid;
   }
-  .btn.btn-border.border-3x {
+  .bttn.bttn-border.border-3x {
       border: 3px solid;
   }
-  .btn.btn-border.border-4x {
+  .bttn.bttn-border.border-4x {
       border: 4px solid;
   }
   
@@ -3375,21 +3375,21 @@
   
   /* button border white
    ------------------------------ */
-  .btn.btn-border.white {
+  .bttn.bttn-border.white {
       color: #fff;
       border-color:#fff;
   }
-  .btn.btn-border:hover.white {
+  .bttn.bttn-border:hover.white {
       color:#242424;
       background-color:#fff;
       border-color:#fff;
   }
   /* button border dark
    ------------------------------ */
-  .btn.btn-border.dark {
+  .bttn.bttn-border.dark {
       border-color:#101010;
   }
-  .btn.btn-border:hover.dark {
+  .bttn.bttn-border:hover.dark {
       color:#fff;
       background-color:#101010;
       border-color:#101010;
@@ -3397,11 +3397,11 @@
   
   /* button border dark
    ------------------------------ */
-  .btn.btn-border.dark-2 {
+  .bttn.bttn-border.dark-2 {
       color:#fff;
       border-color:#545454;
   }
-  .btn.btn-border:hover.dark-2 {
+  .bttn.bttn-border:hover.dark-2 {
       color:#101010;
       background-color:#fff;
       border-color:#fff;
@@ -3409,10 +3409,10 @@
   
   /* button border light
    ------------------------------ */
-  .btn.btn-border.light {
+  .bttn.bttn-border.light {
       border-color:#e4e4e4;
   }
-  .btn.btn-border:hover.light {
+  .bttn.bttn-border:hover.light {
       color:#fff;
       background-color:#101010;
       border-color:#101010;
@@ -3420,10 +3420,10 @@
   
   /* button border extra light
    ------------------------------ */
-  .btn.btn-border.xlight {
+  .bttn.bttn-border.xlight {
       border-color:#f5f5f5;
   }
-  .btn.btn-border:hover.xlight {
+  .bttn.bttn-border:hover.xlight {
       color:#727272;
       background-color:#101010;
       border-color:#101010;
@@ -3431,11 +3431,11 @@
   
   /* button border orange-2
    ------------------------------ */
-  .btn.btn-border.prim {
+  .bttn.bttn-border.prim {
       color:#04ce47;
       border-color:#04ce47;
   }
-  .btn.btn-border:hover.prim {
+  .bttn.bttn-border:hover.prim {
       color:#fff;
       background-color:#04ce47;
       border-color:#04ce47;
@@ -3443,11 +3443,11 @@
   
   /* button border gray
    ------------------------------ */
-  .btn.btn-border.gray {
+  .bttn.bttn-border.gray {
       color:#fff;
       border-color:#727272;
   }
-  .btn.btn-border:hover.gray {
+  .bttn.bttn-border:hover.gray {
       color:#fff;
       background-color:#5c5b5b;
       border-color:#5c5b5b;
@@ -3455,11 +3455,11 @@
   
   /* button border gray-2
    ------------------------------ */
-  .btn.btn-border.gray-2 {
+  .bttn.bttn-border.gray-2 {
       color:#101010;
       border-color:#727272;
   }
-  .btn.btn-border:hover.gray-2 {
+  .bttn.bttn-border:hover.gray-2 {
       color:#fff;
       background-color:#5c5b5b;
       border-color:#5c5b5b;
@@ -3467,11 +3467,11 @@
   
   /* button border xdark
    ------------------------------ */
-  .btn.btn-border.xdark {
+  .bttn.bttn-border.xdark {
       color:#161616;
       border-color:#161616;
   }
-  .btn.btn-border:hover.xdark {
+  .bttn.bttn-border:hover.xdark {
       color:#fff;
       background-color:#161616;
       border-color:#161616;
@@ -3479,11 +3479,11 @@
   
   /* button border white on hover golden yellow
    ------------------------------ */
-  .btn.btn-border.white.gyellow {
+  .bttn.bttn-border.white.gyellow {
       color:#fff;
       border-color:#fff;
   }
-  .btn.btn-border:hover.white.gyellow {
+  .bttn.bttn-border:hover.white.gyellow {
       color:#fff;
       background-color:#04ce47;
       border-color:#04ce47;
@@ -3492,61 +3492,61 @@
   /* Appstore buttons
    ------------------------------ */ 
   
-  .btn.appstore {
+  .bttn.appstore {
       width: 200px;
       padding: 10px 25px;
       margin: 0px;
       text-align: left;
   }
-  .btn.appstore.right-margin {
+  .bttn.appstore.right-margin {
       margin-right: 10px;
   }
-  .btn.appstore.gyellow {
+  .bttn.appstore.gyellow {
       background-color: #04ce47;
   }
-  .btn.appstore span {
+  .bttn.appstore span {
       margin: 0px;
       float: left;
       padding: 0;
       text-align: left;
   }
-  .btn.appstore span i {
+  .bttn.appstore span i {
       font-size: 40px;
       color: #fff;
       padding: 0 20px 0 0;
   }
-  .btn.appstore p {
+  .bttn.appstore p {
       font-size: 12px;
       display: block;
       margin: 0;
       padding: 0 25px 0 20px;
       text-align: left;
   }
-  .btn.appstore .big {
+  .bttn.appstore .big {
       margin: 0px;
       font-size: 18px;
       padding: 0;
   }
-  .btn.appstore.gyellow:hover {
+  .bttn.appstore.gyellow:hover {
       background-color: #fff;
   }
-  .btn.appstore.gyellow:hover p, .btn.appstore.gyellow:hover .big, .btn.appstore.gyellow:hover span i {
+  .bttn.appstore.gyellow:hover p, .bttn.appstore.gyellow:hover .big, .bttn.appstore.gyellow:hover span i {
       color: #101010;
   }
   /* Appstore button white
    ------------------------------ */
-  .btn.appstore.white {
+  .bttn.appstore.white {
       background-color: #fff;
   }
-  .btn.appstore.white span i {
+  .bttn.appstore.white span i {
       font-size: 40px;
       color: #101010;
       padding: 0 20px 0 0;
   }
-  .btn.appstore.white:hover {
+  .bttn.appstore.white:hover {
       background-color: #04ce47;
   }
-  .btn.appstore.white:hover p, .btn.appstore.white:hover .big, .btn.appstore.white:hover span i {
+  .bttn.appstore.white:hover p, .bttn.appstore.white:hover .big, .bttn.appstore.white:hover span i {
       color: #fff;
   }
   
@@ -4076,7 +4076,7 @@
   .toplist.toppadding {
       padding-top: 10px;
   }
-  a.topbar-btn {
+  a.topbar-bttn {
       float: left;
       color: #101010;
       text-align: center;
@@ -4135,9 +4135,9 @@
   .topbar-middle-logo.nobg {
       background: none;
   }
-  /* topbar btn
+  /* topbar bttn
    ------------------------------ */
-  a.topbar-btn:hover, a.topbar-btn.active {
+  a.topbar-bttn:hover, a.topbar-bttn.active {
       color: #FFF !important;
       background-color: #04ce47;
   }
@@ -4288,7 +4288,7 @@
       border:1px solid #fff;
       background-color:#fff;
   }
-  .fo-sec-1 .newsletter-box .submit-btn{
+  .fo-sec-1 .newsletter-box .submit-bttn{
       width:20%;
       height:60px;
       float:left;
@@ -4354,7 +4354,7 @@
       margin:0;
       float: left;
   }
-  .fo-sec-3 .primary-box{
+  .fo-sec-3 .primaty-box{
       position: absolute;
       width:100%;
       float:left;
@@ -4495,7 +4495,7 @@
       margin:0 0 15px 0;
       background-color:transparent;
   }
-  .fo-appointment-form .submit-btn {
+  .fo-appointment-form .submit-bttn {
       background-color: #04ce47;
       border: 1px solid #04ce47;
       float: left;
@@ -4747,13 +4747,13 @@
   }
   
   
-  .footer-social-icons.primary li a {
+  .footer-social-icons.primaty li a {
       color: #101010;
       border-radius:100%;
       margin-top:20px;
       background-color: #04ce47;
   }
-  .footer-social-icons.primary.left-align {
+  .footer-social-icons.primaty.left-align {
       text-align:left;	
   }
   .footer-social-icons.left-align {
@@ -4928,7 +4928,7 @@
   
   /* section background golden yellow
    ------------------------------ */
-  .section-primary {
+  .section-primaty {
       background-color: #04ce47;
   }
   .section-secondary {
@@ -5498,10 +5498,10 @@
   }
    /* Overlay Background golden yellow
    ------------------------------ */
-  .section-overlay.primary {
+  .section-overlay.primaty {
       background-color: rgba(245, 30, 70, 0.9);
   }
-  .parallax-overlay.primary {
+  .parallax-overlay.primaty {
       background-color: rgba(245, 30, 70, 0.9);
   }
   .parallax-overlay.light {
@@ -6139,7 +6139,7 @@
       border: 1px solid rgba(255, 255, 255, 0.4);
       background:none;
       }
-  .bb-newsletter-btn {
+  .bb-newsletter-bttn {
       width: 15%;
       height: 50px;
       float: left;
@@ -6179,7 +6179,7 @@
       border: 1px solid rgba(0, 0, 0, 0.4);
       background:none;
       }
-  .co-newsletter-btn {
+  .co-newsletter-bttn {
       width: 15%;
       height: 50px;
       float: left;
@@ -6280,7 +6280,7 @@
   .text-box.padding-1, .text-box.padding-2, .text-box.padding-3, .text-box.padding-4, .text-box.padding-5, .text-box.padding-6, .text-box.padding-7, .text-box.padding-8, .text-box.padding-9 {
       padding: 40px;
   }
-  .btn.btn-mar-left-1, .btn.btn-mar-left-2, .btn.btn-mar-left-3, .btn.btn-mar-left-4, .btn.btn-mar-left-5 {
+  .bttn.bttn-mar-left-1, .bttn.bttn-mar-left-2, .bttn.bttn-mar-left-3, .bttn.bttn-mar-left-4, .bttn.bttn-mar-left-5 {
       margin-left:0px
   }
   .sec-title-container.less-padding-1, .sec-title-container.less-padding-2, .sec-title-container.less-padding-3, .sec-title-container.less-padding-4,
@@ -6357,7 +6357,7 @@
   .text-box.padding-1, .text-box.padding-2, .text-box.padding-3, .text-box.padding-4, .text-box.padding-5, .text-box.padding-6, .text-box.padding-7, .text-box.padding-8, .text-box.padding-9 {
       padding: 40px;
   }	
-  .btn.btn-mar-left-1, .btn.btn-mar-left-2, .btn.btn-mar-left-3, .btn.btn-mar-left-4, .btn.btn-mar-left-5 {
+  .bttn.bttn-mar-left-1, .bttn.bttn-mar-left-2, .bttn.bttn-mar-left-3, .bttn.bttn-mar-left-4, .bttn.bttn-mar-left-5 {
       margin-left:0px
   }
   .sec-title-container.less-padding-1, .sec-title-container.less-padding-2, .sec-title-container.less-padding-3, .sec-title-container.less-padding-4,
@@ -6448,7 +6448,7 @@
   .text-box.padding-1, .text-box.padding-2, .text-box.padding-3, .text-box.padding-4, .text-box.padding-5, .text-box.padding-6, .text-box.padding-7, .text-box.padding-8, .text-box.padding-9 {
       padding: 40px;
   }
-  .btn.btn-mar-left-1, .btn.btn-mar-left-2, .btn.btn-mar-left-3, .btn.btn-mar-left-4, .btn.btn-mar-left-5 {
+  .bttn.bttn-mar-left-1, .bttn.bttn-mar-left-2, .bttn.bttn-mar-left-3, .bttn.bttn-mar-left-4, .bttn.bttn-mar-left-5 {
       margin-left:0px
   }
   .sec-title-container.less-padding-1, .sec-title-container.less-padding-2, .sec-title-container.less-padding-3, .sec-title-container.less-padding-4,
@@ -6537,7 +6537,7 @@
   .text-box.padding-1, .text-box.padding-2, .text-box.padding-3, .text-box.padding-4, .text-box.padding-5, .text-box.padding-6, .text-box.padding-7, .text-box.padding-8, .text-box.padding-9 {
       padding: 40px;
   }
-  .btn.btn-mar-left-1, .btn.btn-mar-left-2, .btn.btn-mar-left-3, .btn.btn-mar-left-4, .btn.btn-mar-left-5 {
+  .bttn.bttn-mar-left-1, .bttn.bttn-mar-left-2, .bttn.bttn-mar-left-3, .bttn.bttn-mar-left-4, .bttn.bttn-mar-left-5 {
       margin-left:0px
   }
   .sec-title-container.less-padding-1, .sec-title-container.less-padding-2, .sec-title-container.less-padding-3, .sec-title-container.less-padding-4,
@@ -6608,7 +6608,7 @@
   .text-box.padding-1, .text-box.padding-2, .text-box.padding-3, .text-box.padding-4, .text-box.padding-5, .text-box.padding-6, .text-box.padding-7, .text-box.padding-8, .text-box.padding-9 {
       padding: 40px;
   }
-  .btn.btn-mar-left-1, .btn.btn-mar-left-2, .btn.btn-mar-left-3, .btn.btn-mar-left-4, .btn.btn-mar-left-5 {
+  .bttn.bttn-mar-left-1, .bttn.bttn-mar-left-2, .bttn.bttn-mar-left-3, .bttn.bttn-mar-left-4, .bttn.bttn-mar-left-5 {
       margin-left:0px
   }
   .sec-title-container.less-padding-1, .sec-title-container.less-padding-2, .sec-title-container.less-padding-3, .sec-title-container.less-padding-4,
@@ -6711,7 +6711,7 @@
   .text-box.padding-1, .text-box.padding-2, .text-box.padding-3, .text-box.padding-4, .text-box.padding-5, .text-box.padding-6, .text-box.padding-7, .text-box.padding-8, .text-box.padding-9 {
       padding: 30px;
   }
-  .btn.btn-mar-left-1, .btn.btn-mar-left-2, .btn.btn-mar-left-3, .btn.btn-mar-left-4, .btn.btn-mar-left-5 {
+  .bttn.bttn-mar-left-1, .bttn.bttn-mar-left-2, .bttn.bttn-mar-left-3, .bttn.bttn-mar-left-4, .bttn.bttn-mar-left-5 {
       margin-left:0px
   }
   .topbar .border-r {
@@ -6852,10 +6852,10 @@
   .text-box-right.more-padding-1, .text-box-right.more-padding-2, .text-box-right.more-padding-3, .text-box-right.more-padding-4, .text-box-right.less-padding-1, .text-box-right.less-padding-2, .text-box-right.less-padding-3 {
       padding: 0px 0px 0px 0px;
   }
-  .btn.btn-mar-left-1, .btn.btn-mar-left-2, .btn.btn-mar-left-3, .btn.btn-mar-left-4, .btn.btn-mar-left-5 {
+  .bttn.bttn-mar-left-1, .bttn.bttn-mar-left-2, .bttn.bttn-mar-left-3, .bttn.bttn-mar-left-4, .bttn.bttn-mar-left-5 {
       margin-left:0px
   }
-  .btn.btn-large {
+  .bttn.bttn-large {
       padding: 15px 30px;
   }
   .section-side-image .text-inner-2 {
@@ -7000,10 +7000,10 @@
   .text-box-right.more-padding-1, .text-box-right.more-padding-2, .text-box-right.more-padding-3, .text-box-right.more-padding-4, .text-box-right.less-padding-1, .text-box-right.less-padding-2, .text-box-right.less-padding-3 {
       padding: 0px 0px 0px 0px;
   }
-  .btn.btn-mar-left-1, .btn.btn-mar-left-2, .btn.btn-mar-left-3, .btn.btn-mar-left-4, .btn.btn-mar-left-5 {
+  .bttn.bttn-mar-left-1, .bttn.bttn-mar-left-2, .bttn.bttn-mar-left-3, .bttn.bttn-mar-left-4, .bttn.bttn-mar-left-5 {
       margin-left:0px
   }
-  .btn.btn-large {
+  .bttn.bttn-large {
       padding: 15px 30px;
   }
   .section-side-image .text-inner {
@@ -7194,7 +7194,7 @@
       font-size: 24px;
     }
     
-    .btn {
+    .bttn {
       background-color: #f51e46;
       color: white;
       padding: 12px;
@@ -7206,7 +7206,7 @@
       font-size: 17px;
     }
   
-    .btn2
+    .bttn2
     {
         background-color: #f51e46;
       color: white;
@@ -7219,7 +7219,7 @@
       font-size: 17px;
       
     }
-    .btn:hover {
+    .bttn:hover {
       background-color: #f51e46;
     }
     
@@ -7239,7 +7239,7 @@
     /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
     @media (max-width: 800px) {
       .row {
-        flex-direction: column-reverse;
+        flex-direction: column;
       }
       .col-25 {
         margin-bottom: 20px;

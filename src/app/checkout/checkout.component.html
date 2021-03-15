@@ -1,78 +1,229 @@
+<style>
+  .scrolling-wrapper {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+
+
+  }
+
+  .scrolling-wrapper .card {
+
+    display: inline-block;
+
+  }
+
+  .scrolling-wrapper-flexbox {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+
+
+  }
+
+  .scrolling-wrapper-flexbox .card {
+
+    flex: 0 0 auto;
+    margin-right: 3px;
+
+  }
+
+  .card {
+    border: 2px solid;
+    width: 280px;
+    height: 320px;
+    word-wrap: break-word;
+  }
+
+  .scrolling-wrapper,
+  .scrolling-wrapper-flexbox {
+    height: 100%;
+    margin-bottom: 20px;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+
+  }
+
+  i.material-icons {
+    font-size: 160px;
+    vertical-align: middle;
+    position: relative;
+    margin-top: 17%;
+    margin-left: 20%;
+    top: 4px;
+  }
+
+  .modal-dialog {
+
+    width: 100%;
+    height: auto;
+  }
+</style>
+<div class="row">
+  <div class="col-75">
+    <div class="container">
+      <form action="/action_page.php">
+
+        <div class="row">
+
+
+          <div class="col-50">
+            <h3>Payment</h3>
+            <label for="fname">Accepted Cards</label>
+            <div class="icon-container">
+              <i class="fa fa-cc-visa" style="color:navy;"></i>
+              <i class="fa fa-cc-amex" style="color:blue;"></i>
+              <i class="fa fa-cc-mastercard" style="color:red;"></i>
+              <i class="fa fa-cc-discover" style="color:orange;"></i>
+            </div>
+            <label for="cname">Name on Card</label>
+            <input type="text" id="cname" name="cardname" placeholder="John More Doe">
+            <label for="ccnum">Credit card number</label>
+            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+            <label for="expmonth">Exp Month</label>
+            <input type="text" id="expmonth" name="expmonth" placeholder="September">
+
+            <div class="row">
+              <div class="col-50">
+                <label for="expyear">Exp Year</label>
+                <input type="text" id="expyear" name="expyear" placeholder="2018">
+              </div>
+              <div class="col-50">
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" name="cvv" placeholder="352">
+              </div>
+            </div>
+          </div>
+          <div class="col-50">
+            <h3>Billing Address</h3>
+            <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+            <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
+            <label for="email"><i class="fa fa-envelope"></i> Email</label>
+            <input type="text" id="email" name="email" placeholder="john@example.com">
+            <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+            <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
+            <label for="city"><i class="fa fa-institution"></i> City</label>
+            <input type="text" id="city" name="city" placeholder="New York">
+
+            <div class="row">
+              <div class="col-50">
+                <label for="state">State</label>
+                <input type="text" id="state" name="state" placeholder="NY">
+              </div>
+              <div class="col-50">
+                <label for="zip">Zip</label>
+                <input type="text" id="zip" name="zip" placeholder="10001">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-50">
+            <label>
+              <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
+            </label>
+            <input type="submit" value="Continue to checkout" class="bttn">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <br>
+  <br> <br>
+  <br>
+</div>
 
 
 
 <div class="row">
-    <div class="col-75">
-      <div class="container">
-        <form action="/action_page.php">
-  
-          <div class="row">
-            <div class="col-50">
-              <h3>Billing Address</h3>
-              <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-              <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
-              <label for="email"><i class="fa fa-envelope"></i> Email</label>
-              <input type="text" id="email" name="email" placeholder="john@example.com">
-              <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-              <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
-              <label for="city"><i class="fa fa-institution"></i> City</label>
-              <input type="text" id="city" name="city" placeholder="New York">
-  
-              <div class="row">
-                <div class="col-50">
-                  <label for="state">State</label>
-                  <input type="text" id="state" name="state" placeholder="NY">
-                </div>
-                <div class="col-50">
-                  <label for="zip">Zip</label>
-                  <input type="text" id="zip" name="zip" placeholder="10001">
-                </div>
-              </div>
-            </div>
-  
-            <div class="col-50">
-              <h3>Payment</h3>
-              <label for="fname">Accepted Cards</label>
-              <div class="icon-container">
-                <i class="fa fa-cc-visa" style="color:navy;"></i>
-                <i class="fa fa-cc-amex" style="color:blue;"></i>
-                <i class="fa fa-cc-mastercard" style="color:red;"></i>
-                <i class="fa fa-cc-discover" style="color:orange;"></i>
-              </div>
-              <label for="cname">Name on Card</label>
-              <input type="text" id="cname" name="cardname" placeholder="John More Doe">
-              <label for="ccnum">Credit card number</label>
-              <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
-              <label for="expmonth">Exp Month</label>
-              <input type="text" id="expmonth" name="expmonth" placeholder="September">
-  
-              <div class="row">
-                <div class="col-50">
-                  <label for="expyear">Exp Year</label>
-                  <input type="text" id="expyear" name="expyear" placeholder="2018">
-                </div>
-                <div class="col-50">
-                  <label for="cvv">CVV</label>
-                  <input type="text" id="cvv" name="cvv" placeholder="352">
-                </div>
-              </div>
-            </div>
-  
+
+  <div class="col-75">
+    <div class="container">
+      <div class="row">
+
+
+        <div class="col-50">
+          <div class="text-box padding-4 white">
+            <h4 class="uppercase"><span>Kowsalya</span>&nbsp;<span>Arivazhagan</span></h4>
+            <div class="divider-line solid dark"></div>
+            <h4 class=" typography-title-6 text-dark font-weight-7 playfair">Home Address </h4>
+
+            <p>Rajeshwari Complex, 347, 7th St, Gandhipuram, Tamil Nadu hdxuiyeduhh uidwhddhui huhuwwquu
+              huwusswushu </p>
+            <strong>Pincode :</strong>&nbsp;641012 <br>
+            <strong>Mobile Number :</strong> &nbsp; 6378267887778
+            <br>
           </div>
-          <div class="row">
-            <div class="col-50">
-            <label>
-              <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
-            </label>
-            <input type="submit" value="Continue to checkout" class="btn">
-            </div>
-            </div>
-        </form>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Launch demo modal
+          </button>
+          <!-- Modal -->
+
+        </div>
+
+
+        <div class="col-50">
+          <div class="">I'm a flexbox container!</div>
+        </div>
       </div>
     </div>
-    <br>
-    <br>  <br>
-    <br>
+  </div>
+</div>
 
-    
-    
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+
+        <main>
+          <header>
+            <h3>Select Address</h3>
+          </header>
+          <section class="content">
+            <div class="row scrolling-wrapper-flexbox">
+
+
+              <div class="col-md-3 card">
+                <!-- <div class="text-box padding-2 white"> -->
+
+                <div class="clearfix"></div>
+                <br />
+                <p>KowsalyaArivazhagan<br>
+                  kowsi@gmail.com
+                </p>
+                <div class="divider-line solid dark"></div>
+                <h5>Home Address </h5>
+
+                <p style="font-size: small;"> Rajeshwari Complex, 347, 7th St,
+                  Gandhipuram, Tamil Nadu
+                  hdxuiyeduhh uidwhddhui
+                  huhuwwquu
+                  huwusswushu </p>
+                <label>Pincode :</label>&nbsp;641012 <br>
+                <label>Mobile Number :</label> &nbsp; 6378267887778
+                <br>
+                <button class="btn btn-blue btn-small xround-7" data-dismiss="modal" name="edit"> Use
+                  Address</button>
+                <!-- <button class="btn btn-blue btn-small xround-7" name="edit"> Edit</button> &nbsp;
+                                <button class="btn btn-red btn-small xround-3" name="delete">Delete</button> -->
+                <!-- </div> -->
+              </div>
+              <div class="col-md-3 card">
+                <!-- <div class="text-box padding-2 white"> -->
+                <i class="material-icons">
+                  plus_one
+                </i>
+
+              </div>
+            </div>
+
+          </section>
+        </main>
+
+      </div>
+
+    </div>
+  </div>
+</div>

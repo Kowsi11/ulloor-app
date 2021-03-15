@@ -1,16 +1,252 @@
-<div class="container">
+<!-- <div class="container">
     <!-- {{product.id}} -->
-    <div class="row">
+<div class="row">
+    <!-- <ng-template [ngIf]="product!=null">
+    <div class="col-md-8">
 
-        <div class="col-md-8">
+        <h4>FAQ</h4>
 
-            <h4>FAQ</h4>
-            <div class="col-md-12 nopadding">
-                <div class="accordion_head"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Product Tag<span
-                        class="plusminus">+</span>
+        <div class="col-md-12 nopadding">
+            <div class="accordion_head"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Product Tag<span
+                    class="plusminus">+</span>
 
+            </div>
+            <div class="accordion_body" style="display: none;">
+                <mat-form-field class="example-chip-list">
+                    <mat-chip-list #chipList aria-label="Product Tags">
+
+                        <input placeholder="Add Tags..." [matChipInputFor]="chipList"
+                            [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+                            (matChipInputTokenEnd)="addTag($event)">
+                    </mat-chip-list>
+                    <mat-chip *ngFor="let tag of tags" [selectable]="selectable" [removable]="removable"
+                        (removed)="removeTag(tag)">
+                        {{tag}}
+                        <mat-icon matChipRemove *ngIf="removable"><span class="glyphicon glyphicon-remove-sign"></span>
+                        </mat-icon>
+                    </mat-chip>
+                </mat-form-field>
+                <button mat-raised-button color="primary" (click)="submitTag()" type="submit">submit</button>
+            </div>
+            <div class="accordion_head"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Product
+                Description<span class="plusminus">+</span>
+
+            </div>
+            <div class="accordion_body" style="display: none;">
+                <mat-form-field class="inventory-input">
+                    <mat-label>Product Description</mat-label>
+                    <input matInput #message [(ngModel)]="productDesc" maxlength="256"
+                        placeholder="Ex. Full description about product...">
+                    <mat-hint align="start"><strong>Description of product</strong> </mat-hint>
+                    <mat-hint align="end">{{message.value.length}} / 500</mat-hint>
+                    <!-- <mat-error *ngIf="f.description.touched && f.description.invalid"> 
+                    <mat-error *ngIf="productDesc ==''">
+                        Product Description is <strong>Required</strong>
+                    </mat-error>
+                    <!-- </mat-error> 
+                </mat-form-field>
+                <button mat-raised-button color="primary" (click)="submitDesc()" type="submit">submit</button>
+
+            </div>
+            <div class="accordion_head"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Product Price<span
+                    class="plusminus">+</span>
+
+            </div>
+            <div class="accordion_body" style="display: none;">
+
+                <mat-form-field class="inventory-input">
+                    <mat-label>Product Price</mat-label>
+                    <input matInput type="number" [(ngModel)]="productPrice"
+                        placeholder="Enter product Price Example: ₹499">
+                    <mat-hint>Price of the product in <strong>₹</strong></mat-hint>
+                </mat-form-field>
+
+                <mat-checkbox [(ngModel)]="productCompareCheck">Compare Price</mat-checkbox><br>
+
+                <ng-template [ngIf]="productCompareCheck">
+
+                    <mat-form-field class="inventory-input">
+                        <mat-label>Product Compare Price</mat-label>
+                        <input matInput type="number" [(ngModel)]="productComparePrice"
+                            placeholder="Enter product compare Price Example: ₹499">
+                        <mat-hint>Compare price of the product in <strong>₹</strong> should be more then
+                            product
+                            price</mat-hint>
+
+                    </mat-form-field>
+                </ng-template>
+                <br>
+                <button mat-raised-button color="primary" type="submit" (click)="priceUpdate()"
+                    style="margin: auto;">submit</button>
+
+                <br>
+            </div>
+
+
+
+
+            <div class="accordion_head"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Product Image<span
+                    class="plusminus">+</span>
+
+            </div>
+            <div class="accordion_body" style="display: none;">
+                <label class="lable-text" for="phone">Product Images</label><br>
+                <div class="row">
+
+                    <ng-template ngFor [ngForOf]="oldImages" let-url>
+                        <div class="col-md-5">
+                            <mat-card class="example-card">
+                                <mat-card-content>
+                                    <img mat-card-image [src]="url" height="330" width="350">
+                                </mat-card-content>
+
+                            </mat-card>
+                        </div>
+                    </ng-template>
                 </div>
-                <div class="accordion_body" style="display: none;">
+                <br>
+                <label class="lable-text" for="phone">Upload new Images for {{productTitle}}</label><br>
+                <input type="file" (change)="onFileChange($event)">
+
+                <br>
+                <div class="row">
+                    <ng-template ngFor [ngForOf]="images" let-url>
+                        <div class="col-md-3">
+                            <mat-card class="example-card">
+                                <mat-card-content>
+                                    <img mat-card-image [src]="url" height="150" width="200px">
+                                </mat-card-content>
+                                <mat-card-actions>
+                                    <button mat-raised-button color="warn" (click)="removeImage(url)">Delete</button>
+                                </mat-card-actions>
+                            </mat-card>
+                        </div>
+                    </ng-template>
+                </div>
+                <a mat-raised-button color="primary" (click)="uploadImageToServer()">Upload image</a>
+                <br>
+                <div style="margin: auto;align-items: center;">
+                    <ng-template [ngIf]="imageResponse!=null || imageResponse!=undefined" [ngIfElse]="uploadImage">
+                        <a mat-raised-button color="primary" (click)="uploadImageToProduct()">Upload Image in
+                            Product</a>
+                    </ng-template>
+                    <ng-template #uploadImage>
+                        <a mat-raised-button color="warn">First Upload Image to Server</a>
+
+                    </ng-template>
+                </div>
+
+                <!-- <input type="file" (change)="onFileChange($event)">
+
+            </div>
+
+
+            <div class="accordion_head"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Product
+                Availability<span class="plusminus">+</span>
+
+            </div>
+            <div class="accordion_body" style="display: none;">
+
+                <ng-template ngFor let-subProduct [ngForOf]="subProducts" let-i="index">
+                    <ng-template [ngIf]="subProduct.option3==null">
+                        <mat-card class="example-card">
+                            <mat-card-header>
+
+                                <mat-card-title>Size - {{subProduct.title}}</mat-card-title>
+                                <mat-card-subtitle>
+
+                                    <mat-checkbox disabled [checked]="subProduct.available">Size
+                                        {{subProduct.title}}
+                                        Available
+                                    </mat-checkbox>
+                                    <br>
+                                    <mat-slide-toggle disabled [checked]="subProduct.stockAvailable"> Stock
+                                        Available
+                                    </mat-slide-toggle>
+                                </mat-card-subtitle>
+                            </mat-card-header>
+                            <!-- <ng-template [ngIf]="size3Available" [ngIfElse]="disabledMatContent"> 
+                            <mat-card-content>
+                                <mat-form-field class="inventory-input">
+                                    <mat-label>Inventory Quantity</mat-label>
+                                    <input matInput type="number" [value]="subProduct.inventoryQuantity" disabled
+                                        placeholder="product Quantity Ex: 100">
+                                    <mat-hint>Product quantity should be more than 0</mat-hint>
+                                </mat-form-field>
+                                <mat-form-field class="inventory-input">
+                                    <mat-label>Product Weight</mat-label>
+                                    <input matInput disabled [value]="subProduct.weight"
+                                        placeholder="Product weight in gram Ex.50 gram">
+                                    <mat-hint>Product weight in gram Ex:50</mat-hint>
+                                </mat-form-field>
+                                <!-- <ng-template [ngIf]="productCompareCheck" [ngIfElse]="noVariesnew">
+                                <mat-form-field class="inventory-input">
+                                    <mat-label>Product Price</mat-label>
+                                    <input matInput disabled [value]="subProduct.price"
+                                        placeholder="Enter product Price Example: ₹499">
+                                    <mat-hint>Price of the product in <strong>₹</strong></mat-hint>
+                                </mat-form-field>
+                                <!-- </ng-template> 
+                            </mat-card-content>
+                            <mat-card-actions>
+                                <button mat-raised-button color="warn"
+                                    (click)="openSizeDialog(subProduct)">Edit</button>
+
+
+                            </mat-card-actions>
+                        </mat-card>
+                    </ng-template>
+                </ng-template>
+            </div>
+            <ng-template #noVariesnew>
+                <mat-form-field class="inventory-input">
+                    <mat-label>Product Price does not varies</mat-label>
+                    <input matInput type="number" disabled placeholder="Product price does not varies">
+                </mat-form-field>
+            </ng-template>
+
+
+
+            <div class="accordion_head"><i class="fa fa-pencil" aria-hidden="true"></i> Delete Product<span
+                    class="plusminus">+</span>
+
+            </div>
+            <div class="accordion_body" style="display: none;">
+                <p>Deleting product will remove it permanently! </p>
+                <button mat-raised-button color="warn" (click)="openDeleteDialog()">Edit</button>
+            </div>
+
+
+
+
+
+
+        </div>
+    </div>
+    <!-- </ng-template>
+</div>
+
+</div> -->
+
+    <div class="container">
+        <!-- {{product.id}} -->
+        <div class="row">
+            <div class="example-action-buttons">
+                <button mat-button (click)="accordion.openAll()">Expand All</button>
+                <button mat-button (click)="accordion.closeAll()">Collapse All</button>
+            </div>
+            <mat-accordion class="example-headers-align" multi>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Edit Tags
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            Tags Available will be displayed you can edit those or add more.
+                            <!-- <mat-icon>account_circle</mat-icon> -->
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+
                     <mat-form-field class="example-chip-list">
                         <mat-chip-list #chipList aria-label="Product Tags">
 
@@ -22,16 +258,39 @@
                             (removed)="removeTag(tag)">
                             {{tag}}
                             <mat-icon matChipRemove *ngIf="removable"><span
-                                    class="glyphicon glyphicon-remove-sign"></span></mat-icon>
+                                    class="glyphicon glyphicon-remove-sign"></span>
+                            </mat-icon>
                         </mat-chip>
                     </mat-form-field>
                     <button mat-raised-button color="primary" (click)="submitTag()" type="submit">submit</button>
-                </div>
-                <div class="accordion_head"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Product
-                    Description<span class="plusminus">+</span>
 
-                </div>
-                <div class="accordion_body" style="display: none;">
+                </mat-expansion-panel>
+                <!-- <mat-expansion-panel disabled>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Destination
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Type the country name
+                        <mat-icon>map</mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <mat-form-field>
+                    <mat-label>Country</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </mat-expansion-panel> -->
+
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Edit Product Description
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            Product Description available will be displayed.
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
                     <mat-form-field class="inventory-input">
                         <mat-label>Product Description</mat-label>
                         <input matInput #message [(ngModel)]="productDesc" maxlength="256"
@@ -46,73 +305,150 @@
                     </mat-form-field>
                     <button mat-raised-button color="primary" (click)="submitDesc()" type="submit">submit</button>
 
-                </div>
-                <div class="accordion_head"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Product Price<span
-                        class="plusminus">+</span>
+                    <!-- content -->
+                </mat-expansion-panel>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Edit Product Image
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            Product images available will be displayed and new image you like can be updated.
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
 
-                </div>
-                <div class="accordion_body" style="display: none;">
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Suspendisse et justo. Praesent mattis
-                        commodo augue Aliquam ornare hendrerit augue Cras tellus In pulvinar lectus a est Curabitur eget
-                        orci Cras laoreet ligula. Etiam sit amet dolor. Vestibulum ante ipsum primis in faucibus orci
-                        luctus et ultrices posuere cubilia Curae Nullam tellus diam volutpat laoreet vel bibendum in
-                        nibh Donec elit lectus pharetra quis vulputate in lobortis at mi Donec libero purus pulvinar ac
-                        congue id iaculis ut est. </p>
-                </div>
+                    <label class="lable-text" for="phone">Product Images</label><br>
+                    <div class="row">
 
+                        <ng-template ngFor [ngForOf]="oldImages" let-url>
+                            <div class="col-md-5">
+                                <mat-card class="example-card">
+                                    <mat-card-content>
+                                        <img mat-card-image [src]="url" height="330" width="350">
+                                    </mat-card-content>
 
+                                </mat-card>
+                            </div>
+                        </ng-template>
+                    </div>
+                    <br>
+                    <label class="lable-text" for="phone">Upload new Images for {{productTitle}}</label><br>
+                    <input type="file" (change)="onFileChange($event)">
 
+                    <br>
+                    <div class="row">
+                        <ng-template ngFor [ngForOf]="images" let-url>
+                            <div class="col-md-3">
+                                <mat-card class="example-card">
+                                    <mat-card-content>
+                                        <img mat-card-image [src]="url" height="150" width="200px">
+                                    </mat-card-content>
+                                    <mat-card-actions>
+                                        <button mat-raised-button color="warn"
+                                            (click)="removeImage(url)">Delete</button>
+                                    </mat-card-actions>
+                                </mat-card>
+                            </div>
+                        </ng-template>
+                    </div>
+                    <a mat-raised-button color="primary" (click)="uploadImageToServer()">Upload image</a>
+                    <br>
+                    <div style="margin: auto;align-items: center;">
+                        <ng-template [ngIf]="imageResponse!=null || imageResponse!=undefined" [ngIfElse]="uploadImage">
+                            <a mat-raised-button color="primary" (click)="uploadImageToProduct()">Upload Image in
+                                Product</a>
+                        </ng-template>
+                        <ng-template #uploadImage>
+                            <a mat-raised-button color="warn">First Upload Image to Server</a>
 
-                <div class="accordion_head"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Product Image<span
-                        class="plusminus">+</span>
+                        </ng-template>
+                    </div>
 
-                </div>
-                <div class="accordion_body" style="display: none;">
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Suspendisse et justo. Praesent mattis
-                        commodo augue. Aliquam ornare hendrerit augue. Cras tellus. In pulvinar lectus a est. Curabitur
-                        eget orci. Cras laoreet ligula. Etiam sit amet dolor. Vestibulum ante ipsum primis in faucibus
-                        orci luctus et ultrices posuere cubilia Curae; Nullam tellus diam, volutpat a, laoreet vel,
-                        bibendum in, nibh. Donec elit lectus, pharetra quis, vulputate in, lobortis at, mi. Donec libero
-                        purus, pulvinar ac, congue id, iaculis ut, est. </p>
-                </div>
+                </mat-expansion-panel>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Edit Product Size Varients
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            Product Size varients available will be displayed and can be updated individualy.
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <div class="row">
+                        <ng-template ngFor let-subProduct [ngForOf]="subProducts" let-i="index">
+                            <div class="col-md-3">
 
+                                <ng-template [ngIf]="subProduct.option3==null">
+                                    <mat-card class="example-card">
+                                        <mat-card-header>
 
-                <div class="accordion_head"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Product
-                    Availability<span class="plusminus">+</span>
+                                            <mat-card-title>Size - {{subProduct.title}}</mat-card-title>
+                                            <mat-card-subtitle>
 
-                </div>
-                <div class="accordion_body" style="display: none;">
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Suspendisse et justo. Praesent mattis
-                        commodo augue. Aliquam ornare hendrerit augue. Cras tellus. In pulvinar lectus a est. Curabitur
-                        eget orci. Cras laoreet ligula. Etiam sit amet dolor. Vestibulum ante ipsum primis in faucibus
-                        orci luctus et ultrices posuere cubilia Curae; Nullam tellus diam, volutpat a, laoreet vel,
-                        bibendum in, nibh. Donec elit lectus, pharetra quis, vulputate in, lobortis at, mi. Donec libero
-                        purus, pulvinar ac, congue id, iaculis ut, est. </p>
-                </div>
+                                                <mat-checkbox disabled [checked]="subProduct.available">Size
+                                                    {{subProduct.title}}
+                                                    Available
+                                                </mat-checkbox>
+                                                <br>
+                                                <mat-slide-toggle disabled [checked]="subProduct.stockAvailable"> Stock
+                                                    Available
+                                                </mat-slide-toggle>
+                                            </mat-card-subtitle>
+                                        </mat-card-header>
+                                        <!-- <ng-template [ngIf]="size3Available" [ngIfElse]="disabledMatContent"> -->
+                                        <mat-card-content>
+                                            <mat-form-field class="inventory-input">
+                                                <mat-label>Inventory Quantity</mat-label>
+                                                <input matInput type="number" [value]="subProduct.inventoryQuantity"
+                                                    disabled placeholder="product Quantity Ex: 100">
+                                                <mat-hint>Product quantity should be more than 0</mat-hint>
+                                            </mat-form-field>
+                                            <mat-form-field class="inventory-input">
+                                                <mat-label>Product Weight</mat-label>
+                                                <input matInput disabled [value]="subProduct.weight"
+                                                    placeholder="Product weight in gram Ex.50 gram">
+                                                <mat-hint>Product weight in gram Ex:50</mat-hint>
+                                            </mat-form-field>
+                                            <!-- <ng-template [ngIf]="productCompareCheck" [ngIfElse]="noVariesnew"> -->
+                                            <mat-form-field class="inventory-input">
+                                                <mat-label>Product Price</mat-label>
+                                                <input matInput disabled [value]="subProduct.price"
+                                                    placeholder="Enter product Price Example: ₹499">
+                                                <mat-hint>Price of the product in <strong>₹</strong></mat-hint>
+                                            </mat-form-field>
+                                            <!-- </ng-template> -->
+                                        </mat-card-content>
+                                        <mat-card-actions>
+                                            <button mat-raised-button color="warn"
+                                                (click)="openSizeDialog(subProduct)">Edit</button>
 
+                                        </mat-card-actions>
+                                    </mat-card>
+                                </ng-template>
+                            </div>
 
+                        </ng-template>
+                        <ng-template #noVariesnew>
+                            <mat-form-field class="inventory-input">
+                                <mat-label>Product Price does not varies</mat-label>
+                                <input matInput type="number" disabled placeholder="Product price does not varies">
+                            </mat-form-field>
+                        </ng-template>
+                    </div>
+                </mat-expansion-panel>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Delete Product
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            Delete will permanently remove this product
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
 
-
-                <div class="accordion_head"><i class="fa fa-pencil" aria-hidden="true"></i> Delete Product<span
-                        class="plusminus">+</span>
-
-                </div>
-                <div class="accordion_body" style="display: none;">
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Suspendisse et justo. Praesent mattis
-                        commodo augue. Aliquam ornare hendrerit augue. Cras tellus. In pulvinar lectus a est. Curabitur
-                        eget orci. Cras laoreet ligula. Etiam sit amet dolor. Vestibulum ante ipsum primis in faucibus
-                        orci luctus et ultrices posuere cubilia Curae; Nullam tellus diam, volutpat a, laoreet vel,
-                        bibendum in, nibh. Donec elit lectus, pharetra quis, vulputate in, lobortis at, mi. Donec libero
-                        purus, pulvinar ac, congue id, iaculis ut, est. </p>
-                </div>
-
-
-
-
-
-
-            </div>
+                    <p>Deleting product will remove it permanently! </p>
+                    <button mat-raised-button color="warn" (click)="openDeleteDialog()">Edit</button>
+                </mat-expansion-panel>
+            </mat-accordion>
         </div>
     </div>
-
-</div>

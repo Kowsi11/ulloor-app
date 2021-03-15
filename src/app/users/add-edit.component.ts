@@ -10,12 +10,12 @@ import { User } from '@app/_models';
 export class AddEditComponent implements OnInit {
 
     country = [
-        {name: 'Arizona', abbrev: 'AZ'},
-        {name: 'California', abbrev: 'CA'},
-        {name: 'Colorado', abbrev: 'CO'},
-        {name: 'New York', abbrev: 'NY'},
-        {name: 'Pennsylvania', abbrev: 'PA'},
-      ];
+        { name: 'Arizona', abbrev: 'AZ' },
+        { name: 'California', abbrev: 'CA' },
+        { name: 'Colorado', abbrev: 'CO' },
+        { name: 'New York', abbrev: 'NY' },
+        { name: 'Pennsylvania', abbrev: 'PA' },
+    ];
 
 
     form: FormGroup;
@@ -32,13 +32,13 @@ export class AddEditComponent implements OnInit {
         private accountService: AccountService,
         private alertService: AlertService
     ) {
-        this.user=accountService.userValue;
+        this.user = accountService.userValue;
     }
 
     ngOnInit() {
         this.id = this.route.snapshot.params['id'];
-    
-        
+
+
         /*const passwordValidators = [Validators.minLength(6)];
         if (this.isAddMode) {
             passwordValidators.push(Validators.required);
@@ -47,6 +47,7 @@ export class AddEditComponent implements OnInit {
         this.form = this.formBuilder.group({
             firstName: ['', Validators.required],
             lastName: ['', Validators.required],
+            email: ['', Validators.required],
             doorNum: ['', Validators.required],
             street: ['', Validators.required],
             landMark: ['', Validators.required],
@@ -56,10 +57,10 @@ export class AddEditComponent implements OnInit {
             pincode: ['', Validators.required],
             phoneNumber: ['', Validators.required],
             type: ['', Validators.required]
-			
+
         });
     }
-	get f() { return this.form.controls; }
+    get f() { return this.form.controls; }
 
     onSubmit() {
         this.accountService.updateAddress(this.user.id, this.form.value)
@@ -74,5 +75,5 @@ export class AddEditComponent implements OnInit {
                     this.alertService.error(error);
                     this.loading = false;
                 });
-    }      
+    }
 }

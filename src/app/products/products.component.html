@@ -54,9 +54,6 @@
                     <ng-template [ngIf]="product.compareAtPriceVaries"><span style="color: red;"><s>Rs
                           {{product.compareAtPrice}}</s></span>
                     </ng-template>&nbsp;
-                    <ng-template [ngIf]="product.compareAtPriceVaries"><span style="color: red;"><s>Rs
-                          {{product.compareAtPrice}}</s></span>
-                    </ng-template>&nbsp;
 
                     <ng-template [ngIf]="product.selectedVarient != null" [ngIfElse]="productNotselected">
                       <span style="color: rgb(75, 233, 75);">Rs {{product.selectedVarient.price}}</span></ng-template>
@@ -66,14 +63,21 @@
                     </ng-template>
                   </p>
 
-                  <div class="switch-field">
-                    <h4 class="less-mar-1" style="text-align:center;"> </h4>
-                    <div *ngFor="let order of product.sizePriceIdList">
+                  <!-- <ng-template ngFor let-order [ngForOf]="product.sizePriceIdList" let-i="index"> -->
+                  <div [ngClass]="'switch-field'">
+                    <!-- <h4 class="less-mar-1" style="text-align:center;"> </h4> -->
+                    <ng-template ngFor let-order [ngForOf]="product.sizePriceIdList" let-i="index">
+
+                      <!-- <div *ngFor="let order of product.sizePriceIdList"> -->
                       <input type="radio" name="switch-two" [value]="order.id" [id]="order.id"
                         (change)="product.selectedVarient = onSizeChange($event.target.value,product.id)" />
                       <label for="{{order.id}}"> {{order.size}}</label>&nbsp;
-                    </div>
+                      <!-- </div> -->
+                    </ng-template>
+
                   </div>
+
+                  <!-- </ng-template> -->
 
 
 

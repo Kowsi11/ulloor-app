@@ -18,6 +18,7 @@ import { Color } from '@app/_models/Color';
 import { Size } from '@app/_models/newProduct/Size';
 import { ImageWithPosition } from '@app/_models/newProduct/ImageWithPosition';
 import { MatChips } from '@app/admin/admin.component';
+import { UpdateProduct } from '@app/_models/newProduct/update/updateProduct';
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {
@@ -34,7 +35,7 @@ export class ProductService {
         return this.http.get<ResponseDto>(`${environment.categoryUrl}/admin/product/${productId}`)
     }
     getProductsByCategoryId(categoryId: string) {
-        console.log(`${environment.categoryUrl}/category/${categoryId}/products`)
+        console.log(`${environment.categoryUrl}/subcategory/${categoryId}/products`)
         return this.http.get<ResponseDto>(`${environment.categoryUrl}/subcategory/${categoryId}/products`);
     }
     getProductById(productId: string) {
@@ -53,6 +54,10 @@ export class ProductService {
         return this.http.get<ResponseDto>(`${environment.categoryUrl}/products/name`)
 
 
+    }
+    updateProduct(id, updateProduct: UpdateProduct) {
+        console.log(updateProduct)
+        return this.http.put<ResponseDto>(`${environment.categoryUrl}/admin/product/${id}`, updateProduct)
     }
     // getNames() {
     //     let productNames = null

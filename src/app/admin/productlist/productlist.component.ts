@@ -122,9 +122,11 @@ export class ProductlistComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      if (result != undefined) {
+        console.log('The dialog was closed ' + result);
+        this.router.navigateByUrl("/admin/productedit/" + result)
+      }
 
-      console.log('The dialog was closed ' + result);
-      this.router.navigateByUrl("/admin/productedit/" + result)
     });
   }
   editbut() {

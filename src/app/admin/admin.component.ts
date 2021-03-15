@@ -294,10 +294,13 @@ export class AdminComponent implements OnInit {
     }
   }
   uploadImageToServer() {
-    let imageDomain
+    let imageDomain = new ImageDomain()
 
     if (this.images.length > 0) {
-      imageDomain = new ImageDomain(this.category, this.subCategory, this.form.value.productTitle, this.images)
+      imageDomain.category = this.category
+      imageDomain.subCategory = this.subCategory
+      imageDomain.productName = this.form.value.productTitle
+      imageDomain.images = this.images
 
       console.log(imageDomain)
       this.productService.uploadImage(imageDomain).subscribe(

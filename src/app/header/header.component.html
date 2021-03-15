@@ -3,8 +3,8 @@
     <div class="container">
       <div class="mod-menu">
         <div class="row">
-          <div class="col-sm-2"> <a href="index.html" title="" class="logo style-1 mar-4 img-responsive"> <img
-                src="assets/images/logo/logo.png" alt=""> </a> </div>
+          <div class="col-sm-2"> <a href="index.html" title="" class="logo style-1 mar-4 navbar-brand"
+              style="min-width: 7rem;"> <img width="142" src="assets/images/logo/logo.png" alt=""> </a> </div>
           <ng-template [ngIf]="defaultUser" [ngIfElse]="admin">
             <div class="col-sm-10">
               <div class="main-nav">
@@ -21,6 +21,7 @@
                       </div>
                     </div>
                   </li>
+
                   <li class={{mycart}}> <a href="javascript:void(0)" (click)="mycartfun()" title=""> <i
                         aria-hidden="true" class="fa fa-shopping-cart"></i> <span class="number mar2">
                         {{carts.products.length}} </span> </a>
@@ -61,16 +62,12 @@
 
                   <!--menu List-->
                   <li class="visible-xs menu-icon"> <a href="javascript:void(0)" class="navbar-toggle collapsed"
-                      data-toggle="collapse" data-target="#menu" aria-expanded="false"> <i aria-hidden="true"
-                        class="fa fa-bars"></i> </a> </li>
+                      data-toggle="collapse" aria-controls="menu" data-target="#menu" aria-expanded="false"> <i
+                        aria-hidden="true" class="fa fa-bars"></i> </a> </li>
                 </ul>
-                <div id="menu" class="collapse">
-                  <ul class="nav navbar-nav">
-                    <li class="right "> <a routerLink="/home">Home</a> <span class="arrow"></span>
-                      <ul class="dm-align-2">
-
-                      </ul>
-                    </li>
+                <div id="menu" class="collapse navbar-collapse">
+                  <ul class="nav navbar-nav ">
+                    <li class="nav-item right "> <a routerLink="/home">Home</a> <span class="arrow"></span></li>
 
                     <li class="mega-menu"> <a href="portfolio-full-width.html">Product</a> <span class="arrow"></span>
                       <ul>
@@ -248,7 +245,7 @@
                         class="arrow"></span>
                       <ul>
 
-                        <ng-template [ngIf]="notlogged" [ngIfElse]="userloggedin">
+                        <ng-template [ngIf]="userName==null" [ngIfElse]="userloggedin">
                           <li>New Customer?<a routerLink="account/register">Sign Up</a> </li>
                           <li> <a routerLink="account/login">login</a> </li>
                         </ng-template>

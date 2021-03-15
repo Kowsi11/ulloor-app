@@ -29,7 +29,6 @@ import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { AlertComponent } from './_components';
 import { FilterPipe } from './filter.pipe';
 import { CategoriesComponent } from './categories/categories.component';
-import { HomeBannersComponent } from './home-banners/home-banners.component';
 import { TestimonialsComponent } from './testimonials/testimonials.component';
 
 import { CarouselModule } from 'ngx-owl-carousel-o';
@@ -56,6 +55,13 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog'
 import { DialogOverviewExampleDialog } from './_helpers/popup/EditProductPopUp';
+import { DialogOverviewForVarient } from './_helpers/popup/EditSizeVarient';
+import { DialogOverviewDeleteProduct } from './_helpers/popup/DeleteProductPopUp';
+import { OrderComponent } from './order/order.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { SelectAddressPopup } from './_helpers/popup/SelectAddressPopUp';
+import { HomeBannersComponent } from './home-banners/home-banners.component';
+import { MatIconModule } from '@angular/material/icon';
 @NgModule({
   declarations: [
     AppComponent,
@@ -81,7 +87,11 @@ import { DialogOverviewExampleDialog } from './_helpers/popup/EditProductPopUp';
     ProducteditComponent,
     AdminComponent,
     ProductlistComponent,
-    DialogOverviewExampleDialog
+    DialogOverviewExampleDialog,
+    DialogOverviewForVarient,
+    DialogOverviewDeleteProduct,
+    OrderComponent,
+    SelectAddressPopup
 
 
   ],
@@ -108,7 +118,9 @@ import { DialogOverviewExampleDialog } from './_helpers/popup/EditProductPopUp';
     MatTableModule,
     MatPaginatorModule,
     MatProgressSpinnerModule,
-    MatDialogModule
+    MatDialogModule,
+    MatExpansionModule,
+    MatIconModule
 
 
   ],
