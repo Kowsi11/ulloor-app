@@ -62,6 +62,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { SelectAddressPopup } from './_helpers/popup/SelectAddressPopUp';
 import { HomeBannersComponent } from './home-banners/home-banners.component';
 import { MatIconModule } from '@angular/material/icon';
+import { Header3Component } from './header3/header3.component';
+import { Header2Component } from './header2/header2.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -91,7 +93,9 @@ import { MatIconModule } from '@angular/material/icon';
     DialogOverviewForVarient,
     DialogOverviewDeleteProduct,
     OrderComponent,
-    SelectAddressPopup
+    SelectAddressPopup,
+    Header2Component,
+    Header3Component
 
 
   ],

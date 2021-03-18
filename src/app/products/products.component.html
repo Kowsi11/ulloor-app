@@ -1,20 +1,36 @@
-<section>
-  <div class="pagenation-holder">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <i class="breadcrumbs-1">No of products found {{products.length}} </i>
-        </div>
-        <div class="col-md-6">
-          <ol class="breadcrumb">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">products</a></li>
-            <li class="current"><a href="#">{{category}}</a></li>
-          </ol>
-        </div>
+<div class="custom">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <i class="breadcrumbs-1">No of products found {{getTotalProducts()}}</i>
+      </div>
+      <div class="col-md-6">
+        <ol class="breadcrumb">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">products</a></li>
+          <li class="current"><a href="#">{{category}}</a></li>
+        </ol>
       </div>
     </div>
   </div>
+</div>
+<section>
+  <!-- <div class="pagenation-holder"> -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <i class="breadcrumbs-1">No of products found </i>
+      </div>
+      <div class="col-md-6">
+        <ol class="breadcrumb">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">products</a></li>
+          <li class="current"><a href="#">{{category}}</a></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <!-- </div> -->
 </section>
 
 

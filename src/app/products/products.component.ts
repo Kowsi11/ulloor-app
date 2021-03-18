@@ -25,6 +25,7 @@ import { Size } from '@app/_models/newProduct/Size';
 export class ProductsComponent implements OnInit {
 
     products: ProductToUse[] = []
+
     form: FormGroup;
 
     orders = [{ id: 1, size: 'S' },
@@ -85,7 +86,14 @@ export class ProductsComponent implements OnInit {
 
     }
 
-
+    getTotalProducts() {
+        // if (this.products == null) {
+        //     return 0;
+        // } else {
+        //     return this.products.length
+        // }
+        return 0;
+    }
     onPageChange(event) {
         console.log(event);
         this.config.currentPage = event;

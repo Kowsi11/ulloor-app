@@ -1,0 +1,12 @@
+li:hover{
+    
+  
+  transition: all 0.3s ease;
+  top: 70px;
+  opacity: 1;
+  visibility: visible;
+  transform: translatex(10px);
+}
+a:hover{
+color: #ff6f61;
+}
